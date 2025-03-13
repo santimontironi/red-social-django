@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+.contenedorLogin{
+    max-width: 100%;
+    max-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.17)), url(../img/fondoIngreso.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Roboto Mono", monospace;
+}
+
+.ingresoMensajeBienvenida h1{
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.ingresoMensajeBienvenida img{
+    width: 150px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 20px #000;
+}
+
+.formIngreso input{
+    width: 350px;
+}
