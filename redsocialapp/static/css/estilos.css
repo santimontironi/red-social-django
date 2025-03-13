@@ -2,7 +2,7 @@
 
 .contenedorLogin{
     max-width: 100%;
-    max-height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.17)), url(../img/fondoIngreso.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,4 +22,13 @@
 
 .formIngreso input{
     width: 350px;
+}
+
+@media (max-width:800px){
+    .contenedorLogin{
+        min-height: 100vh;
+    }
+    .ingresoMensajeBienvenida{
+        text-align: center;
+    }
 }

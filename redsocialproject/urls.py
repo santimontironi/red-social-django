@@ -20,5 +20,6 @@ from redsocialapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.ingreso, name='ingreso')
+    path('', views.ingreso, name='ingreso'),
+    path('/registro', views.registro, name='registro')
 ]
