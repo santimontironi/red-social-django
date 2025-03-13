@@ -20,8 +20,17 @@
     box-shadow: 5px 5px 20px #000;
 }
 
-.formIngreso input{
+.formLogin input{
     width: 350px;
+}
+
+.contenedorRegistro{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.17)), url(../img/fondoRegistro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Roboto Mono", monospace;
 }
 
 @media (max-width:800px){

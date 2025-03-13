@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="contenedorRegistro">
+        <div class="container d-flex flex-column p-4 m-auto justify-content-center align-items-center ingresoMensajeBienvenida">
+            <h1>Registro</h1>
+            <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
+        </div>
+
+        <div class="container mt-2 d-flex flex-column justify-content-center align-items-center m-auto h-100">
+            <form class="formLogin">
+                <div class="mb-3">
+                    <label for="email" class="form-label text-light">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password1" class="form-label text-light">Contraseña</label>
+                    <input type="password1" class="form-control" id="password1" name="password" required placeholder="Ingrese su contraseña">
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label text-light">Contraseña confirmación</label>
+                    <input type="password2" class="form-control" id="password2" name="password2" required placeholder="Ingrese su contraseña nuevamente">
+                </div>
+                <button type="submit" class="btn btn-primary">Regístrate</button>
+            </form>
+            <p class="text-light mt-3">O si ya tienes cuenta <a class="btn btn-secondary" href="/">Iniciá sesión</a></p>
+        </div>
+    </div>
+
+{% endblock %}
