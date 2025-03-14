@@ -7,7 +7,7 @@
 <div class="contenedorLogin">
     <div class="container d-flex flex-column p-4 m-auto justify-content-center align-items-center ingresoMensajeBienvenida">
         <h1>Bienvenido a SocialByte</h1>
-        <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
+        <img class="mt-3" src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
     </div>
 
     <div class="container mt-4 d-flex flex-column justify-content-center align-items-center m-auto h-100">
@@ -24,6 +24,9 @@
             <button type="submit" class="btn btn-primary">Ingresar</button>
         </form>
         <p class="text-light mt-3">O si no tienes cuenta <a class="btn btn-primary" href="registro/">Regístrate</a></p>
+        {% if errorCredenciales %}
+            <p class="text-danger fw-bold">{{errorCredenciales}}</p>
+        {% endif %}
     </div>
 </div>
 

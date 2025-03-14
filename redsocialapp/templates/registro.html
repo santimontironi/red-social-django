@@ -9,7 +9,7 @@
             <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
         </div>
 
-        <div class="container mt-3 d-flex flex-column justify-content-center align-items-center m-auto h-100">
+        <div class="container d-flex flex-column justify-content-center align-items-center m-auto h-100">
             <form action="/registro/" method="post" class="formLogin">
                 {% csrf_token %}
                 <div class="mb-3">
@@ -27,6 +27,12 @@
                 <button type="submit" class="btn btn-primary">Regístrate</button>
             </form>
             <p class="text-light mt-3">O si ya tienes cuenta <a class="btn btn-light" href="/">Iniciá sesión</a></p>
+            {% if errorUsuarioExistente %}
+                <p class="text-danger fw-bold">{{errorUsuarioExistente}}</p>
+            {% endif %}
+            {% if errorClavesNoIguales %}
+                <p class="text-danger fw-bold">{{errorClavesNoIguales}}</p>
+            {% endif %}
         </div>
     </div>
 

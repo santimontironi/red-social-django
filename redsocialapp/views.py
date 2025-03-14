@@ -12,7 +12,7 @@ def ingreso(request):
         password = request.POST["password"]
         usuarioAutenticado = authenticate(username = username, password = password)
         if usuarioAutenticado is None:
-            return render('ingreso',{
+            return render(request,'ingreso.html',{
                 'errorCredenciales': 'Usuario o contraseña no válidos.'
             })
         else:
@@ -38,5 +38,5 @@ def registro(request):
                 })
         else:
             return render(request,'registro.html',{
-                'errorClavesNoiguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
+                'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
