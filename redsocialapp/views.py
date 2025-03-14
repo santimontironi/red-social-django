@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def ingreso(request):
@@ -41,9 +42,9 @@ def registro(request):
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
             
+@login_required            
 def inicio(request):
-    if request.method == "GET":
-        return render(request,'inicio.html')
+    return render(request,'inicio.html')
     
 def cerrarSesion(request):
     logout(request)
