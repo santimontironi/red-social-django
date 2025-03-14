@@ -17,7 +17,7 @@ def ingreso(request):
             })
         else:
             login(request,usuarioAutenticado)
-            return redirect('ingreso')
+            return redirect('home')
     
 def registro(request):
     if request.method == "GET":
@@ -31,7 +31,7 @@ def registro(request):
                 usuarioRegistrado = User.objects.create_user(username = username, password = clave1)
                 usuarioRegistrado.save()
                 login(request,usuarioRegistrado)
-                return redirect('registro')
+                return redirect('ingreso')
             except IntegrityError:
                 return render(request,'registro.html',{
                     'errorUsuarioExistente':"Usuario ya existente con el username ingresado. Por favor vuelva a ingrese otro nuevamente."
@@ -40,3 +40,7 @@ def registro(request):
             return render(request,'registro.html',{
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
+            
+def inicio(request):
+    if request.method == "GET":
+        return render(request,'inicio.html')
