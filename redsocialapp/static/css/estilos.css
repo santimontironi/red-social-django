@@ -33,6 +33,22 @@
     font-family: "Roboto Mono", monospace;
 }
 
+.btnPublicar{
+    position: absolute;
+    right: 60px;
+    bottom: 50px;
+    animation: movimiento ease-in-out 2s infinite;
+}
+
+@keyframes movimiento{
+    0%,100%{
+        transform: translateY(30px);
+    }
+    50%{
+        transform: translateY(20px);
+    }
+}
+
 @media (max-width:800px){
     .contenedorLogin{
         min-height: 100vh;

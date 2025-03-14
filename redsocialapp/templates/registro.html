@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="contenedorRegistro">
+    <section class="contenedorRegistro">
         <div class="container d-flex flex-column p-4 m-auto justify-content-center align-items-center ingresoMensajeBienvenida">
             <h1>Registro</h1>
             <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
@@ -34,6 +34,6 @@
                 <p class="text-danger fw-bold">{{errorClavesNoIguales}}</p>
             {% endif %}
         </div>
-    </div>
+    </section>
 
 {% endblock %}
