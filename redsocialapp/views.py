@@ -17,7 +17,7 @@ def ingreso(request):
             })
         else:
             login(request,usuarioAutenticado)
-            return redirect('home')
+            return redirect('inicio')
     
 def registro(request):
     if request.method == "GET":
@@ -44,3 +44,7 @@ def registro(request):
 def inicio(request):
     if request.method == "GET":
         return render(request,'inicio.html')
+    
+def cerrarSesion(request):
+    logout(request)
+    return redirect('ingreso')

@@ -12,25 +12,25 @@
 <body>
     
     {% if request.path != '/' and request.path != '/registro/' %}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg p-3" id="menu" style="background: linear-gradient(to right,#1f0d6e, #170a4d);">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">SocialByte</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="#"><img class="rounded-5" src="{% static 'img/logo.webp' %}" alt="logo" width="85"></a>
+          <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav d-flex gap-3 ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <form class="d-flex" action="/buscar/" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Buscar usuarios" aria-label="Search" name="query">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link text-light" href="#">Mi perfil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a class="nav-link text-light" href="/cerrar-sesion/">Cerrar sesión</a>
               </li>
             </ul>
           </div>
