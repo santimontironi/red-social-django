@@ -11,10 +11,11 @@
     </div>
 
     <div class="container mt-4 d-flex flex-column justify-content-center align-items-center m-auto h-100">
-        <form class="formLogin">
+        <form method="post" action="/ingreso/" class="formLogin">
+            {% csrf_token %}
             <div class="mb-3">
-                <label for="email" class="form-label text-light">Correo electrónico</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico" required>
+                <label for="username" class="form-label text-light">Correo electrónico</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Ingrese su correo electrónico" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label text-light">Contraseña</label>

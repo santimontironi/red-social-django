@@ -9,19 +9,20 @@
             <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
         </div>
 
-        <div class="container mt-2 d-flex flex-column justify-content-center align-items-center m-auto h-100">
-            <form class="formLogin">
+        <div class="container mt-3 d-flex flex-column justify-content-center align-items-center m-auto h-100">
+            <form action="/registro/" method="post" class="formLogin">
+                {% csrf_token %}
                 <div class="mb-3">
-                    <label for="email" class="form-label text-light">Correo electrónico</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico" required>
+                    <label for="username" class="form-label text-light">Nombre de usuario</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Ingrese su nombre de usuario" required>
                 </div>
                 <div class="mb-3">
                     <label for="password1" class="form-label text-light">Contraseña</label>
-                    <input type="password1" class="form-control" id="password1" name="password" required placeholder="Ingrese su contraseña">
+                    <input type="password" class="form-control" id="password1" name="password1" required placeholder="Ingrese su contraseña">
                 </div>
                 <div class="mb-3">
                     <label for="password2" class="form-label text-light">Contraseña confirmación</label>
-                    <input type="password2" class="form-control" id="password2" name="password2" required placeholder="Ingrese su contraseña nuevamente">
+                    <input type="password" class="form-control" id="password2" name="password2" required placeholder="Ingrese su contraseña nuevamente">
                 </div>
                 <button type="submit" class="btn btn-primary">Regístrate</button>
             </form>
