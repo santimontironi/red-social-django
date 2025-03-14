@@ -7,6 +7,17 @@ from django.contrib.auth import logout, login, authenticate
 def ingreso(request):
     if request.method == "GET":
         return render(request,'ingreso.html')
+    else:
+        username = request.POST["username"]
+        password = request.POST["password"]
+        usuarioAutenticado = authenticate(username = username, password = password)
+        if usuarioAutenticado is None:
+            return render('ingreso',{
+                'errorCredenciales': 'Usuario o contraseña no válidos.'
+            })
+        else:
+            login(request,usuarioAutenticado)
+            return redirect('ingreso')
     
 def registro(request):
     if request.method == "GET":
