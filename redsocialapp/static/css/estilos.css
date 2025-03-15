@@ -76,6 +76,14 @@ body{
     text-align: center;
 }
 
+.formCrearPerfil{
+    width: 500px;
+}
+
+.inputImagen{
+    cursor: pointer;
+}
+
 @media (max-width:800px){
     .tituloNavbar{
         display: none;
@@ -87,7 +95,7 @@ body{
         text-align: center;
     }
     .contenedorCrearPerfil{
-        min-height: 110vh;
+        min-height: 120vh;
     }
     .parrafoCrearPerfil{
         width: 350px;
