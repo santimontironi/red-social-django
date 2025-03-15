@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.ingreso, name='ingreso'),
     path('registro/', views.registro, name='registro'),
     path('inicio/',views.inicio,name='inicio'),
+    path('crear-perfil/',views.crearPerfil, name='crear-perfil'),
     path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
 ]

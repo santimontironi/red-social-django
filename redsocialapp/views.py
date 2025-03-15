@@ -42,9 +42,15 @@ def registro(request):
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
             
+@login_required
+def crearPerfil(request):
+    if request.method == "GET":
+        return render(request,'crearPerfil.html')
+            
 @login_required            
 def inicio(request):
     return render(request,'inicio.html')
+
     
 def cerrarSesion(request):
     logout(request)
