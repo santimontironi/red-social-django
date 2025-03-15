@@ -47,6 +47,15 @@ body{
     animation: movimiento ease-in-out 2s infinite;
 }
 
+@keyframes movimiento{
+    0%,100%{
+        transform: translateY(30px);
+    }
+    50%{
+        transform: translateY(20px);
+    }
+}
+
 .contenedorCrearPerfil{
     max-width: 100%;
     min-height: 100vh;
@@ -55,14 +64,16 @@ body{
     background-size: cover;
 }
 
+.tituloCrearPerfil{
+    color: #fff;
+    text-align: center;
+    padding-top: 45px;
+}
 
-@keyframes movimiento{
-    0%,100%{
-        transform: translateY(30px);
-    }
-    50%{
-        transform: translateY(20px);
-    }
+.parrafoCrearPerfil{
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
 }
 
 @media (max-width:800px){
@@ -74,5 +85,13 @@ body{
     }
     .ingresoMensajeBienvenida{
         text-align: center;
+    }
+    .contenedorCrearPerfil{
+        min-height: 110vh;
+    }
+    .parrafoCrearPerfil{
+        width: 350px;
+        margin: auto;
+        margin-bottom: 15px;
     }
 }

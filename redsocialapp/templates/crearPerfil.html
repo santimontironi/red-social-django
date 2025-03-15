@@ -7,10 +7,10 @@
 {% block content %}
 
     <div class="contenedorCrearPerfil">
-        <h1>¡Gracias por haberte registrado en SocialByte!</h1>
-        <p>¡Estamos emocionados de tenerte aquí! Completa tu perfil y empieza a disfrutar la experiencia SocialByte.</p>
+        <h1 class="tituloCrearPerfil">¡Gracias por haberte registrado en SocialByte!</h1>
+        <p class="parrafoCrearPerfil">¡Estamos emocionados de tenerte aquí! Completa tu perfil y empieza a disfrutar la experiencia SocialByte.</p>
         <div class="container d-flex justify-content-center align-items-center h-100">
-            <form class="formCrearPerfil mt-5" method="post" enctype="multipart/form-data">
+            <form class="formCrearPerfil mt-3" method="post" enctype="multipart/form-data">
             {% csrf_token %}
     
             <div class="form-group mb-3">
