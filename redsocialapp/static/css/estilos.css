@@ -47,6 +47,15 @@ body{
     animation: movimiento ease-in-out 2s infinite;
 }
 
+.contenedorCrearPerfil{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.50)), url(../img/fondoCrearPerfil.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 @keyframes movimiento{
     0%,100%{
         transform: translateY(30px);
