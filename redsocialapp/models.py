@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Perfil(models.Model):
@@ -11,3 +12,10 @@ class Perfil(models.Model):
     
     def __str__(self): #este metodo es para mostrar en el administrador de Django el username del usuario al que hace referencia el perfil.
         return self.user.username
+    
+class Publicacion(models.Model):
+    imagen = imagen = models.ImageField(upload_to='publicaciones/')
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    descripcion = models.TextField(max_length=150)
+    fechaPublicacion = models.DateField(auto_now_add=True)
+    likes = models.IntegerField(default=0, validators=[MinValueValidator(0)]) #validators=[MinValueValidator(0)] es una validación que asegura que el valor del campo no sea menor que un mínimo especificado, en este caso, 0.
