@@ -88,8 +88,8 @@ body{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
 }
 
 .tituloCrearPerfil{
@@ -101,8 +101,9 @@ body{
 }
 
 .contenedorFormCrearPerfil{
-    background-color: #fff;
+    background-color: #ebf1c7;
     height: 500px;
+    overflow-y: hidden;
 }
 
 .formCrearPerfil{

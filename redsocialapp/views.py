@@ -4,6 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm
+from .models import Publicacion
 
 # Create your views here.
 def ingreso(request):
@@ -60,7 +61,17 @@ def crearPerfil(request):
             
 @login_required            
 def inicio(request):
-    return render(request,'inicio.html')
+    if request.method == "GET":
+        publicaciones = Publicacion.objects.all()
+        if publicaciones:
+            return render(request,'inicio.html', {
+                'publicaciones':publicaciones
+            })
+        else:
+            return render(request,'inicio.html',{
+                'noHayPublicaciones': True
+            })
+    
 
     
 def cerrarSesion(request):
