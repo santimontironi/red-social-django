@@ -134,6 +134,14 @@ body{
     cursor: pointer;
 }
 
+.sinPublicaciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 @media (max-width:800px){
     .tituloNavbar{
         display: none;
@@ -173,5 +181,11 @@ body{
         width: 300px;
         background-color: #000;
         color: #fff;
+    }
+    .sinPublicaciones{
+        text-align: center;
+    }
+    .sinPublicaciones p{
+        width: 340px;
     }
 }
