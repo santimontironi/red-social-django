@@ -6,38 +6,43 @@
 
 {% block content %}
 
-    <div class="contenedorCrearPerfil">
-        <h1 class="tituloCrearPerfil" data-aos="zoom-in-up" data-aos-duration="1000">¡Gracias por haberte registrado en SocialByte!</h1>
-        <p class="parrafoCrearPerfil" data-aos="zoom-in-up" data-aos-duration="1000">¡Estamos emocionados de tenerte aquí! Completa tu perfil y empieza a disfrutar la experiencia SocialByte.</p>
-        <div class="container d-flex justify-content-center align-items-center h-100" >
-            <form class="formCrearPerfil mt-3" method="post" enctype="multipart/form-data" data-aos="zoom-in" data-aos-duration="1000">
-            {% csrf_token %}
-    
-            <div class="form-group mb-3">
-                <label for="id_imagen" class="profile-picture-container">
-                    <img class="inputImagen" src="https://img.icons8.com/?size=100&id=11816&format=png&color=000000" alt="Foto de perfil">
-                </label>
-                <input type="file" name="imagen" id="id_imagen" class="d-none" accept="image/*">
+    <section class="contenedorCrearPerfil">
+        <div class="contenidoCrearPerfil" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="textoCrearPerfil">
+                <h1 class="tituloCrearPerfil">¡Gracias por haberte registrado en SocialByte!</h1>
+                <p class="parrafoCrearPerfil">¡Estamos emocionados de tenerte aquí! Completa tu perfil y empieza a disfrutar la experiencia SocialByte.</p>
             </div>
+            <div class="contenedorFormCrearPerfil" >
+                <form class="formCrearPerfil mt-3" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+        
+                    <div class="form-group mb-3">
+                        <label for="id_imagen" class="profile-picture-container d-flex flex-column m-auto">
+                            Sube una foto de perfil
+                            <img class="inputImagen" width="50" height="50" src="https://img.icons8.com/fluency/50/add-camera.png" alt="add-camera"/>
+                        </label>
+                        <input type="file" name="imagen" id="id_imagen" class="d-none" accept="image/*">
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label class="text-dark" for="id_nombre">Tu nombre</label>
+                        <input type="text" name="nombre" id="id_nombre" class="form-control" placeholder="Ingresa tu nombre" required>
+                    </div>
+        
+                    <div class="form-group mb-3">
+                        <label class="text-dark" for="id_nombre">Tu apellido</label>
+                        <input type="text" name="apellido" id="id_apellido" class="form-control" placeholder="Ingresa tu apellido" required>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label class="text-dark" for="id_descripcion">Descripción</label>
+                        <textarea name="descripcion" id="id_descripcion" class="form-control" rows="4" placeholder="Cuéntanos sobre ti"></textarea>
+                    </div>
             
-            <div class="form-group mb-3">
-                <label class="text-light" for="id_nombre">Tu nombre</label>
-                <input type="text" name="nombre" id="id_nombre" class="form-control" placeholder="Ingresa tu nombre" required>
+                    <button type="submit" class="btn btn-primary">Crear Perfil</button>
+                </form>
             </div>
-
-            <div class="form-group mb-3">
-                <label class="text-light" for="id_nombre">Tu apellido</label>
-                <input type="text" name="apellido" id="id_apellido" class="form-control" placeholder="Ingresa tu apellido" required>
-            </div>
-            
-            <div class="form-group mb-3">
-                <label class="text-light" for="id_descripcion">Descripción</label>
-                <textarea name="descripcion" id="id_descripcion" class="form-control" rows="4" placeholder="Cuéntanos sobre ti"></textarea>
-            </div>
-    
-            <button type="submit" class="btn btn-primary">Crear Perfil</button>
-        </form>
         </div>
-    </div>
+    </section>
 
 {% endblock %}

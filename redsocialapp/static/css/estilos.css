@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
 
 body{
     font-family: "Roboto Mono", monospace;
@@ -19,7 +20,8 @@ body{
 
 .ingresoMensajeBienvenida h1{
     color: #fff;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    font-family: "Tektur", sans-serif;
 }
 
 .ingresoMensajeBienvenida img{
@@ -59,28 +61,75 @@ body{
 .contenedorCrearPerfil{
     max-width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.50)), url(../img/fondoCrearPerfil.jpg);
+    background: linear-gradient(150deg,#2a588a,#101010,#000);
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenidoCrearPerfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+}
+
+.textoCrearPerfil{
+    height: 500px;
+    padding: 50px 15px 20px 15px;
+    background: url(../img/textoCrearPerfil.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 .tituloCrearPerfil{
     color: #fff;
-    text-align: center;
-    padding-top: 45px;
 }
 
 .parrafoCrearPerfil{
     color: #fff;
-    font-size: 14px;
-    text-align: center;
+}
+
+.contenedorFormCrearPerfil{
+    background-color: #fff;
+    height: 500px;
 }
 
 .formCrearPerfil{
-    width: 500px;
+    width: 400px;
 }
 
-.inputImagen{
+.contenedorFormCrearPerfil form ::placeholder{
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form{
+    padding: 0px 0px 0px 60px;
+}
+
+.contenedorFormCrearPerfil form input{
+    width: 300px;
+    background-color: #000;
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form textarea{
+    width: 300px;
+    background-color: #000;
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form .inputImagen{
     cursor: pointer;
 }
 
