@@ -17,6 +17,7 @@
             </div>
         {% else %}
             {% for publicacion in publicaciones %}
+                <h2>{{publicacion.user}}</h2>
                 <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                 <p>{{publicacion.descripcion}}</p>
                 <span>{{publicacion.fechaPublicacion}}</span>

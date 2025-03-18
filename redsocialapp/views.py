@@ -62,7 +62,7 @@ def crearPerfil(request):
 @login_required            
 def inicio(request):
     if request.method == "GET":
-        publicaciones = Publicacion.objects.all()
+        publicaciones = Publicacion.objects.all().order_by('-fechaPublicacion')
         if publicaciones:
             return render(request,'inicio.html', {
                 'publicaciones':publicaciones
