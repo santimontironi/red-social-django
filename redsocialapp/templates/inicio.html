@@ -17,10 +17,22 @@
             </div>
         {% else %}
             {% for publicacion in publicaciones %}
-                <h2>{{publicacion.user}}</h2>
-                <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
-                <p>{{publicacion.descripcion}}</p>
-                <span>{{publicacion.fechaPublicacion}}</span>
+                <div class="contenedor-publicacion">
+                    <div class="publicacion">
+                        <h2>{{publicacion.user}}</h2>
+                        <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+                        <p>{{publicacion.descripcion}}</p>
+                        <span>{{publicacion.likes}} Me gustas</span>
+                        <div class="publicacion-operaciones">
+                            <form action="/me-gusta/" method="post">
+                                <input type="hidden" value="{{publicacion.id}}">
+                                <input class="btn btn-outline-danger" type="submit" value="❤️">
+                            </form>
+                            <button class="btn btn-outline-info">💬</button>
+                        </div>
+                        <span>{{publicacion.fechaPublicacion}}</span>
+                    </div>
+                </div>
             {% endfor %}
         {% endif %}
         <div class="btnPublicar">

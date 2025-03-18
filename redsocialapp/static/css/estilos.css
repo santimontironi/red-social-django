@@ -43,7 +43,7 @@ body{
 }
 
 .btnPublicar{
-    position: absolute;
+    position: fixed;
     right: 60px;
     bottom: 50px;
     animation: movimiento ease-in-out 2s infinite;
@@ -134,12 +134,61 @@ body{
     cursor: pointer;
 }
 
+.contenedorInicio{
+    min-height: 100vh;
+    background: linear-gradient(to left,#4d3ea1,#103e6e,#000);
+}
+
 .sinPublicaciones{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+}
+
+.contenedor-publicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 38px;
+}
+
+.publicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    width: 350px;
+    padding: 10px;
+    border: solid 2px #ebf1c7;
+}
+
+.publicacion h2{
+    color: #fff;
+    font-weight: lighter;
+    font-size: 17px;
+}
+
+.publicacion img{
+    width: 100%;
+}
+
+.publicacion p{
+    color: #fff;
+    margin-top: 10px;
+}
+
+.publicacion span{
+    color: #fff;
+}
+
+.publicacion-operaciones{
+    display: flex;
+    gap: 20px;
+    margin: 10px 0px 15px 0px;
 }
 
 @media (max-width:800px){
