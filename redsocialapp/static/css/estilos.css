@@ -165,6 +165,7 @@ body{
     width: 400px;
     padding: 10px;
     border: solid 2px #ebf1c7;
+    box-shadow: 3px 3px 15px #000;
 }
 
 .publicacion h2{

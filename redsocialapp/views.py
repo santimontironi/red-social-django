@@ -93,10 +93,10 @@ def agregarMeGusta(request, id_post):
     if request.method == "POST":
         if request.user in publicacion.liked_by.all():
             return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
-
-        publicacion.liked_by.add(request.user)
-        publicacion.likes += 1
-        publicacion.save()
+        else:
+            publicacion.liked_by.add(request.user)
+            publicacion.likes += 1
+            publicacion.save()
 
         return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
 
