@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import PerfilForm
+from .forms import PerfilForm,PublicacionForm
 from .models import Publicacion
 
 # Create your views here.
@@ -71,7 +71,21 @@ def inicio(request):
             return render(request,'inicio.html',{
                 'noHayPublicaciones': True
             })
-    
+            
+@login_required
+def agregarPublicacion(request):
+    if request.method == "GET":
+        formPublicacion = PublicacionForm()
+        return render(request,'agregarPublicacion.html',{
+            'formPublicacion':formPublicacion
+        })
+    else:
+        formPublicacion = PublicacionForm(request.POST,request.FILES)
+        nuevaPublicacion = formPublicacion.save(commit=False)
+        nuevaPublicacion.user = request.user
+        nuevaPublicacion.save()
+        return redirect('inicio')
+        
 
     
 def cerrarSesion(request):

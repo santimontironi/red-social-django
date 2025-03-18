@@ -24,5 +24,6 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('inicio/',views.inicio,name='inicio'),
     path('crear-perfil/',views.crearPerfil, name='crear-perfil'),
+    path('agregar-publicacion/',views.agregarPublicacion, name='agregar-publicacion'),
     path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
 ]

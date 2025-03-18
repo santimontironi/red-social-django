@@ -14,7 +14,7 @@ class Perfil(models.Model):
         return self.user.username
     
 class Publicacion(models.Model):
-    imagen = imagen = models.ImageField(upload_to='publicaciones/')
+    imagen = models.ImageField(upload_to='publicaciones/')
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     descripcion = models.TextField(max_length=150)
     fechaPublicacion = models.DateField(auto_now_add=True)
