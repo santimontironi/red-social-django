@@ -86,8 +86,7 @@ def agregarPublicacion(request):
         nuevaPublicacion.save()
         return redirect('inicio')
         
-
-    
+@login_required
 def cerrarSesion(request):
     logout(request)
     return redirect('ingreso')

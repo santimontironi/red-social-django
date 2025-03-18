@@ -15,9 +15,15 @@
                 <p>También puedes agregar amigos desde el menú para ver las publicaciones de otras personas.</p>
                 <a href="/agregar-publicacion/" class="btn btn-outline-primary">Agregar publicación</a>
             </div>
+        {% else %}
+            {% for publicacion in publicaciones %}
+                <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+                <p>{{publicacion.descripcion}}</p>
+                <span>{{publicacion.fechaPublicacion}}</span>
+            {% endfor %}
         {% endif %}
         <div class="btnPublicar">
-            <a href="/subir-publicacion/"><img src="https://img.icons8.com/?size=100&id=IA4hgI5aWiHD&format=png&color=000000" alt="iconoAgregarPublicacion"></a>
+            <a href="/agregar-publicacion/"><img src="https://img.icons8.com/?size=100&id=IA4hgI5aWiHD&format=png&color=000000" alt="iconoAgregarPublicacion"></a>
         </div>
     </section>
 
