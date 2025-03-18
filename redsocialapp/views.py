@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
@@ -85,7 +85,22 @@ def agregarPublicacion(request):
         nuevaPublicacion.user = request.user
         nuevaPublicacion.save()
         return redirect('inicio')
+    
         
+@login_required
+def agregarMeGusta(request, id_post):
+    publicacion = get_object_or_404(Publicacion, id=id_post)
+    if request.method == "POST":
+        if request.user in publicacion.liked_by.all():
+            return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
+
+        publicacion.liked_by.add(request.user)
+        publicacion.likes += 1
+        publicacion.save()
+
+        return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
+
+
 @login_required
 def cerrarSesion(request):
     logout(request)

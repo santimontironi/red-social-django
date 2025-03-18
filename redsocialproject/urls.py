@@ -27,6 +27,7 @@ urlpatterns = [
     path('inicio/',views.inicio,name='inicio'),
     path('crear-perfil/',views.crearPerfil, name='crear-perfil'),
     path('agregar-publicacion/',views.agregarPublicacion, name='agregar-publicacion'),
+    path('me-gusta/<int:id_post>',views.agregarMeGusta,name='me_gusta'),
     path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
 ]
 

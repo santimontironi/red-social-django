@@ -22,10 +22,15 @@
                         <h2>{{publicacion.user}}</h2>
                         <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                         <p>{{publicacion.descripcion}}</p>
-                        <span>{{publicacion.likes}} Me gustas</span>
+                        <span id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
                         <div class="publicacion-operaciones">
-                            <form action="/me-gusta/" method="post">
-                                <input type="hidden" value="{{publicacion.id}}">
+                            <form 
+                                hx-post="{% url 'me_gusta' publicacion.id %}" 
+                                hx-target="#likes-{{ publicacion.id }}" 
+                                hx-swap="outerHTML"
+                                hx-trigger="submit"
+                                method="post">
+                                {% csrf_token %}
                                 <input class="btn btn-outline-danger" type="submit" value="❤️">
                             </form>
                             <button class="btn btn-outline-info">💬</button>
