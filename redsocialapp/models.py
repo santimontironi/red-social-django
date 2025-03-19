@@ -16,4 +16,4 @@ class Publicacion(models.Model):
     descripcion = models.TextField(max_length=150)
     fechaPublicacion = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0, validators=[MinValueValidator(0)]) #validators=[MinValueValidator(0)] es una validación que asegura que el valor del campo no sea menor que un mínimo especificado, en este caso, 0.
-    liked_by = models.ManyToManyField(User, related_name='likes', blank=True)
+    liked_by = models.ManyToManyField(User, related_name='likes', blank=True) #Cada usuario puede dar "Me gusta" a múltiples publicaciones, y cada publicación puede recibir "Me gusta" de múltiples usuarios.

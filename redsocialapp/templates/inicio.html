@@ -31,7 +31,7 @@
                                 hx-trigger="submit"
                                 method="post">
                                 {% csrf_token %}
-                                <input class="btn btn-outline-danger" type="submit" value="❤️">
+                                <input id="{%if request.user in publicacion.liked_by.all %}liked{%endif%}" class="btn-like" type="submit" value="❤️">
                             </form>
                             <button class="btn btn-outline-info">💬</button>
                         </div>
