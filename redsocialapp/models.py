@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator
 class Perfil(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100, null=True)
-    imagen = models.ImageField(upload_to='fotos_perfil/',default='default.png')
+    imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
 

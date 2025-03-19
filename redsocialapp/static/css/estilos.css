@@ -88,8 +88,9 @@ body{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    border-top-right-radius: 9999px;
-    border-bottom-right-radius: 9999px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 400px;
 }
 
 .tituloCrearPerfil{
@@ -101,7 +102,7 @@ body{
 }
 
 .contenedorFormCrearPerfil{
-    background-color: #ebf1c7;
+    background-color: #fff;
     height: 500px;
     overflow-y: hidden;
 }
@@ -286,6 +287,9 @@ body{
         background-color: #000;
         color: #fff;
     }
+    .btnPublicar{
+        right: 10px;
+    }
     .sinPublicaciones{
         text-align: center;
     }
@@ -293,6 +297,14 @@ body{
         width: 340px;
     }
     .publicacion{
+        width: 350px;
+    }
+    .tituloAgregarPublicacion{
+        font-size: 50px;
+        text-align: center;
+        height: 310px;
+    }
+    .formAgregarPublicacion{
         width: 350px;
     }
 }

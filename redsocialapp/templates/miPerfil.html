@@ -3,9 +3,24 @@
 {% load static %}
 
 {% block content %}
-
-    <form action="mi-perfil/" method="post">
-        {{form}}
+    <form class="formMiPerfil mt-4" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <div class="form-group mb-3">
+                <img src="{{ form.instance.imagen.url }}" alt="fotoPerfil">
+                <label for="id_imagen" class="profile-picture-container d-flex flex-column m-auto text-light">
+                    Sube una foto
+                    <img class="inputImagen" width="50" height="50" src="https://img.icons8.com/fluency/50/add-camera.png" alt="add-camera"/>
+                </label>
+                <input type="file" name="imagen" id="id_imagen" class="d-none" accept="image/*" required>
+            </div>
+                
+            <div class="form-group mb-3">
+                <label class="text-light for="id_descripcion">Descripción</label>
+                <textarea name="descripcion" id="id_descripcion" class="form-control" rows="4" placeholder="Añade una descripción"></textarea>
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Subir publicación</button>
     </form>
 
 {% endblock %}
