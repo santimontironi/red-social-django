@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm,PublicacionForm
-from .models import Publicacion
+from .models import Publicacion,Perfil
 
 # Create your views here.
 def ingreso(request):
@@ -110,8 +110,18 @@ def agregarMeGusta(request, id_post):
         """    
 
         return HttpResponse(respuesta)
+    
 
-
+@login_required
+def miPerfil(request):
+    perfil =request.user.perfil
+    if request.method == "GET":
+        formularioPerfil = PerfilForm(instance=perfil)  # Usa request.user.perfil como instancia
+        return render(request, 'miPerfil.html', {
+            'form': formularioPerfil
+        })
+        
+        
 @login_required
 def cerrarSesion(request):
     logout(request)

@@ -162,7 +162,7 @@ body{
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    width: 400px;
+    width: 460px;
     padding: 10px;
     border: solid 2px #ebf1c7;
     box-shadow: 3px 3px 15px #000;
@@ -187,6 +187,10 @@ body{
     color: #fff;
 }
 
+.publicacion:hover{
+    border: none;
+}
+
 .publicacion-operaciones{
     display: flex;
     gap: 20px;
@@ -209,6 +213,37 @@ body{
 
 .publicacion-operaciones .liked{
     background-color: red;
+}
+
+.contenedorAgregarPublicacion{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.tituloAgregarPublicacion{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(260deg,#1a0b6d,#0e2d4e,#000);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-family: "Tektur", sans-serif;
+    font-size: 60px;
+    letter-spacing: 2.5px;
+}
+
+.formAgregarPublicacion{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(#1a0b6d,#000);
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px #000;
 }
 
 @media (max-width:800px){
@@ -256,5 +291,8 @@ body{
     }
     .sinPublicaciones p{
         width: 340px;
+    }
+    .publicacion{
+        width: 350px;
     }
 }
