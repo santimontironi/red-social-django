@@ -9,6 +9,7 @@ class Perfil(models.Model):
     imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
+    amigos = models.ManyToManyField(User,on_delete=models.CASCADE)
 
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
