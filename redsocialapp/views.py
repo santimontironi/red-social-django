@@ -92,13 +92,24 @@ def agregarMeGusta(request, id_post):
     publicacion = get_object_or_404(Publicacion, id=id_post)
     if request.method == "POST":
         if request.user in publicacion.liked_by.all():
-            return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
+            publicacion.liked_by.remove(request.user)
+            publicacion.likes -= 1
+            liked = False
         else:
             publicacion.liked_by.add(request.user)
             publicacion.likes += 1
-            publicacion.save()
+            liked = True
+            
+        publicacion.save()
+                    
+        respuesta = f"""
+                <div class="contenedor-btnLike-{publicacion.id}">
+                    <span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>
+                    <input class="btn-like {'liked' if liked else ''}" type="submit" value="❤️">
+                </div>
+        """    
 
-        return HttpResponse(f'<span id="likes-{publicacion.id}">{publicacion.likes} Me gustas</span>')
+        return HttpResponse(respuesta)
 
 
 @login_required

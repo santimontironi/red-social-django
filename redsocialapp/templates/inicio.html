@@ -22,16 +22,18 @@
                         <h2>{{publicacion.user}}</h2>
                         <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                         <p>{{publicacion.descripcion}}</p>
-                        <span id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
                         <div class="publicacion-operaciones">
                             <form 
                                 hx-post="{% url 'me_gusta' publicacion.id %}" 
-                                hx-target="#likes-{{ publicacion.id }}" 
+                                hx-target=".contenedor-btnLike-{{publicacion.id}}" 
                                 hx-swap="outerHTML"
                                 hx-trigger="submit"
                                 method="post">
                                 {% csrf_token %}
-                                <input id="{%if request.user in publicacion.liked_by.all %}liked{%endif%}" class="btn-like" type="submit" value="❤️">
+                                <div class="contenedor-btnLike-{{publicacion.id}}">
+                                    <span id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
+                                    <input class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit" value="❤️">
+                                </div>
                             </form>
                             <button class="btn btn-outline-info">💬</button>
                         </div>

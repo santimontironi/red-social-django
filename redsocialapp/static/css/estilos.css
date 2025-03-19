@@ -204,11 +204,11 @@ body{
 }
 
 .publicacion-operaciones .btn-like:hover{
-    background-color: rgba(255, 0, 0, 0.486);
+    background-color: rgba(255, 0, 0, 0.575);
 }
 
-#liked{
-    background-color: rgba(255, 0, 0, 0.644);
+.publicacion-operaciones .liked{
+    background-color: red;
 }
 
 @media (max-width:800px){
