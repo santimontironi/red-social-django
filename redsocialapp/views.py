@@ -5,6 +5,7 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm,PublicacionForm
 from .models import Publicacion,Perfil
+from django.db.models import Q
 
 # Create your views here.
 def ingreso(request):
@@ -121,6 +122,23 @@ def miPerfil(request):
             'form': formularioPerfil
         })
         
+@login_required
+def buscarUsuarios(request):
+    if request.method == "POST":
+        busqueda = request.POST["busquedaUsuarios"]
+        usuarios = Perfil.objects.filter(
+            Q(nombre__icontains=busqueda) | Q(apellido__icontains=busqueda) | Q(user__username__icontains=busqueda)
+        )
+        if usuarios.exists():
+            return render(request,'usuarios.html',{
+                'usuarios':usuarios
+            })
+        else:
+            return render(request,'usuarios.html',{
+                'usuariosNoEncontrados': 'No hay usuarios con ese nombre. Vuelva a intentarlo.'
+            })
+   
+    return render(request, 'usuarios.html', {'usuarios': []})
         
 @login_required
 def cerrarSesion(request):
