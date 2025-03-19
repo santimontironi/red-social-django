@@ -3,17 +3,19 @@
 
 {%block content%}
 
-    <div class="contenedorAgregarPublicacion">
-        <h1 class="tituloAgregarPublicacion">Agregar publicación</h1>
-        <form class="formAgregarPublicacion mt-4" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
+    <section class="contenedorAgregarPublicacion">
+        <div class="contenidoAgregarPublicacion">
+            <div class="tituloAgregarPublicacion">
+                <p>¡Sube una foto y añade una descripción para el pie de foto así tus amigos estan al día con su feed!</p>
+            </div>
+            <form class="formAgregarPublicacion mt-4" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
     
                 <div class="form-group mb-3">
                     <label for="id_imagen" class="profile-picture-container d-flex flex-column m-auto text-light">
                         Sube una foto
-                        <img class="inputImagen" width="50" height="50" src="https://img.icons8.com/fluency/50/add-camera.png" alt="add-camera"/>
                     </label>
-                    <input type="file" name="imagen" id="id_imagen" class="d-none" accept="image/*" required>
+                    <input class="btn btn-outline-primary w-100" type="file" name="imagen" id="id_imagen" accept="image/*" required style="cursor: pointer;">
                 </div>
                 
                 <div class="form-group mb-3">
@@ -21,9 +23,10 @@
                     <textarea name="descripcion" id="id_descripcion" class="form-control" rows="4" placeholder="Añade una descripción"></textarea>
                 </div>
         
-                <button type="submit" class="btn btn-primary">Subir publicación</button>
-        </form>
-    </div>
+                <button type="submit" class="btn btn-outline-light">Subir publicación</button>
+            </form>
+        </div>
+    </section>
 
     
 {%endblock%}

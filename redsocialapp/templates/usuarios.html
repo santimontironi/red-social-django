@@ -4,16 +4,21 @@
 
 {% block content %}
 
-    <h1>Usuarios</h1>
+    <section class="contenedorBusquedaUsuarios">
+        <h1>Resultados de la busqueda</h1>
+        {% for usuario in usuarios %}
+            <h2>{{ usuario.user.username }}</h2>
+            <p>Nombre: {{ usuario.nombre }}</p>
+            <p>Apellido: {{ usuario.apellido }}</p>
+            <form action="/agregar-amigos/" method="post">
+                <button class="btn btn-success">Agregar a amigos</button>
+            </form>
+        {% endfor %}
 
-    {% for usuario in usuarios %}
-        <h2>{{ usuario.user.username }}</h2>
-        <p>Nombre: {{ usuario.nombre }}</p>
-        <p>Apellido: {{ usuario.apellido }}</p>
-    {% endfor %}
+        {% if usuariosNoEncontrados %}
+            <p>{{ usuariosNoEncontrados }}</p>
+        {% endif %}
+    </section>
 
-    {% if usuariosNoEncontrados %}
-        <p>{{ usuariosNoEncontrados }}</p>
-    {% endif %}
 
 {% endblock %}
