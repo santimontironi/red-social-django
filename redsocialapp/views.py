@@ -115,12 +115,13 @@ def agregarMeGusta(request, id_post):
 
 @login_required
 def miPerfil(request):
-    perfil =request.user.perfil
+    perfil = request.user.perfil
     if request.method == "GET":
-        formularioPerfil = PerfilForm(instance=perfil)  # Usa request.user.perfil como instancia
+        formularioPerfil = PerfilForm(instance=perfil)
         return render(request, 'miPerfil.html', {
             'form': formularioPerfil
         })
+        
         
 @login_required
 def buscarUsuarios(request):
@@ -139,7 +140,18 @@ def buscarUsuarios(request):
             })
    
     return render(request, 'usuarios.html', {'usuarios': []})
-        
+
+@login_required
+def agregarAmigos(request):
+    if request.method == "POST":
+        id_amigo = request.POST.get("id_usuario") #se obtiene el id desde el formulario
+        amigo = get_object_or_404(User,id=id_amigo) #Busca al usuario que se quiere agregar como amigo
+        perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
+        perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
+        return render(request,'usuarios.html',{
+            'amigoAgregado':"amigo agregado correctamente"
+        })
+     
 @login_required
 def cerrarSesion(request):
     logout(request)
