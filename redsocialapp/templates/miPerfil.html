@@ -6,7 +6,15 @@
     <div class="contenedorMiPerfil">
         <form class="formMiPerfil mt-4" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <input type="text" name="nombre" id="nombre" placeholder="ingrese su nombre" value="{{form.instance.nombre}}">
+            </div>
     
+            <div class="form-group mb-3">
+                <input type="text" name="apellido" id="apellido" placeholder="ingrese su apellido" value="{{form.instance.apellido}}">
+            </div>
+
             <div class="form-group mb-3">
                 <img src="{{ form.instance.imagen.url }}" alt="fotoPerfil">
                 <label for="id_imagen" class="profile-picture-container m-auto text-light">
