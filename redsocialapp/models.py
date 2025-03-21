@@ -9,11 +9,11 @@ class Perfil(models.Model):
     imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
-    amigos = models.ManyToManyField(User,blank=True,related_name='amigos')
+    amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
 
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    autor = models.ForeignKey(User,on_delete=models.CASCADE)
     descripcion = models.TextField(max_length=150, blank=True)
     fechaPublicacion = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0, validators=[MinValueValidator(0)]) #validators=[MinValueValidator(0)] es una validación que asegura que el valor del campo no sea menor que un mínimo especificado, en este caso, 0.

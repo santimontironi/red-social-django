@@ -63,8 +63,9 @@ def crearPerfil(request):
 @login_required            
 def inicio(request):
     if request.method == "GET":
-        publicaciones = Publicacion.objects.all().order_by('-fechaPublicacion')
-        if publicaciones:
+        amigos = request.user.perfil.amigos.all()
+        publicaciones = Publicacion.objects.filter(autor__in=amigos)
+        if publicaciones.exists():
             return render(request,'inicio.html', {
                 'publicaciones':publicaciones
             })
@@ -147,9 +148,15 @@ def agregarAmigos(request):
         id_amigo = request.POST.get("id_usuario") #se obtiene el id desde el formulario
         amigo = get_object_or_404(User,id=id_amigo) #Busca al usuario que se quiere agregar como amigo
         perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
-        perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
+        
+        if amigo in perfil.amigos.all():
+            mensaje = "Este usuario ya es tu amigo"
+        else:
+            perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
+            mensaje = "Usuario agregado"
+        
         return render(request,'usuarios.html',{
-            'amigoAgregado':"amigo agregado correctamente"
+            'amigoAgregado': mensaje
         })
      
 @login_required
