@@ -19,7 +19,7 @@
             {% for publicacion in publicaciones %}
                 <div class="contenedor-publicacion">
                     <div class="publicacion">
-                        <h2>{{publicacion.user}}</h2>
+                        <h2>{{publicacion.autor.username}}</h2>
                         <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                         <p>{{publicacion.descripcion}}</p>
                         <div class="publicacion-operaciones">

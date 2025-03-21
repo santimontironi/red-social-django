@@ -64,7 +64,12 @@ def crearPerfil(request):
 def inicio(request):
     if request.method == "GET":
         amigos = request.user.perfil.amigos.all()
-        publicaciones = Publicacion.objects.filter(autor__in=amigos)
+        publicaciones = Publicacion.objects.filter(Q(autor__in=amigos) | Q(autor=request.user))
+        publicaciones = publicaciones.order_by('-fechaPublicacion')
+        usuario = User.objects.get(username="santi")
+        amigo = usuario.perfil.amigos.all()
+        for amigo in amigos:
+            print(f"Amigo: {amigo.username}, Publicaciones: {Publicacion.objects.filter(autor=amigo)}")
         if publicaciones.exists():
             return render(request,'inicio.html', {
                 'publicaciones':publicaciones

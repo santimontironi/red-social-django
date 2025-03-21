@@ -12,7 +12,7 @@
             <p>Apellido: {{ usuario.apellido }}</p>
             <form action="/agregar-amigos/" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="id_usuario" value="{{usuario.id}}">
+                <input type="hidden" name="id_usuario" value="{{usuario.user.id}}">
                 <button class="btn btn-success">Agregar a amigos</button>
             </form>
         {% endfor %}
