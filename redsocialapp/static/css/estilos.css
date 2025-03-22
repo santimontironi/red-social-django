@@ -237,13 +237,68 @@ body{
     padding-top: 30px;
 }
 
+.contenedorMiPerfil{
+    height: 100vh;
+    width: 100%;
+    background-color: #04172c;
+}
+
+.encabezadoPerfil{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(#121a80,#2129a5,#121a80,#04172c);
+}
+
+.encabezadoPerfil .fotoPerfil{
+    width: 200px;
+    border: solid 3px #4d3ea1;
+    border-radius: 9999px;
+}
+
+.contenedorFotoPerfil{
+    position: relative;
+}
+
+.encabezadoPerfil .editarFotoBtn{
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+}
+
+.encabezadoPerfil .editarFotoBtn img{
+    width: 50px;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.datos-personales{
+    height: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 40px;
+    background-color: #04172c;
+}
+
+.btnEditarPerfil{
+    display: block;
+    margin: auto;
+}
+
 .formAgregarPublicacion{
     height: 400px;
     width: 650px;
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding: 10px;
 }
 
 @media (max-width:800px){

@@ -119,9 +119,11 @@ def agregarMeGusta(request, id_post):
 def miPerfil(request):
     perfil = request.user.perfil
     if request.method == "GET":
+        cantidadPublicaciones = Publicacion.objects.count()
         formularioPerfil = PerfilForm(instance=perfil)
         return render(request, 'miPerfil.html', {
-            'form': formularioPerfil
+            'form': formularioPerfil,
+            'cantidadPublicaciones':cantidadPublicaciones
         })
     else:
         formularioPerfil = PerfilForm(request.POST,request.FILES,instance=perfil)
