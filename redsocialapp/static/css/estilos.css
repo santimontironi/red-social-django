@@ -368,4 +368,22 @@ body{
     .formAgregarPublicacion{
         width: 300px;
     }
+    .contenedorMiPerfil{
+        height: 100vh;
+    }
+    .encabezadoPerfil .fotoPerfil{
+        width: 160px;
+    }
+    .encabezadoPerfil .fotoPerfil img{
+        width: 20px;
+    }
+    .datos-personales{
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        gap: 10px;
+    }
+    .btnEditarPerfil{
+        margin-top: 15px;
+    }
 }
