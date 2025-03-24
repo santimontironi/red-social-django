@@ -44,6 +44,34 @@
             
             <button type="submit" class="btn btn-primary btnEditarPerfil">Editar perfil</button>
          </form>
+
+         <div class="misPublicaciones">
+            {% for publicacion in misPublicaciones %}
+                <div class="contenedor-publicacion">
+                    <div class="publicacion">
+                        <h2>{{publicacion.autor.username}}</h2>
+                        <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+                        <p>{{publicacion.descripcion}}</p>
+                        <div class="publicacion-operaciones">
+                            <form 
+                                hx-post="{% url 'me_gusta' publicacion.id %}" 
+                                hx-target=".contenedor-btnLike-{{publicacion.id}}" 
+                                hx-swap="outerHTML"
+                                hx-trigger="submit"
+                                method="post">
+                                {% csrf_token %}
+                                <div class="contenedor-btnLike-{{publicacion.id}}">
+                                    <span id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
+                                    <input class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit" value="❤️">
+                                </div>
+                            </form>
+                            <button class="btn btn-outline-info">💬</button>
+                        </div>
+                        <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+                    </div>
+                </div>
+            {% endfor %}
+         </div>
     </section>
     
 {% endblock %}
