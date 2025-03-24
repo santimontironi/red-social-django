@@ -121,10 +121,13 @@ def miPerfil(request):
     if request.method == "GET":
         cantidadPublicaciones = Publicacion.objects.count()
         formularioPerfil = PerfilForm(instance=perfil)
-        return render(request, 'miPerfil.html', {
-            'form': formularioPerfil,
-            'cantidadPublicaciones':cantidadPublicaciones
-        })
+        misPublicaciones = Publicacion.objects.filter(autor = request.user)
+        if misPublicaciones.exists():
+            return render(request, 'miPerfil.html', {
+                'form': formularioPerfil,
+                'cantidadPublicaciones':cantidadPublicaciones,
+                'misPublicaciones': misPublicaciones
+            })
     else:
         formularioPerfil = PerfilForm(request.POST,request.FILES,instance=perfil)
         perfilEditado = formularioPerfil.save(commit=False)
