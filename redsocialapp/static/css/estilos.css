@@ -293,6 +293,18 @@ body{
     margin: auto;
 }
 
+.misPublicaciones{
+    height: auto;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3,1fr);
+    gap: 70px;
+    padding: 50px;
+    background: linear-gradient(#04172c,#103e6e);
+}
+
 .formAgregarPublicacion{
     height: 400px;
     width: 650px;
@@ -300,6 +312,30 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.miPublicacion{
+    width: 350px;
+    height: 100%;
+    padding: 15px;
+}
+
+.miPublicacion:hover{
+    background-color: #00000054;
+    box-shadow: 5px 5px 15px #000;
+}
+
+.miPublicacion h2{
+    color: #fff;
+}
+
+.miPublicacion p{
+    color: #fff;
+}
+
+.miPublicacion img{
+    width: 100%;
+}
+
 
 @media (max-width:800px){
     .tituloNavbar{
