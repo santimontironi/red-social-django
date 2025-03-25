@@ -343,7 +343,8 @@ body{
 
 .contenedorBusquedaUsuarios{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 40px;
 }
 
 .contenedorBusquedaUsuarios h1{
@@ -359,6 +360,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 40px;
     margin-top: 30px;
 }
 

@@ -22,18 +22,17 @@
                             <input type="hidden" name="id_usuario" value="{{usuario.user.id}}">
                             <button class="btn btn-success">Agregar a amigos</button>
                         </form>
+                        {% if amigoAgregado %}
+                            <p>{{amigoAgregado}}</p>
+                        {% endif %}
                     </div>
                 </div>
                 
             {% endfor %}
         </div>
     
-        {% if amigoAgregado %}
-            <p>{{amigoAgregado}}</p>
-        {% endif %}
-
         {% if usuariosNoEncontrados %}
-            <p>{{ usuariosNoEncontrados }}</p>
+            <p class="text-center d-flex justify-content-center align-items-center fs-4">{{ usuariosNoEncontrados }}</p>
         {% endif %}
     </section>
 
