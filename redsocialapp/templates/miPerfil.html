@@ -7,7 +7,7 @@
         <form class="formMiPerfil" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
-            <div class="encabezadoPerfil">
+            <div class="encabezadoPerfil" data-aos="zoom-in" data-aos-duration="700">
                 <div class="form-group mb-3 contenedorFotoPerfil">
                     <img class="fotoPerfil" src="{{ form.instance.imagen.url }}" alt="fotoPerfil">
                     <label for="id_imagen" class="editarFotoBtn">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="datos-personales">
+            <div class="datos-personales" data-aos="zoom-in" data-aos-duration="700">
                 <div class="nombre-apellido">
                     <div class="form-group mb-3">
                         <label class="text-light" for="nombre">Nombre</label>
@@ -45,8 +45,8 @@
             <button type="submit" class="btn btn-primary btnEditarPerfil">Editar perfil</button>
          </form>
 
-         <section class="misPublicaciones">
-            {%if misPublicaciones%}
+        {%if misPublicaciones%}
+            <section class="misPublicaciones">
                 {% for publicacion in misPublicaciones %}
                         <div class="miPublicacion">
                             <h2>{{publicacion.autor.username}}</h2>
@@ -61,7 +61,7 @@
                                     method="post">
                                     {% csrf_token %}
                                     <div class="contenedor-btnLike-{{publicacion.id}}">
-                                        <span class="text-light" id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
+                                        <span id="likes-{{ publicacion.id }}">{{ publicacion.likes }} Me gustas</span>
                                         <input class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit" value="❤️">
                                     </div>
                                 </form>
@@ -70,14 +70,14 @@
                             <span class="text-light">{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
                         </div>
                 {% endfor %}
-            {%else%}
-                <div class="sinPublicaciones">
-                    <img src="https://img.icons8.com/?size=100&id=78339&format=png&color=ffffff" alt="No hay publicaciones">
-                    <h2 class="text-light">No hay publicaciones disponibles</h2>
-                    <p class="text-light">Parece que aún no se ha compartido ninguna publicación en tu perfil!</p>
-                    <a href="/agregar-publicacion/" class="btn btn-outline-light">Agregar publicación</a>
-                </div>
-            {%endif%}
+        {%else%}
+            <div class="sinPublicaciones">
+                <img src="https://img.icons8.com/?size=100&id=78339&format=png&color=ffffff" alt="No hay publicaciones">
+                <h2 class="text-light">No hay publicaciones disponibles</h2>
+                <p class="text-light">Parece que aún no se ha compartido ninguna publicación en tu perfil!</p>
+                <a href="/agregar-publicacion/" class="btn btn-outline-light">Agregar publicación</a>
+            </div>
+        {%endif%}
          </section>
     </section>
     

@@ -119,15 +119,14 @@ def agregarMeGusta(request, id_post):
 def miPerfil(request):
     perfil = request.user.perfil
     if request.method == "GET":
-        cantidadPublicaciones = Publicacion.objects.count()
+        cantidadPublicaciones = Publicacion.objects.filter(autor=request.user).count()
         formularioPerfil = PerfilForm(instance=perfil)
         misPublicaciones = Publicacion.objects.filter(autor = request.user)
-        if misPublicaciones.exists():
-            return render(request, 'miPerfil.html', {
-                'form': formularioPerfil,
-                'cantidadPublicaciones':cantidadPublicaciones,
-                'misPublicaciones': misPublicaciones
-            })
+        return render(request, 'miPerfil.html', {
+            'form': formularioPerfil,
+            'cantidadPublicaciones':cantidadPublicaciones,
+            'misPublicaciones': misPublicaciones
+        })
     else:
         formularioPerfil = PerfilForm(request.POST,request.FILES,instance=perfil)
         perfilEditado = formularioPerfil.save(commit=False)

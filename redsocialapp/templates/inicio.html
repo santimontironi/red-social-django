@@ -18,7 +18,7 @@
         {% else %}
             {% for publicacion in publicaciones %}
                 <div class="contenedor-publicacion">
-                    <div class="publicacion">
+                    <div class="publicacion" data-aos="zoom-in" data-aos-duration="700">
                         <h2>{{publicacion.autor.username}}</h2>
                         <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                         <p>{{publicacion.descripcion}}</p>

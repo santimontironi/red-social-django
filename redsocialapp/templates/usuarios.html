@@ -6,17 +6,28 @@
 
     <section class="contenedorBusquedaUsuarios">
         <h1>Resultados de la busqueda</h1>
-        {% for usuario in usuarios %}
-            <h2>{{ usuario.user.username }}</h2>
-            <p>Nombre: {{ usuario.nombre }}</p>
-            <p>Apellido: {{ usuario.apellido }}</p>
-            <form action="/agregar-amigos/" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="id_usuario" value="{{usuario.user.id}}">
-                <button class="btn btn-success">Agregar a amigos</button>
-            </form>
-        {% endfor %}
-
+        <div class="usuarios">
+            {% for usuario in usuarios %}
+                <div class="usuario">
+                    <div class="fotoPerfilUsuario">
+                        <img src="{{ usuario.imagen.url }}" alt="foto de {{usuario.nombre}}">
+                    </div>
+                    
+                    <div class="datos-usuario">
+                        <h2>{{ usuario.user.username }}</h2>
+                        <p>Nombre: {{ usuario.nombre }}</p>
+                        <p>Apellido: {{ usuario.apellido }}</p>
+                        <form action="/agregar-amigos/" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id_usuario" value="{{usuario.user.id}}">
+                            <button class="btn btn-success">Agregar a amigos</button>
+                        </form>
+                    </div>
+                </div>
+                
+            {% endfor %}
+        </div>
+    
         {% if amigoAgregado %}
             <p>{{amigoAgregado}}</p>
         {% endif %}
