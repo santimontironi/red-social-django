@@ -186,7 +186,9 @@ def verUsuario(request,id_usuario):
         noHayPublicaciones = "Este usuario aún no tiene publicaciones."
         return render(request,'usuario.html',{
             'usuario':usuario,
-            'noHayPublicaciones':noHayPublicaciones
+            'noHayPublicaciones':noHayPublicaciones,
+            'totalAmigos':totalAmigos,
+            'totalPublicaciones':totalPublicaciones,
         })
      
      
