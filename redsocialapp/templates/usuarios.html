@@ -17,14 +17,17 @@
                         <a href="{% url 'usuario' usuario.id %}"><h2>{{ usuario.user.username }}</h2></a>
                         <p>Nombre: {{ usuario.nombre }}</p>
                         <p>Apellido: {{ usuario.apellido }}</p>
-                        <form action="/agregar-amigos/" method="post">
+                        <form 
+                            hx-post="/agregar-amigos/" 
+                            hx-target="#mensaje-{{ usuario.user.id }}" 
+                            hx-swap="innerHTML"
+                            method="post"
+                            action="/agregar-amigos/">
                             {% csrf_token %}
                             <input type="hidden" name="id_usuario" value="{{usuario.user.id}}">
                             <button class="btn btn-success">Agregar a amigos</button>
                         </form>
-                        {% if amigoAgregado %}
-                            <p>{{amigoAgregado}}</p>
-                        {% endif %}
+                        <p id="mensaje-{{ usuario.user.id }}"></p>
                     </div>
                 </div>
                 

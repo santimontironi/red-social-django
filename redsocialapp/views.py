@@ -161,14 +161,18 @@ def agregarAmigos(request):
         perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
         
         if amigo in perfil.amigos.all():
-            mensaje = "Este usuario ya es tu amigo"
+            respuesta = f"""
+                <p id="mensaje-{ request.user.perfil }">Ya está agregado este usuario</p>
+            """    
         else:
             perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
-            mensaje = "Usuario agregado"
+            respuesta = f"""
+                <p id="mensaje-{ request.user.perfil }">Amigo agregado correctamente</p>
+            """
         
-        return render(request,'usuarios.html',{
-            'amigoAgregado': mensaje
-        })
+        return HttpResponse(respuesta)
+        
+        
         
 def verUsuario(request,id_usuario):
     usuario = get_object_or_404(Perfil,id=id_usuario)
