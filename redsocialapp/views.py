@@ -151,7 +151,7 @@ def buscarUsuarios(request):
                 'usuariosNoEncontrados': 'No hay usuarios con ese nombre. Vuelva a intentarlo.'
             })
    
-    return render(request, 'usuarios.html', {'usuarios': []})
+    return render(request, 'usuarios.html')
 
 @login_required
 def agregarAmigos(request):
@@ -161,13 +161,14 @@ def agregarAmigos(request):
         perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
         
         if amigo in perfil.amigos.all():
+            perfil.amigos.remove(amigo)
             respuesta = f"""
-                <p id="mensaje-{ request.user.perfil }">Ya está agregado este usuario</p>
+                <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
             """    
         else:
             perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
             respuesta = f"""
-                <p id="mensaje-{ request.user.perfil }">Amigo agregado correctamente</p>
+                <button class="btn btn-success" id="boton-{amigo.id}">Amigo</button>
             """
         
         return HttpResponse(respuesta)
