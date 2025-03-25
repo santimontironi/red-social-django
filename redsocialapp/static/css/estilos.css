@@ -380,6 +380,56 @@ body{
     border-radius: 1000px;
 }
 
+.contenedorUsuario{
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.datos-usuario{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(230deg,#fff,#2129a5);
+    padding: 10px;
+    box-shadow: 5px 10px 15px #000;
+}
+
+.datos-usuario img{
+    width: 200px;
+    border-radius: 1000px;
+}
+
+.publicaciones-usuario{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 35px;
+    place-items: center;
+    gap: 40px;
+}
+
+.publicaciones-usuario .publicacion-usuario{
+    width: 350px;
+    height: 100%;
+    padding: 15px;
+    background-color: #2129a5;
+    box-shadow: 5px 5px 5px #000;
+}
+
+.publicaciones-usuario .publicacion-usuario img{
+    width: 100%;
+}
+
+.publicacion-usuario p{
+    margin-top: 15px;
+}
+
+.publicacion-usuario .publicacion-operaciones span{
+    color: #fff;
+}
+
 @media (max-width:800px){
     .tituloNavbar{
         display: none;

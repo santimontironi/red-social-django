@@ -9,16 +9,16 @@
             <img src="{{usuario.imagen.url}}" alt="{{usuario.nombre}}">
             <div class="nombre-usuario">
                 <h1>@{{usuario.user.username}}</h1>
-                <span>{{usuario.nombre}} {{usuario.apellido}}</span>
-                <p>{{usuario.descripcion}}</p>
+                <span><strong>Nombre:</strong> {{usuario.nombre}} <strong>Apellido:</strong> {{usuario.apellido}}</span>
+                <p><strong>Descripción:</strong> {{usuario.descripcion}}</p>
             </div>
         </div>
         <div class="publicaciones-usuario">
             {% for publicacion in publicaciones %}
-                        <div class="publicacionUsuario">
-                            <h2>{{publicacion.autor.username}}</h2>
+                        <div class="publicacion-usuario">
+                            <h2 class="text-light">{{publicacion.autor.username}}</h2>
                             <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
-                            <p>{{publicacion.descripcion}}</p>
+                            <p class="text-light">{{publicacion.descripcion}}</p>
                             <div class="publicacion-operaciones">
                                 <form 
                                     hx-post="{% url 'me_gusta' publicacion.id %}" 
@@ -37,6 +37,9 @@
                             <span class="text-light">{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
                         </div>
             {% endfor %}
+            {%if noHayPublicaciones%}
+                <p class="d-flex justify-content-center align-items-center text-center fs-3">{{noHayPublicaciones}}</p>
+            {%endif%}
         </div>
     </section>
 

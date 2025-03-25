@@ -173,11 +173,17 @@ def agregarAmigos(request):
 def verUsuario(request,id_usuario):
     usuario = get_object_or_404(Perfil,id=id_usuario)
     publicaciones = Publicacion.objects.filter(autor=usuario.user)
-    if request.method == "GET":
-         return render(request,'usuario.html',{
+    if publicaciones:
+        return render(request,'usuario.html',{
             'usuario':usuario,
-            'publicaciones': publicaciones
-         })
+            'publicaciones':publicaciones
+        })
+    else:
+        noHayPublicaciones = "Este usuario aún no tiene publicaciones."
+        return render(request,'usuario.html',{
+            'usuario':usuario,
+            'noHayPublicaciones':noHayPublicaciones
+        })
      
      
      
