@@ -174,7 +174,7 @@ def verUsuario(request,id_usuario):
     usuario = get_object_or_404(Perfil,id=id_usuario)
     publicaciones = Publicacion.objects.filter(autor=usuario.user)
     totalPublicaciones = Publicacion.objects.filter(autor=usuario.user).count()
-    totalAmigos = Perfil.objects.filter(user=usuario.user).count()
+    totalAmigos = usuario.amigos.count()
     if publicaciones:
         return render(request,'usuario.html',{
             'usuario':usuario,

@@ -5,7 +5,7 @@
 {% block content %}
 
     <section class="contenedorUsuario">
-        <div class="datos-usuario">
+        <div class="usuario-datos">
             <img src="{{usuario.imagen.url}}" alt="{{usuario.nombre}}">
             <div class="nombre-usuario">
                 <h1>@{{usuario.user.username}}</h1>
@@ -39,10 +39,10 @@
                             <span class="text-light">{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
                         </div>
             {% endfor %}
-            {%if noHayPublicaciones%}
-                <p class="d-flex justify-content-center align-items-center text-center fs-3">{{noHayPublicaciones}}</p>
-            {%endif%}
         </div>
+        {%if noHayPublicaciones%}
+            <p class="d-flex justify-content-center align-items-center text-center fs-3">{{noHayPublicaciones}}</p>
+        {%endif%}
     </section>
 
 {% endblock %}

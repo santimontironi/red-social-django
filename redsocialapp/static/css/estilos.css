@@ -386,7 +386,7 @@ body{
     padding-bottom: 50px;
 }
 
-.datos-usuario{
+.usuario-datos{
     display: flex;
     gap: 30px;
     justify-content: center;
@@ -397,7 +397,7 @@ body{
     box-shadow: 5px 10px 15px #000;
 }
 
-.datos-usuario img{
+.usuario-datos img{
     width: 200px;
     border-radius: 1000px;
 }
