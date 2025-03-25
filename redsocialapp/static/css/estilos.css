@@ -524,4 +524,19 @@ body{
         width: 300px;
         padding: 15px;
     }
+    .contenedorUsuario{
+        min-height: 100vh;
+    }
+    .datos-usuario{
+        flex-direction: column;
+    }
+    .datos-usuario img{
+        width: 200px;
+    }
+    .publicaciones-usuario{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
