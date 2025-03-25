@@ -169,6 +169,15 @@ def agregarAmigos(request):
         return render(request,'usuarios.html',{
             'amigoAgregado': mensaje
         })
+        
+def verUsuario(request,id_usuario):
+    usuario = get_object_or_404(Perfil,id=id_usuario)
+    if request.method == "GET":
+         return render(request,'usuario.html',{
+            'usuario':usuario
+         })
+     
+     
      
 @login_required
 def cerrarSesion(request):

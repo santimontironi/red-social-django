@@ -31,6 +31,7 @@ urlpatterns = [
     path('mi-perfil/',views.miPerfil,name='mi-perfil'),
     path('usuarios/',views.buscarUsuarios,name='usuarios'),
     path('agregar-amigos/',views.agregarAmigos,name='agregar-amigos'),
+    path('usuario/<int:id_usuario>',views.verUsuario,name='usuario'),
     path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
 ]
 

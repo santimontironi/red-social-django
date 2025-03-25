@@ -14,7 +14,7 @@
                     </div>
                     
                     <div class="datos-usuario">
-                        <h2>{{ usuario.user.username }}</h2>
+                        <a href="{% url 'usuario' usuario.id %}"><h2>{{ usuario.user.username }}</h2></a>
                         <p>Nombre: {{ usuario.nombre }}</p>
                         <p>Apellido: {{ usuario.apellido }}</p>
                         <form action="/agregar-amigos/" method="post">
