@@ -30,8 +30,13 @@ body{
     box-shadow: 5px 5px 20px #000;
 }
 
+
 .formLogin input{
     width: 350px;
+}
+
+.formLogin input[type="checkbox"]{
+    width: initial;
 }
 
 .contenedorRegistro{
@@ -392,7 +397,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: linear-gradient(230deg,#fff,#2129a5);
+    background: linear-gradient(230deg,#fff,#c8cbfd);
     padding: 10px;
     box-shadow: 5px 10px 15px #000;
 }
@@ -400,6 +405,10 @@ body{
 .usuario-datos img{
     width: 200px;
     border-radius: 1000px;
+}
+
+.usuario-datos p{
+    width: 600px;
 }
 
 .publicaciones-usuario{

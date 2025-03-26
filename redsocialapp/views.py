@@ -14,12 +14,17 @@ def ingreso(request):
     else:
         username = request.POST["username"]
         password = request.POST["password"]
-        usuarioAutenticado = authenticate(username = username, password = password)
+        sessionActiva = request.POST.get("sessionActiva", "off") == "on"
+        usuarioAutenticado = authenticate(request,username = username, password = password)
         if usuarioAutenticado is None:
             return render(request,'ingreso.html',{
                 'errorCredenciales': 'Usuario o contraseña no válidos.'
             })
         else:
+            if sessionActiva:
+                request.session.set_expiry(1209600)
+            else:
+                request.session.set_expiry(0)
             login(request,usuarioAutenticado)
             return redirect('inicio')
     
