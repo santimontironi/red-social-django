@@ -539,10 +539,10 @@ body{
     .contenedorUsuario{
         min-height: 100vh;
     }
-    .datos-usuario{
+    .usuario-datos{
         flex-direction: column;
     }
-    .datos-usuario img{
+    .usuario-datos img{
         width: 200px;
     }
     .publicaciones-usuario{
