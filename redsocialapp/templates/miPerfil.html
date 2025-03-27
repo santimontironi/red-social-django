@@ -47,7 +47,7 @@
          </form>
 
         {%if misPublicaciones%}
-            <section class="misPublicaciones">
+            <div class="misPublicaciones">
                 {% for publicacion in misPublicaciones %}
                         <div class="miPublicacion">
                             <h2>{{publicacion.autor.username}}</h2>
@@ -79,7 +79,7 @@
                 <a href="/agregar-publicacion/" class="btn btn-outline-light">Agregar publicación</a>
             </div>
         {%endif%}
-         </section>
+        </div>
     </section>
     
 {% endblock %}

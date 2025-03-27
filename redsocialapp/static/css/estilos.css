@@ -322,9 +322,6 @@ body{
     width: 350px;
     height: 100%;
     padding: 15px;
-}
-
-.miPublicacion:hover{
     background-color: #00000054;
     box-shadow: 5px 5px 15px #000;
 }
@@ -408,7 +405,7 @@ body{
 }
 
 .usuario-datos p{
-    width: 600px;
+    max-width: 600px;
 }
 
 .publicaciones-usuario{
@@ -507,7 +504,13 @@ body{
         width: 300px;
     }
     .contenedorMiPerfil{
-        height: 100vh;
+        height: auto;
+    }
+    .misPublicaciones{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .encabezadoPerfil .fotoPerfil{
         width: 160px;
@@ -522,7 +525,7 @@ body{
         gap: 10px;
     }
     .btnEditarPerfil{
-        margin-top: 15px;
+        margin-top: 35px;
     }
     .contenedorBusquedaUsuarios h1{
         font-size: 40px;

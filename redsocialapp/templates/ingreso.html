@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label text-light" for="sessionActiva">Mantener la sesión iniciada</label>
-                <input type="checkbox" id="sessionActiva" name="sessionActiva" value="on">
+                <input type="checkbox" name="sessionActiva" id="sessionActiva" value="on" {% if request.POST.sessionActiva %}checked{% endif %}>
             </div>
             <button type="submit" class="btn btn-primary">Ingresar</button>
         </form>

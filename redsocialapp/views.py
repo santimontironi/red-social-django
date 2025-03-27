@@ -21,10 +21,14 @@ def ingreso(request):
                 'errorCredenciales': 'Usuario o contraseña no válidos.'
             })
         else:
+            print("PASO 1")
             if sessionActiva:
                 request.session.set_expiry(1209600)
+                print("PASO 2")
             else:
+                print("PASO 3")
                 request.session.set_expiry(0)
+            request.session.modified = True
             login(request,usuarioAutenticado)
             return redirect('inicio')
     
