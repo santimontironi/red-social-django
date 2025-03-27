@@ -32,6 +32,7 @@ urlpatterns = [
     path('usuarios/',views.buscarUsuarios,name='usuarios'),
     path('agregar-amigos/',views.agregarAmigos,name='agregar-amigos'),
     path('usuario/<int:id_usuario>',views.verUsuario,name='usuario'),
+    path('mis-amigos/',views.misAmigos,name='mis-amigos'),
     path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
 ]
 

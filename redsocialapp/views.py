@@ -183,7 +183,6 @@ def agregarAmigos(request):
         return HttpResponse(respuesta)
         
         
-        
 def verUsuario(request,id_usuario):
     usuario = get_object_or_404(Perfil,id=id_usuario)
     publicaciones = Publicacion.objects.filter(autor=usuario.user)
@@ -205,7 +204,16 @@ def verUsuario(request,id_usuario):
             'totalPublicaciones':totalPublicaciones,
         })
      
-     
+def misAmigos(request):
+    amigos = request.user.perfil.amigos.all()
+    if amigos:
+        return render(request,'misAmigos.html',{
+            'amigos':amigos
+        })
+    else:
+        return render(request,'misAmigos.html',{
+            'noHayAmigos':'Todavia no has agregado a ningun amigo.'
+        })
      
 @login_required
 def cerrarSesion(request):
