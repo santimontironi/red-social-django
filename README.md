@@ -17,3 +17,4 @@ Todavía estamos en la fase de desarrollo y mejora, por lo que algunas funcional
 - 🔄 Mejoras en la interfaz de usuario.
 - 🔄 Comentarios en publicaciones.
 - 🔄 Mantener la sesión iniciada al ingresar.
+- 🔄 Agregar mensajería.
