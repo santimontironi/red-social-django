@@ -17,7 +17,10 @@
                 <tbody>
                     {%for amigo in amigos%}
                         <tr>
-                            <td>@{{amigo.username}}</td>
+                            <td>
+                                <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" style="border-radius: 9999px;">
+                                @{{amigo.username}}
+                            </td>
                             <td>{{amigo.perfil.nombre}}</td>
                             <td>{{amigo.perfil.apellido}}</td>
                             <td>
