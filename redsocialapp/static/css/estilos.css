@@ -442,6 +442,10 @@ body{
     padding: 30px;
 }
 
+.contenedorMisAmigos table{
+    box-shadow: 5px 5px 15px #000;
+}
+
 @media (max-width:800px){
     .tituloNavbar{
         display: none;
@@ -562,5 +566,8 @@ body{
     }
     .contenedorMisAmigos{
         width: 100%;
+    }
+    .contenedorMisAmigos table{
+        margin: 35px 0px 0px 0px;
     }
 }
