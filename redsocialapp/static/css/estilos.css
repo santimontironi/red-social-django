@@ -436,6 +436,12 @@ body{
     color: #fff;
 }
 
+.contenedorMisAmigos{
+    width: 100%;
+    min-height: 80vh;
+    padding: 30px;
+}
+
 @media (max-width:800px){
     .tituloNavbar{
         display: none;
@@ -550,5 +556,11 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .contenedorMisAmigos{
+        padding: 0px;
+    }
+    .contenedorMisAmigos{
+        width: 100%;
     }
 }

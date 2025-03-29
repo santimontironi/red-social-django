@@ -4,13 +4,36 @@
 {%block content%}
 
     <section class="contenedorMisAmigos">
-        {%for amigo in amigos%}
-            <p>{{amigo.username}}</p>
-        {%endfor%}
-
-        {%if noHayAmigos%}
+        {%if hayAmigos%}
+            <table class="table text-center table-striped table-bordered table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Operación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for amigo in amigos%}
+                        <tr>
+                            <td>@{{amigo.username}}</td>
+                            <td>{{amigo.perfil.nombre}}</td>
+                            <td>{{amigo.perfil.apellido}}</td>
+                            <td>
+                                <form action="/eliminar-amigo/">
+                                    <input type="hidden" value="{{amigo.id}}">
+                                    <input type="submit" class="btn btn-danger" value="Eliminar amigo">
+                                </form>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        {%else%}
             <p class="fs-3 d-flex justify-content-center align-items-center text-center">Parece que aún no se ha agregado a ningún amigo en tu perfil!</p>
         {%endif%}
+
     </section>
 
 

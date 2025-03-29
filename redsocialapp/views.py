@@ -170,7 +170,7 @@ def agregarAmigos(request):
         perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
         
         if amigo in perfil.amigos.all():
-            perfil.amigos.remove(amigo)
+            perfil.amigos.remove(amigo) #se elimina al amigo en caso de ya serlo
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
             """    
@@ -207,12 +207,14 @@ def verUsuario(request,id_usuario):
 def misAmigos(request):
     amigos = request.user.perfil.amigos.all()
     if amigos:
+        hayAmigos = True
         return render(request,'misAmigos.html',{
-            'amigos':amigos
+            'amigos':amigos,
+            'hayAmigos':hayAmigos
         })
     else:
         return render(request,'misAmigos.html',{
-            'noHayAmigos':'Todavia no has agregado a ningun amigo.'
+            'noHayAmigos':'Todavia no has agregado a ningun amigo.',
         })
      
 @login_required
