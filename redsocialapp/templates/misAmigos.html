@@ -24,8 +24,9 @@
                             <td>{{amigo.perfil.nombre}}</td>
                             <td>{{amigo.perfil.apellido}}</td>
                             <td>
-                                <form action="/eliminar-amigo/">
-                                    <input type="hidden" value="{{amigo.id}}">
+                                <form action="/eliminar-amigo/" method="post">
+                                    {%csrf_token%}
+                                    <input type="hidden" value="{{amigo.id}}" name="idAmigo">
                                     <input type="submit" class="btn btn-danger" value="Eliminar amigo">
                                 </form>
                             </td>

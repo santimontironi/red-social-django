@@ -217,6 +217,16 @@ def misAmigos(request):
             'noHayAmigos':'Todavia no has agregado a ningun amigo.',
         })
      
+def eliminarAmigo(request):
+    if request.method == "POST":
+        id_amigo = request.POST.get("idAmigo") #se obtiene el id desde el formulario    
+        perfil = get_object_or_404(Perfil,user=request.user) #se obtiene el perfil del usuario que esta logueado
+        amigo = get_object_or_404(User,id=id_amigo) #se obtiene al usuario desde el modelo User
+        perfil.amigos.remove(amigo) #se elimina ese amigo del modelo 
+        
+    return redirect('mis-amigos')
+    
+     
 @login_required
 def cerrarSesion(request):
     logout(request)
