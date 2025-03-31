@@ -141,7 +141,7 @@ def miPerfil(request):
         perfilEditado = formularioPerfil.save(commit=False)
         perfilEditado.user = request.user
         perfilEditado.save()
-        return redirect('inicio')
+        return redirect('mi-perfil')
         
         
 @login_required

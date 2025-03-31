@@ -260,6 +260,8 @@ body{
 
 .encabezadoPerfil .fotoPerfil{
     width: 200px;
+    height: 200px;
+    object-fit: cover;
     border: solid 3px #4d3ea1;
     border-radius: 9999px;
 }
@@ -446,6 +448,7 @@ body{
 .contenedorMisAmigos table{
     box-shadow: 5px 5px 15px #000;
 }
+
 
 @media (max-width:800px){
     .tituloNavbar{

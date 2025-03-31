@@ -17,13 +17,13 @@
                 <tbody>
                     {%for amigo in amigos%}
                         <tr>
-                            <td>
+                            <td class="align-middle">
                                 <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" style="border-radius: 9999px;">
                                 <a href="{% url 'usuario' amigo.perfil.id %}" style="text-decoration: none;"><h6>{{ amigo.username }}</h6></a>
                             </td>
-                            <td>{{amigo.perfil.nombre}}</td>
-                            <td>{{amigo.perfil.apellido}}</td>
-                            <td>
+                            <td class="align-middle">{{amigo.perfil.nombre}}</td>
+                            <td class="align-middle">{{amigo.perfil.apellido}}</td>
+                            <td class="align-middle">
                                 <form action="/eliminar-amigo/" method="post" onsubmit="return confirm('¿Deseas realmente eliminar a {{amigo.username}} de tus amigos?')">
                                     {%csrf_token%}
                                     <input type="hidden" value="{{amigo.id}}" name="idAmigo">
