@@ -47,6 +47,26 @@ body{
     background-size: cover;
 }
 
+.texto-enlace-nav{
+    color: #fff;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    height: 15px;
+}
+
+.nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav-item:hover .texto-enlace-nav{
+    visibility: visible;
+    opacity: 1;
+}
+
 .btnPublicar{
     position: fixed;
     right: 60px;
