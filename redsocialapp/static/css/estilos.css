@@ -5,6 +5,11 @@ body{
     font-family: "Roboto Mono", monospace;
 }
 
+nav{
+    width: 15%;
+    height: 100vh;
+}
+
 .tituloNavbar{
     color: #fff;
     font-size: 50px;
@@ -187,6 +192,10 @@ body{
     min-height: 100vh;
     background: linear-gradient(to left,#4d3ea1,#103e6e,#000);
     padding-bottom: 50px;
+    position: absolute;
+    top: 0;
+    width: 85%;
+    right: 0;
 }
 
 .sinPublicaciones{
@@ -267,7 +276,7 @@ body{
 .contenedorAgregarPublicacion{
     height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.20)),url(../img/fondoContenedorAgregarPublicacion.jpg);
+    background: linear-gradient(rgba(0, 69, 172, 0.4),rgba(6, 56, 219, 0.226)),url(../img/fondoContenedorAgregarPublicacion.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -281,7 +290,7 @@ body{
     height: auto;
     border-radius: 20px;
     box-shadow: 10px 10px 20px #000;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     padding-top: 30px;
 }
 
@@ -353,14 +362,6 @@ body{
     gap: 70px;
     padding: 50px;
     background: linear-gradient(#04172c,#103e6e);
-}
-
-.formAgregarPublicacion{
-    height: 400px;
-    width: 650px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
 }
 
 .miPublicacion{
@@ -553,12 +554,15 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 35px 0 35px 0;
+        margin: 30px 0 35px 0;
         width: 320px;
         padding: 15px;
     }
     .formAgregarPublicacion{
         width: 300px;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 10px;
     }
     .contenedorMiPerfil{
         height: auto;
