@@ -1,15 +1,27 @@
 document.addEventListener("DOMContentLoaded",function(){
-    const contenedorSinInternet = document.querySelector(".contenedorSinInternet");
+    const contenedorSinInternet = document.querySelector(".contenedorSinInternet")
     const contenedorRegistro = document.getElementById("contenedorRegistro")
     const contenedorLogin = document.getElementById("contenedorLogin");
+    const contenedorCrearPerfil = document.querySelector(".contenedorCrearPerfil")
+    const contenedorInicio = document.querySelector(".contenedorInicio")
+    const contenedorAgregarPublicacion = document.querySelector(".contenedorAgregarPublicacion")
+    const contenedorMiPerfil = document.querySelector(".contenedorMiPerfil")
+    const contenedorBusquedaUsuarios = document.querySelector(".contenedorBusquedaUsuarios")
+    const contenedorMisAmigos = document.querySelector(".contenedorMisAmigos")
 
-if(!navigator.onLine){
-    if (contenedorLogin) contenedorLogin.style.display = "none"
-    if (contenedorRegistro) contenedorRegistro.style.display = "none"
-    if (contenedorSinInternet){
-        contenedorSinInternet.classList.remove("d-none")
-        contenedorSinInternet.classList.add("d-flex")
+    if(!navigator.onLine){
+        if (contenedorLogin) contenedorLogin.style.display = "none"
+        if (contenedorRegistro) contenedorRegistro.style.display = "none"
+        if (contenedorCrearPerfil) contenedorCrearPerfil.style.display = "none"
+        if (contenedorInicio) contenedorInicio.style.display = "none"
+        if (contenedorMiPerfil) contenedorMiPerfil.style.display = "none"
+        if (contenedorMisAmigos) contenedorMisAmigos.style.display = "none"
+        if (contenedorAgregarPublicacion) contenedorAgregarPublicacion.style.display = "none"
+        if (contenedorBusquedaUsuarios) contenedorBusquedaUsuarios.style.display = "none"
+        if (contenedorSinInternet){
+            contenedorSinInternet.classList.remove("d-none")
+            contenedorSinInternet.classList.add("d-flex")
+        }
     }
-}
 })
 
