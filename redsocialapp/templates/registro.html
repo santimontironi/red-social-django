@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <section class="contenedorRegistro">
+    <section class="contenedorRegistro" id="contenedorRegistro">
         <div class="container d-flex flex-column p-4 m-auto justify-content-center align-items-center ingresoMensajeBienvenida">
             <h1>Registro</h1>
             <img src="{% static 'img/logo.webp' %}" alt="Logo SocialByte">
@@ -34,6 +34,11 @@
                 <p class="text-danger fw-bold">{{errorClavesNoIguales}}</p>
             {% endif %}
         </div>
+    </section>
+
+    <section class="contenedorSinInternet d-none flex-column justify-content-center align-items-center gap-5"> 
+        <img src="https://img.icons8.com/?size=100&id=dtKaM9MjnkIN&format=png&color=000000" alt="fotoSinInternet">
+        <p class="text-light">No se ha encontrado una red WI-FI, por favor intente conectarse.</p>
     </section>
 
 {% endblock %}
