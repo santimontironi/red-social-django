@@ -23,5 +23,6 @@ document.addEventListener("DOMContentLoaded",function(){
             contenedorSinInternet.classList.add("d-flex")
         }
     }
+    //Los if para cada contenedor sirven para asegurarse de que los elementos existen en el DOM antes de intentar modificar sus estilos.
 })
 
