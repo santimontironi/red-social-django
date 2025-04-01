@@ -14,38 +14,37 @@
 <body>
     
     {% if request.path != '/' and request.path != '/registro/' and request.path != '/crear-perfil/' %}
-    <nav class="navbar navbar-expand-lg p-4" id="menu" style="background: linear-gradient(to right,#1f0d6e, #170a4d);">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/inicio/"><img class="rounded-5" src="{% static 'img/logo.webp' %}" alt="logo" width="85"></a>
-          <p class="tituloNavbar">SocialByte</p>
-          <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <form class="d-flex" action="/usuarios/" method="POST">
-                    {% csrf_token %}
-                    <input class="form-control me-2" type="search" placeholder="Buscar usuarios" aria-label="Search" name="busquedaUsuarios">
-                    <button class="btn btn-outline-light hvr-bounce-to-right" type="submit"><img src="https://img.icons8.com/?size=100&id=132&format=png&color=ffffff" width="35" alt=""></button>
-                </form>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light hvr-bounce-to-right" href="/mi-perfil/"><img src="https://img.icons8.com/?size=100&id=23264&format=png&color=ffffff" alt="" width="35"></a>
-                <p class="texto-enlace-nav">Mi perfil</p>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light hvr-bounce-to-right" href="/mis-amigos/"><img src="https://img.icons8.com/?size=100&id=11168&format=png&color=ffffff" width="35" alt=""></a>
-                <p class="texto-enlace-nav">Mis amigos</p>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light hvr-bounce-to-right" href="/cerrar-sesion/"><img src="https://img.icons8.com/?size=100&id=2445&format=png&color=ffffff" width="35" alt=""></a>
-                <p class="texto-enlace-nav">Cerrar sesión</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+    <header>
+      <div class="logoNav">
+        <a href="/"><img src="../static/img/logo.webp" alt="logo"></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/"></a>Inicio</li>
+        </ul>
+        <ul>
+          <li>
+            <form action="/usuarios/" method="post">
+              {% csrf_token %}
+              <input type="text" name="buscador" placeholder="Buscar usuario" required>
+              <button type="submit">Buscar</button>
+            </form>
+          </li>
+        </ul>
+        <ul>
+          <li><a class="text-light hvr-bounce-to-right" href="/mis-amigos/">Mis amigos</a></li>
+        </ul>
+        <ul>
+          <li><a class="text-light hvr-bounce-to-right" href="/agregar-publicacion/">Agregar publiacación</a></li>
+        </ul>
+        <ul>
+          <li><a class="text-light hvr-bounce-to-right" href="/mi-perfil/">Mi perfil</a></li>
+        </ul>
+        <ul>
+          <li><a class="text-light hvr-bounce-to-right" href="/cerrar-sesion/">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </header>
     {% endif %}
 
     {% block content %}

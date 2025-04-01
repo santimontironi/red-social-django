@@ -145,7 +145,7 @@ def miPerfil(request):
 @login_required
 def buscarUsuarios(request):
     if request.method == "POST":
-        busqueda = request.POST["busquedaUsuarios"]
+        busqueda = request.POST["buscador"]
         usuarios = Perfil.objects.filter(
             Q(nombre__icontains=busqueda) | Q(apellido__icontains=busqueda) | Q(user__username__icontains=busqueda)
         )
