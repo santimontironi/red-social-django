@@ -21,12 +21,9 @@ def ingreso(request):
                 'errorCredenciales': 'Usuario o contraseña no válidos.'
             })
         else:
-            print("PASO 1")
             if sessionActiva:
                 request.session.set_expiry(1209600)
-                print("PASO 2")
             else:
-                print("PASO 3")
                 request.session.set_expiry(0)
             request.session.modified = True
             login(request,usuarioAutenticado)
@@ -83,6 +80,7 @@ def inicio(request):
             return render(request,'inicio.html',{
                 'noHayPublicaciones': True
             })
+    
             
 @login_required
 def agregarPublicacion(request):
@@ -121,7 +119,7 @@ def agregarMeGusta(request, id_post):
                 </div>
         """    
 
-        return HttpResponse(respuesta)
+    return HttpResponse(respuesta)
     
 
 @login_required
