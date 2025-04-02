@@ -6,27 +6,22 @@ body{
 }
 
 header{
-    width: 150px;
+    width: 140px;
     height: 100vh;
-    padding: 10px;
+    padding: 15px;
     position: fixed;
     background: linear-gradient(150deg,#121a80,#101010,#000);
     box-shadow: 6px 5px 15px #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 30px;
+    transition: width 0.3s ease-in-out;
 }
 
 .logoNav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.logoNav a img{
-    width: 100px;
+    width: 90px;
     border-radius: 999px;
     object-fit: cover;
 }
@@ -35,16 +30,25 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
 }
 
 nav ul{
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul li button{
+    padding: 10px;
+    border-radius: 999px;
 }
 
 nav ul li a{
     text-decoration: none;
     padding: 10px;
+    border-radius: 30px;
 }
 
 nav .iconoSeccionNav{
@@ -53,6 +57,27 @@ nav .iconoSeccionNav{
 
 nav .formBusqueda{
     display: none;
+}
+
+nav ul li{
+    position: relative;
+}
+
+nav ul li span{
+    display: none;
+    font-size: 12px;
+}
+
+header:hover nav ul li:hover span {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 120%;
+}
+
+header:hover{
+    width: 270px;
+    transition: .8s;
 }
 
 .contenedorLogin{
