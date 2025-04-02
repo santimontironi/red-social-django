@@ -92,7 +92,7 @@ def agregarPublicacion(request):
     else:
         formPublicacion = PublicacionForm(request.POST,request.FILES)
         nuevaPublicacion = formPublicacion.save(commit=False)
-        nuevaPublicacion.user = request.user
+        nuevaPublicacion.autor = request.user
         nuevaPublicacion.save()
         return redirect('inicio')
     
