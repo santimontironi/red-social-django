@@ -14,7 +14,7 @@
 <body>
     
     {% if request.path != '/' and request.path != '/registro/' and request.path != '/crear-perfil/' %}
-    <header>
+    <header id="header">
       <nav>
         <ul>
           <li>
@@ -29,13 +29,13 @@
             <span class="text-light">Inicio</span>
           </li>
           <li>
-            <button class="hvr-bounce-to-right" style="background-color: transparent; border:none;">
+            <button class="hvr-bounce-to-right btnBusquedaUsuarios" style="background-color: transparent; border:none;">
               <img src="https://img.icons8.com/?size=100&id=132&format=png&color=ffffff" class="iconoSeccionNav" alt="imgBuscarUsuario">
             </button>
-            <form class="formBusqueda" action="/usuarios/" method="post">
+            <form id="formBusqueda" action="/usuarios/" method="post">
               {% csrf_token %}
-              <input type="text" name="buscador" placeholder="Buscar usuario" required>
-              <button type="submit">Buscar</button>
+              <input class="form-control" type="text" name="buscador" placeholder="Usuario" required>
+              <button class="btn btn-success" type="submit">Buscar</button>
             </form>
           </li>
           <li>

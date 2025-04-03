@@ -55,8 +55,24 @@ nav .iconoSeccionNav{
     width: 45px;
 }
 
-nav .formBusqueda{
+nav .btnBusqueda{
+    position: relative;
+}
+
+nav #formBusqueda{
     display: none;
+    position: absolute;
+    left: 110%;
+    top: 0;
+    width: 140px;
+}
+
+nav #formBusqueda input[type="text"]{
+    width: 120px;
+}
+
+.formBusquedaAbierto{
+    display: flex;
 }
 
 nav ul li{
