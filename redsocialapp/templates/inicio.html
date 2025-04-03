@@ -35,9 +35,18 @@
                                     <input class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit" value="❤️">
                                 </div>
                             </form>
-                            <button class="btn btn-outline-info">💬</button>
+                            <button class="btn btn-outline-info" id="btnComentario">💬</button>
                         </div>
                         <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+                        <div class="contenedorComentario" id="contenedorComentario">
+                            <button class="btnCerrarComentario">X</button>
+                            <form class="formComentario d-flex flex-column gap-2" action="/agregar-comentario/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="idPublicacion" value="{{publicacion.id}}">
+                                <input class="form-control" type="text" name="comentario" placeholder="Escribe un comentario..." required>
+                                <button class="btn btn-success" type="submit">Comentar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

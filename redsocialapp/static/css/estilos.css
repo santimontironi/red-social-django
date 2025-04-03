@@ -6,7 +6,7 @@ body{
 }
 
 header{
-    width: 170px;
+    width: 147px;
     height: 100vh;
     padding: 15px;
     position: fixed;
@@ -219,7 +219,7 @@ header:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 80vh;
 }
 
 .contenedor-publicacion{
@@ -378,6 +378,7 @@ header:hover{
     gap: 70px;
     padding: 50px;
     background: linear-gradient(#04172c,#103e6e);
+    margin: auto;
 }
 
 .formAgregarPublicacion{
@@ -411,6 +412,43 @@ header:hover{
 
 .miPublicacion span{
     color: #fff;
+}
+
+#contenedorComentario{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    background: linear-gradient(200deg,#04172c,#121a80);
+    box-shadow: 0 0 0 100vmax #000000a8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    display: none;
+}
+
+#contenedorComentario .btnCerrarComentario{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #cc361c;
+    color: #fff;
+    padding: 10px;
+    border-radius: 9999px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedorComentario .btnCerrarComentario:hover{
+    background-color: #a52b1c;
 }
 
 .contenedorBusquedaUsuarios{
@@ -509,12 +547,23 @@ header:hover{
 
 .contenedorMisAmigos{
     width: 100%;
-    min-height: 80vh;
+    min-height: 100vh;
     padding: 30px;
+}
+
+.sinAmigos{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
 }
 
 .contenedorMisAmigos table{
     box-shadow: 5px 5px 15px #000;
+    margin: auto;
+    width: 1000px;
 }
 
 

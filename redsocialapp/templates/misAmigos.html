@@ -5,6 +5,7 @@
 
     <section class="contenedorMisAmigos">
         {%if hayAmigos%}
+            <h1 class="text-center d-flex justify-content-center align-items-center mb-3">Mis amigos</h1>
             <table class="table text-center table-bordered table-responsive table-info table-hover table-striped-columns">
                 <thead>
                     <tr>
@@ -35,7 +36,7 @@
                 </tbody>
             </table>
         {%else%}
-            <p class="fs-3 d-flex justify-content-center align-items-center text-center">Parece que aún no se ha agregado a ningún amigo en tu perfil!</p>
+            <p class="sinAmigos">Parece que aún no se ha agregado a ningún amigo en tu perfil!</p>
         {%endif%}
 
     </section>

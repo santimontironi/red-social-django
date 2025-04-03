@@ -26,3 +26,14 @@ document.addEventListener("DOMContentLoaded",function(){
     //Los if para cada contenedor sirven para asegurarse de que los elementos existen en el DOM antes de intentar modificar sus estilos.
 })
 
+const btnComentario = document.getElementById("btnComentario")
+const contenedorComentario = document.getElementById("contenedorComentario")
+const btnCerrarComentario = document.querySelector(".btnCerrarComentario")
+
+btnComentario.addEventListener("click",function(){
+    contenedorComentario.style.display = "flex"
+})
+
+btnCerrarComentario.addEventListener("click",function(){
+    contenedorComentario.style.display = "none"
+})
