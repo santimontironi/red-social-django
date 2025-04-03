@@ -46,18 +46,28 @@ const btnBusquedaUsuarios = document.querySelector(".btnBusquedaUsuarios")
 const formBusqueda = document.getElementById("formBusqueda")
 const header = document.getElementById("header")
 
+header.addEventListener("mouseover",function(){
+    if (formBusqueda.classList.contains("formBusquedaAbierto")){
+        header.style.width = "380px"
+    } else{
+        header.style.width = "320px"
+    }
+})
+
+header.addEventListener("mouseleave",function(){
+    header.style.width = "147px"
+})
+
 btnBusquedaUsuarios.addEventListener("click",function(){
     formBusqueda.classList.toggle("formBusquedaAbierto")
 
     if (formBusqueda.classList.contains("formBusquedaAbierto")){
         formBusqueda.style.display = "none"
-        header.style.width = "147px"
     }else{
         formBusqueda.style.display = "flex"
         formBusqueda.style.flexDirection = "column"
         formBusqueda.style.alignItems = "center"
         formBusqueda.style.justifyContent = "center"
         formBusqueda.style.gap = "6px"
-        header.style.width = "380px"
     }
 })

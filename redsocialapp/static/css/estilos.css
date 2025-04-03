@@ -91,11 +91,6 @@ header:hover nav ul li:hover span {
     left: 120%;
 }
 
-header:hover{
-    width: 320px;
-    transition: .5s;
-}
-
 .contenedorLogin{
     max-width: 100%;
     min-height: 100vh;
