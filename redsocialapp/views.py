@@ -125,13 +125,21 @@ def agregarMeGusta(request, id_post):
 @login_required
 def agregarComentario(request):
     idPublicacion = request.POST.get("idPublicacion")
+    idPublicacion = Publicacion.objects.get(id = idPublicacion)
     if request.method == "POST":
         formularioComentario = ComentarioForm(request.POST)
         comentarioRealizado = formularioComentario.save(commit=False)
         comentarioRealizado.autor = request.user
         comentarioRealizado.publicacion = idPublicacion
+        idPublicacion.cantidadComentarios += 1
+        idPublicacion.save()
         comentarioRealizado.save()
         return redirect('inicio')
+    else:
+        formularioComentario = ComentarioForm()
+        return render(request,'inicio.html',{
+            'formComentario':formularioComentario
+        })
 
 @login_required
 def miPerfil(request):
