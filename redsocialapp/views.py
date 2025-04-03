@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import PerfilForm,PublicacionForm
+from .forms import PerfilForm,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil
 from django.db.models import Q
 
@@ -121,6 +121,17 @@ def agregarMeGusta(request, id_post):
 
     return HttpResponse(respuesta)
     
+    
+@login_required
+def agregarComentario(request):
+    idPublicacion = request.POST.get("idPublicacion")
+    if request.method == "POST":
+        formularioComentario = ComentarioForm(request.POST)
+        comentarioRealizado = formularioComentario.save(commit=False)
+        comentarioRealizado.autor = request.user
+        comentarioRealizado.publicacion = idPublicacion
+        comentarioRealizado.save()
+        return redirect('inicio')
 
 @login_required
 def miPerfil(request):

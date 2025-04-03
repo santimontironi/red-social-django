@@ -22,8 +22,9 @@
                         <h2>{{publicacion.autor.username}}</h2>
                         <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                         <p>{{publicacion.descripcion}}</p>
-                        <div class="publicacion-operaciones">
-                            <form 
+                        <div class="publicacion-operaciones d-flex align-items-center justify-content-center gap-2">
+                            <form
+                                class="d-flex justify-content-center align-items-center gap-2" 
                                 hx-post="{% url 'me_gusta' publicacion.id %}" 
                                 hx-target=".contenedor-btnLike-{{publicacion.id}}" 
                                 hx-swap="outerHTML"
@@ -35,7 +36,10 @@
                                     <input class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit" value="❤️">
                                 </div>
                             </form>
-                            <button class="btn btn-outline-info" id="btnComentario">💬</button>
+                            <div class="datosComentarios d-flex align-items-center justify-content-center gap-2">
+                                <span class="cantidadComentarios text-light">{{publicacion.cantidadComentarios}} Comentarios</span>
+                                <button id="btnComentario">💬</button>
+                            </div>
                         </div>
                         <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
                         <div class="contenedorComentario" id="contenedorComentario">

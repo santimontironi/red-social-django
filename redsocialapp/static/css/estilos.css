@@ -414,6 +414,20 @@ header:hover{
     color: #fff;
 }
 
+.datosComentarios button{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    border: solid 1px #fff;
+    border-radius: 5px;
+}
+
+.datosComentarios button:hover{
+    background-color: rgba(0, 217, 255, 0.575);
+}
+
 #contenedorComentario{
     position: absolute;
     top: 40%;
