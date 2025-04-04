@@ -31,14 +31,17 @@ document.addEventListener("DOMContentLoaded",function(){
     const contenedorComentario = document.getElementById("contenedorComentario")
     const btnCerrarComentario = document.querySelector(".btnCerrarComentario")
 
-    btnComentario.addEventListener("click",function(){
-        contenedorComentario.style.display = "flex"
-    })
-
-    btnCerrarComentario.addEventListener("click",function(){
-        contenedorComentario.style.display = "none"
-    })
-
+    if(btnComentario){
+        btnComentario.addEventListener("click",function(){
+            contenedorComentario.style.display = "flex"
+        })
+    }
+    
+    if(btnCerrarComentario){
+        btnCerrarComentario.addEventListener("click",function(){
+            contenedorComentario.style.display = "none"
+        })
+    }
 
     const btnBusquedaUsuarios = document.querySelector(".btnBusquedaUsuarios")
     const btnCerrarFormBusqueda = document.querySelector(".btnCerrarFormBusqueda")
@@ -51,12 +54,12 @@ document.addEventListener("DOMContentLoaded",function(){
     //El evento mouseover se activa cuando el mouse entra en el area del elemento, y el evento mouseout se activa cuando el mouse sale del area del elemento.
     //Esto permite que el header se expanda cuando el mouse entra en el area del elemento, y se contraiga cuando el mouse sale del area del elemento, pero solo si el formulario de busqueda no esta activo.
     if (header){
-        header.addEventListener("mouseover",function(){
+        header.addEventListener("mouseenter",function(){
             if (!busquedaActiva){
                 header.style.width = "300px"
             }
         })
-        header.addEventListener("mouseout",function(){
+        header.addEventListener("mouseleave",function(){
             if (!busquedaActiva){
                 header.style.width = "147px"
             }
@@ -65,7 +68,7 @@ document.addEventListener("DOMContentLoaded",function(){
     
     //El evento click se activa cuando el usuario hace click en el elemento.
     //Esto permite que el header se expanda cuando el usuario hace click en el elemento.
-    if(btnBusquedaUsuarios){
+    if(btnBusquedaUsuarios && header){
         btnBusquedaUsuarios.addEventListener("click",function(){
             formBusqueda.style.display = "flex"
             formBusqueda.style.flexDirection = "column"
@@ -80,7 +83,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     //El evento click se activa cuando el usuario hace click en el elemento.
     //Esto permite que el header se contraiga cuando el usuario hace click en el elemento.
-    if(btnCerrarFormBusqueda){
+    if(btnCerrarFormBusqueda && header){
         btnCerrarFormBusqueda.addEventListener("click",function(){
             formBusqueda.style.display = "none"
             header.style.width = "147px"

@@ -104,7 +104,7 @@ nav ul li span{
     font-size: 14px;
 }
 
-header:hover nav ul li:hover span {
+nav ul li:hover span {
     display: block;
     position: absolute;
     top: 40%;
