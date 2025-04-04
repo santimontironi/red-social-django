@@ -10,6 +10,7 @@ header{
     height: 100vh;
     padding: 15px;
     position: fixed;
+    top: 0;
     background: linear-gradient(150deg,#121a80,#101010,#000);
     box-shadow: 6px 5px 15px #000;
     display: flex;
@@ -62,17 +63,36 @@ nav .btnBusqueda{
 nav #formBusqueda{
     display: none;
     position: absolute;
-    left: 110%;
+    left: 90%;
     top: 0;
-    width: 140px;
+    width: 160px;
 }
 
 nav #formBusqueda input[type="text"]{
     width: 120px;
 }
 
-.formBusquedaAbierto{
+.btnBuscar{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+}
+
+.btnCerrarFormBusqueda{
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background-color: #a52b1c;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav ul li{

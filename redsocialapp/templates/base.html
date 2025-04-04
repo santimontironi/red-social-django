@@ -35,7 +35,10 @@
             <form id="formBusqueda" action="/usuarios/" method="post">
               {% csrf_token %}
               <input class="form-control" type="text" name="buscador" placeholder="Usuario" required>
-              <button class="btn btn-success" type="submit">Buscar</button>
+              <div class="botonesFormBusqueda d-flex gap-2"> 
+                <button class="btn btn-success btnBuscar" type="submit">Buscar</button>
+                <p class="btnCerrarFormBusqueda">x</p>
+              </div>
             </form>
           </li>
           <li>
@@ -76,6 +79,8 @@
     <script>
       AOS.init();
     </script>
-    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}
+      <script src="{% static 'js/script.js' %}" defer></script>
+    {% endblock %}
 </body>
 </html>
