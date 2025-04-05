@@ -35,7 +35,8 @@
                                     <button class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit">❤️</button>
                                 </div>
                             </form>
-                            <form class="datosComentarios d-flex align-items-center justify-content-center gap-2">
+                            <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/"> 
+                                {% csrf_token %}
                                 <input type="hidden" name="publicacion_id" value="{{publicacion.id}}">
                                 <input type="text" name="comentario" class="form-control inputComentario" placeholder="Escribe un comentario" required>
                                 <div class="infoComentarios d-flex gap-3 align-items-center justify-content-center">

@@ -419,6 +419,7 @@ nav ul li:hover span {
 .btnEditarPerfil{
     display: block;
     margin: auto;
+    margin-top: 25px;
 }
 
 .misPublicaciones{
@@ -444,6 +445,9 @@ nav ul li:hover span {
 }
 
 .miPublicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 350px;
     height: 100%;
     padding: 15px;
