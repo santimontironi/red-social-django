@@ -405,11 +405,12 @@ nav ul li:hover span {
     display: grid;
     place-content: center;
     align-content: center;
-    grid-template-columns: repeat(3,1fr);
-    gap: 70px;
-    padding: 50px;
+    align-items: center;
+    align-self: center;
+    padding: 50px 250px 40px 250px;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
     background: linear-gradient(#04172c,#103e6e);
-    margin: auto;
 }
 
 .formAgregarPublicacion{
@@ -430,6 +431,8 @@ nav ul li:hover span {
 
 .miPublicacion h2{
     color: #fff;
+    font-weight: lighter;
+    font-size: 17px;
 }
 
 .miPublicacion p{
