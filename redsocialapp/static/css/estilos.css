@@ -22,6 +22,31 @@ header{
     z-index: 1;
 }
 
+.btnAbrirMenu{
+    border: none;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.btnAbrirMenu i{
+    font-size: 40px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnCerrarMenu{
+    display: none;
+}
+
 .logoNav{
     width: 90px;
     border-radius: 999px;
@@ -591,8 +616,80 @@ nav ul li:hover span {
 
 
 @media (max-width:800px){
-    .tituloNavbar{
+    header{
         display: none;
+        padding: 0px;
+        width: 100px;
+    }
+    .enlaceMenu{
+        display: none;
+    }
+    .btnAbrirMenu{
+        display: block;
+    }
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        text-align: center;
+        align-items: flex-start;
+    }
+    .btnCerrarMenu{
+        border: none;
+        width: 45px;
+        height: 45px;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .btnCerrarMenu i{
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    nav{
+        align-items: flex-start;
+    }
+    nav ul{
+        align-items: flex-start;
+    }
+    nav .iconoSeccionNav{
+        width: 40px;
+    }
+    nav #formBusqueda{
+        display: none;
+        position: absolute;
+        left: 70%;
+        top: 0;
+        width: 160px;
+    }
+    nav #formBusqueda input[type="text"]{
+        width: 100px;
+    }
+    .btnBuscar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 75px;
+        height: 40px;
+    }
+    .btnCerrarFormBusqueda{
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 9999px;
+        background-color: #a52b1c;
+        padding: 10px;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .contenedorLogin{
         min-height: 100vh;
@@ -629,6 +726,9 @@ nav ul li:hover span {
         width: 300px;
         background-color: #000;
         color: #fff;
+    }
+    .contenedorInicio{
+        padding-top: 70px;
     }
     .btnPublicar{
         right: 10px;

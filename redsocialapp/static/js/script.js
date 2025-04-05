@@ -73,6 +73,20 @@ document.addEventListener("DOMContentLoaded",function(){
         })
     }
     
+    const btnAbrirMenu = document.querySelector(".btnAbrirMenu")
+    const btnCerrarMenu = document.querySelector(".btnCerrarMenu")
 
+    if(btnAbrirMenu && header){
+        btnAbrirMenu.addEventListener("click",function(){
+            header.style.display = "flex"
+            header.style.width = "200px"
+        })
+    }
+
+    if(btnCerrarMenu && header){
+        btnCerrarMenu.addEventListener("click",function(){
+            header.style.display = "none"
+        })
+    }
 })
 
