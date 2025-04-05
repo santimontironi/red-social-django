@@ -459,7 +459,7 @@ nav ul li:hover span {
     background-color: rgba(0, 217, 255, 0.575);
 }
 
-#contenedorComentario{
+.contenedorComentario{
     position: absolute;
     top: 40%;
     left: 5%;
@@ -476,7 +476,7 @@ nav ul li:hover span {
     display: none;
 }
 
-#contenedorComentario .btnCerrarComentario{
+.contenedorComentario .btnCerrarComentario{
     position: absolute;
     top: 15px;
     right: 15px;
@@ -492,7 +492,7 @@ nav ul li:hover span {
     align-items: center;
 }
 
-#contenedorComentario .btnCerrarComentario:hover{
+.contenedorComentario .btnCerrarComentario:hover{
     background-color: #a52b1c;
 }
 

@@ -38,11 +38,11 @@
                             </form>
                             <div class="datosComentarios d-flex align-items-center justify-content-center gap-2">
                                 <span class="cantidadComentarios text-light">{{publicacion.cantidadComentarios}} Comentarios</span>
-                                <button id="btnComentario">💬</button>
+                                <button class="btnComentario">💬</button>
                             </div>
                         </div>
                         <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
-                        <div class="contenedorComentario" id="contenedorComentario">
+                        <div class="contenedorComentario">
                             <button class="btnCerrarComentario">X</button>
                             <form class="formComentario d-flex flex-column gap-2" action="/agregar-comentario/" method="post">
                                 {% csrf_token %}

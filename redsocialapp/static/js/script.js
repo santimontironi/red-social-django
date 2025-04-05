@@ -27,21 +27,21 @@ document.addEventListener("DOMContentLoaded",function(){
 
     //Bloque de codigo para mostrar el contenedor de agregar comentarios en una publicacion.
 
-    const btnComentario = document.getElementById("btnComentario")
-    const contenedorComentario = document.getElementById("contenedorComentario")
-    const btnCerrarComentario = document.querySelector(".btnCerrarComentario")
+    const botonesComentarios = document.querySelectorAll(".btnComentario")
+    const contenedoresComentarios = document.querySelectorAll(".contenedorComentario")
+    const botonesCerrarComentarios = document.querySelectorAll(".btnCerrarComentario")
 
-    if(btnComentario){
-        btnComentario.addEventListener("click",function(){
-            contenedorComentario.style.display = "flex"
+    botonesComentarios.forEach((btn,index) => {
+        btn.addEventListener("click",function(){
+            contenedoresComentarios[index].style.display = "flex"
         })
-    }
-    
-    if(btnCerrarComentario){
-        btnCerrarComentario.addEventListener("click",function(){
-            contenedorComentario.style.display = "none"
+    })
+
+    botonesCerrarComentarios.forEach((btn,index) => {
+        btn.addEventListener("click",function(){
+            contenedoresComentarios[index].style.display = "none"
         })
-    }
+    })
 
     const btnBusquedaUsuarios = document.querySelector(".btnBusquedaUsuarios")
     const btnCerrarFormBusqueda = document.querySelector(".btnCerrarFormBusqueda")
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded",function(){
     if (header){
         header.addEventListener("mouseenter",function(){
             if (!busquedaActiva){
-                header.style.width = "300px"
+                header.style.width = "320px"
             }
         })
         header.addEventListener("mouseleave",function(){
