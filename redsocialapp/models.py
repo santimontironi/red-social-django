@@ -4,12 +4,14 @@ from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Perfil(models.Model):
+    email = models.EmailField(unique=True) #El campo email es único, lo que significa que no puede haber dos usuarios con el mismo correo electrónico en la base de datos.
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100, null=True)
     imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
     amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
+    confirmado = models.BooleanField(default=False,blank=False) #Este campo es un booleano que indica si el perfil ha sido confirmado o no. Por defecto, se establece en False.
 
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
