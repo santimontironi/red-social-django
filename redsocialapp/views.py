@@ -113,9 +113,9 @@ def agregarMeGusta(request, id_post):
         publicacion.save()
                     
         respuesta = f"""
-                <div class="contenedor-btnLike-{publicacion.id}">
+                <div class="contenedor-btnLike-{publicacion.id} d-flex align-items-center justify-content-center gap-2">
                     <span id="likes-{publicacion.id}">{publicacion.likes}</span>
-                    <input class="btn-like {'liked' if liked else ''}" type="submit" value="❤️">
+                    <button class="btn-like {'liked' if liked else ''}" type="submit">❤️</button>
                 </div>
         """    
 

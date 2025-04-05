@@ -268,7 +268,7 @@ nav ul li:hover span {
     align-items: flex-start;
     height: auto;
     width: 350px;
-    padding: 10px;
+    padding: 15px;
     border: solid 2px #fff;
 }
 
@@ -298,18 +298,21 @@ nav ul li:hover span {
 
 .publicacion-operaciones{
     display: flex;
-    gap: 20px;
-    margin: 10px 0px 15px 0px;
+    gap: 5px;
+    margin: 20px 0px 0px;
 }
 
 .publicacion-operaciones .btn-like{
     border: none;
     background-color: transparent;
     color: #fff;
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     border: solid 1px #fff;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .publicacion-operaciones .btn-like:hover{
@@ -318,6 +321,25 @@ nav ul li:hover span {
 
 .publicacion-operaciones .liked{
     background-color: rgba(255, 0, 0, 0.541);
+}
+
+.publicacion-operaciones .datosComentarios .btnComentario{
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #559ae4;
+}
+
+.publicacion-operaciones .datosComentarios .btnComentario:hover{
+    background-color: #3a7bb8;
+}
+
+.publicacion-operaciones .datosComentarios .inputComentario{
+    width: 230px;
 }
 
 .contenedorAgregarPublicacion{
