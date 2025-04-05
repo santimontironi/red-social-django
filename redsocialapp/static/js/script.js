@@ -25,24 +25,6 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     //Los if para cada contenedor sirven para asegurarse de que los elementos existen en el DOM antes de intentar modificar sus estilos.
 
-    //Bloque de codigo para mostrar el contenedor de agregar comentarios en una publicacion.
-
-    const botonesComentarios = document.querySelectorAll(".btnComentario")
-    const contenedoresComentarios = document.querySelectorAll(".contenedorComentario")
-    const botonesCerrarComentarios = document.querySelectorAll(".btnCerrarComentario")
-
-    botonesComentarios.forEach((btn,index) => {
-        btn.addEventListener("click",function(){
-            contenedoresComentarios[index].style.display = "flex"
-        })
-    })
-
-    botonesCerrarComentarios.forEach((btn,index) => {
-        btn.addEventListener("click",function(){
-            contenedoresComentarios[index].style.display = "none"
-        })
-    })
-
     const btnBusquedaUsuarios = document.querySelector(".btnBusquedaUsuarios")
     const btnCerrarFormBusqueda = document.querySelector(".btnCerrarFormBusqueda")
     const formBusqueda = document.getElementById("formBusqueda")
