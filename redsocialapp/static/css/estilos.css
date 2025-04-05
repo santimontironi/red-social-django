@@ -269,8 +269,7 @@ nav ul li:hover span {
     height: auto;
     width: 350px;
     padding: 10px;
-    border: solid 2px #ebf1c7;
-    box-shadow: 3px 3px 15px #000;
+    border: solid 2px #fff;
 }
 
 .publicacion h2{
@@ -293,7 +292,8 @@ nav ul li:hover span {
 }
 
 .publicacion:hover{
-    border: none;
+    background-color: #00000054;
+    box-shadow: 3px 3px 15px #000;;
 }
 
 .publicacion-operaciones{
@@ -317,7 +317,7 @@ nav ul li:hover span {
 }
 
 .publicacion-operaciones .liked{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.541);
 }
 
 .contenedorAgregarPublicacion{
@@ -384,7 +384,7 @@ nav ul li:hover span {
 }
 
 .datos-personales{
-    height: 220px;
+    height: 150px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -446,57 +446,6 @@ nav ul li:hover span {
 
 .miPublicacion span{
     color: #fff;
-}
-
-.datosComentarios button{
-    border: none;
-    background-color: transparent;
-    color: #fff;
-    height: 50px;
-    width: 50px;
-    border: solid 1px #fff;
-    border-radius: 5px;
-}
-
-.datosComentarios button:hover{
-    background-color: rgba(0, 217, 255, 0.575);
-}
-
-.contenedorComentario{
-    position: absolute;
-    top: 40%;
-    left: 5%;
-    width: 400px;
-    padding: 30px;
-    border-radius: 15px;
-    background: linear-gradient(200deg,#04172c,#121a80);
-    box-shadow: 0 0 0 100vmax #000000a8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    display: none;
-}
-
-.contenedorComentario .btnCerrarComentario{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    background-color: #cc361c;
-    color: #fff;
-    padding: 10px;
-    border-radius: 9999px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedorComentario .btnCerrarComentario:hover{
-    background-color: #a52b1c;
 }
 
 .contenedorBusquedaUsuarios{
