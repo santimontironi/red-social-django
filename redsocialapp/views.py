@@ -87,8 +87,8 @@ def cambiarClave(request):
         email = request.POST["email"]
         claveNueva = request.POST["password1"]
         claveNuevaRepetida = request.POST["password2"]
-        usuario = User.objects.get(email = email)
-        if usuario:
+        try:
+            usuario = User.objects.get(email = email)
             if claveNueva == claveNuevaRepetida:
                 usuario.set_password(claveNueva)
                 usuario.save()
@@ -99,7 +99,7 @@ def cambiarClave(request):
                 return render(request,'ingreso.html',{
                     'errorClavesNoIguales':"Las claves deben coincidir. Vuelva a intentarlo."
                 })
-        else:
+        except User.DoesNotExist:
             return render(request,'ingreso.html',{
                 'errorEmailNoExistente':"El email ingresado no existe. Por favor vuelva a intentarlo."
             }) 
