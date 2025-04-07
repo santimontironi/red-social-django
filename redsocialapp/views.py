@@ -16,7 +16,7 @@ def ingreso(request):
     else:
         username = request.POST["username"]
         password = request.POST["password"]
-        sessionActiva = request.POST.get("sessionActiva", "off") == "on"
+        sessionActiva = request.POST.get("sessionActiva") == "on"
         usuarioAutenticado = authenticate(request,username = username, password = password)
         if usuarioAutenticado is None:
             return render(request,'ingreso.html',{
@@ -82,6 +82,31 @@ def registro(request):
             })
             
             
+def cambiarClave(request):
+    if request.method == "POST":
+        email = request.POST["email"]
+        claveNueva = request.POST["password1"]
+        claveNuevaRepetida = request.POST["password2"]
+        usuario = User.objects.get(email = email)
+        if usuario:
+            if claveNueva == claveNuevaRepetida:
+                usuario.set_password(claveNueva)
+                usuario.save()
+                return render(request,'ingreso.html',{
+                    'mensajeExito':"La contraseña se ha cambiado correctamente. Por favor inicie sesión nuevamente."
+                })
+            else:
+                return render(request,'cambiarClave.html',{
+                    'errorClavesNoIguales':"Las claves deben coincidir. Vuelva a intentarlo."
+                })
+        else:
+            return render(request,'cambiarClave.html',{
+                'errorEmailNoExistente':"El email ingresado no existe. Por favor vuelva a intentarlo."
+            })
+            
+        
+        
+        
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario

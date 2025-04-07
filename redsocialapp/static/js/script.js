@@ -30,11 +30,8 @@ document.addEventListener("DOMContentLoaded",function(){
     const formBusqueda = document.getElementById("formBusqueda")
     const header = document.getElementById("header")
 
-    //variable de control para saber si el formulario de busqueda esta activo o no.
     let busquedaActiva = false
 
-    //El evento mouseover se activa cuando el mouse entra en el area del elemento, y el evento mouseout se activa cuando el mouse sale del area del elemento.
-    //Esto permite que el header se expanda cuando el mouse entra en el area del elemento, y se contraiga cuando el mouse sale del area del elemento, pero solo si el formulario de busqueda no esta activo.
     if (header){
         header.addEventListener("mouseenter",function(){
             if (!busquedaActiva){
@@ -48,8 +45,6 @@ document.addEventListener("DOMContentLoaded",function(){
         })
     }
     
-    //El evento click se activa cuando el usuario hace click en el elemento.
-    //Esto permite que el header se expanda cuando el usuario hace click en el elemento.
     if(btnBusquedaUsuarios && header){
         btnBusquedaUsuarios.addEventListener("click",function(){
             formBusqueda.style.display = "flex"
@@ -63,8 +58,6 @@ document.addEventListener("DOMContentLoaded",function(){
         })
     }
 
-    //El evento click se activa cuando el usuario hace click en el elemento.
-    //Esto permite que el header se contraiga cuando el usuario hace click en el elemento.
     if(btnCerrarFormBusqueda && header){
         btnCerrarFormBusqueda.addEventListener("click",function(){
             formBusqueda.style.display = "none"
@@ -86,6 +79,22 @@ document.addEventListener("DOMContentLoaded",function(){
     if(btnCerrarMenu && header){
         btnCerrarMenu.addEventListener("click",function(){
             header.style.display = "none"
+        })
+    }
+    
+    const btnOlvidarClave = document.querySelector(".btnOlvidarClave")
+    const contenedorCambiarClave = document.getElementById("contenedorCambiarClave")
+    const btnCerrarContenedorCambiarClave = document.querySelector(".btnCerrarContenedorCambiarClave")
+
+    if(btnOlvidarClave && contenedorCambiarClave){
+        btnOlvidarClave.addEventListener("click",function(){
+            contenedorCambiarClave.style.display = "flex"
+        })
+    }
+
+    if(btnCerrarContenedorCambiarClave && contenedorCambiarClave){
+        btnCerrarContenedorCambiarClave.addEventListener("click",function(){
+            contenedorCambiarClave.style.display = "none"
         })
     }
 })
