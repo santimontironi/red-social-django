@@ -165,14 +165,14 @@ nav ul li:hover span {
 }
 
 .ingresoMensajeBienvenida img{
-    width: 150px;
+    width: 118px;
     border-radius: 30px;
     box-shadow: 5px 5px 20px #000;
 }
 
 
 .formLogin input{
-    width: 350px;
+    width: 300px;
 }
 
 .formLogin input[type="checkbox"]{
@@ -185,6 +185,10 @@ nav ul li:hover span {
     background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.50)), url(../img/fondoRegistro.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.contenedorRegistro form input{
+    width: 350px;
 }
 
 .contenedorCrearPerfil{

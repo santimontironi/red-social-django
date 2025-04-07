@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil
 from django.db.models import Q
+from django.core.mail import send_mail
+import random
 
 # Create your views here.
 def ingreso(request):
@@ -28,6 +30,7 @@ def ingreso(request):
             request.session.modified = True
             login(request,usuarioAutenticado)
             return redirect('inicio')
+        
     
 def registro(request):
     if request.method == "GET":
@@ -36,12 +39,34 @@ def registro(request):
         username = request.POST["username"]
         clave1 = request.POST["password1"]
         clave2 = request.POST["password2"]
+        email = request.POST["email"]
         if clave1 == clave2:
             try:
-                usuarioRegistrado = User.objects.create_user(username = username, password = clave1)
+                emailRepetido = Perfil.objects.filter(email = email).exists()
+                if emailRepetido:
+                    return render(request,'registro.html',{
+                        'errorEmailExistente':"Ya existe un usuario registrado con el email ingresado. Por favor vuelva a intentarlo."
+                    })
+                    
+                usuarioRegistrado = User.objects.create_user(username = username, password = clave1, email = email)
                 usuarioRegistrado.save()
+                
+                codigoRandom = random.randint(100000,999999) # se genera un código de verificación aleatorio de 6 dígitos
+                perfil = Perfil.objects.create(user = usuarioRegistrado, email = email, codigo_verificacion = codigoRandom)
+                perfil.save()
+                
                 login(request,usuarioRegistrado)
+                
+                send_mail(
+                    "Código de verificación",
+                    f"Tu código es: {request.user.perfil.codigo_verificacion}",
+                    "santiimontironi@gmail.com",
+                    [email],
+                    fail_silently=False,
+                )
+                
                 return redirect('crear-perfil')
+            
             except IntegrityError:
                 return render(request,'registro.html',{
                     'errorUsuarioExistente':"Usuario ya existente con el username ingresado. Por favor vuelva a ingrese otro nuevamente."
@@ -51,19 +76,20 @@ def registro(request):
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
             
+            
 @login_required
 def crearPerfil(request):
+    perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
     if request.method == "POST":
-        form = PerfilForm(request.POST, request.FILES)  # Crear el formulario con los datos ingresados
-        perfil = form.save(commit=False)  # No guarda aún, permite modificar antes
-        perfil.user = request.user  # Asocia el perfil con el usuario actual
-        perfil.save()  # Guarda finalmente
+        form = PerfilForm(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
+        form.save()  # se guarda el perfil
         return redirect('inicio')
     else:
-        form = PerfilForm()  # Muestra un formulario vacío para crear el perfil
-        return render(request,'crearPerfil.html',{
-            'form':form
-        })
+        form = PerfilForm(instance=perfil)  #instance=perfil se usa para mostrar el formulario con los datos del perfil
+    
+    return render(request,'crearPerfil.html',{
+        'form':form
+    })
 
             
 @login_required            
@@ -141,6 +167,7 @@ def agregarComentario(request):
             'formComentario':formularioComentario
         })
 
+
 @login_required
 def miPerfil(request):
     perfil = request.user.perfil
@@ -178,6 +205,7 @@ def buscarUsuarios(request):
             })
    
     return render(request, 'usuarios.html')
+
 
 @login_required
 def agregarAmigos(request):
@@ -221,6 +249,7 @@ def verUsuario(request,id_usuario):
             'totalPublicaciones':totalPublicaciones,
         })
      
+     
 def misAmigos(request):
     amigos = request.user.perfil.amigos.all()
     if amigos:
@@ -233,6 +262,7 @@ def misAmigos(request):
         return render(request,'misAmigos.html',{
             'noHayAmigos':'Todavia no has agregado a ningun amigo.',
         })
+     
      
 def eliminarAmigo(request):
     if request.method == "POST":

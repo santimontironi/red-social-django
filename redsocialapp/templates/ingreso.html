@@ -13,21 +13,28 @@
         <div class="container mt-1 d-flex flex-column justify-content-center align-items-center m-auto h-100">
             <form method="post" action="/" class="formLogin">
                 {% csrf_token %}
-                <div class="mb-3">
+                <div class="mb-2">
+                    <label for="email" class="form-label text-light">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su e-mail" required>
+                </div>
+                <div class="mb-2">
                     <label for="username" class="form-label text-light">Nombre de usuario</label>
                     <input type="text" name="username" class="form-control" id="username" placeholder="Ingrese su usuario" required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="password" class="form-label text-light">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="password" required placeholder="Ingrese su contraseña">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label class="form-label text-light" for="sessionActiva">Mantener la sesión iniciada</label>
                     <input type="checkbox" name="sessionActiva" id="sessionActiva" value="on" {% if request.POST.sessionActiva %}checked{% endif %}>
                 </div>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
+                <div class="botonesIngreso d-flex justify-content-center align-items-center gap-3">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <span class="text-light">o</span>
+                    <a class="btn btn-warning" href="registro/">Regístrate</a>
+                </div>
             </form>
-            <p class="text-light mt-3">O si no tienes cuenta <a class="btn btn-warning" href="registro/">Regístrate</a></p>
             {% if errorCredenciales %}
                 <p class="text-danger fw-bold">{{errorCredenciales}}</p>
             {% endif %}

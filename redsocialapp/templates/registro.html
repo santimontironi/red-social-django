@@ -12,11 +12,15 @@
         <div class="container d-flex flex-column justify-content-center align-items-center m-auto h-100">
             <form action="/registro/" method="post" class="formLogin">
                 {% csrf_token %}
-                <div class="mb-3">
+                <div class="mb-2">
+                    <label for="email" class="form-label text-light">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su e-mail" required>
+                </div>
+                <div class="mb-2">
                     <label for="username" class="form-label text-light">Nombre de usuario</label>
                     <input type="text" name="username" class="form-control" id="username" placeholder="Ingrese su nombre de usuario" required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="password1" class="form-label text-light">Contraseña</label>
                     <input type="password" class="form-control" id="password1" name="password1" required placeholder="Ingrese su contraseña">
                 </div>
@@ -24,14 +28,21 @@
                     <label for="password2" class="form-label text-light">Contraseña confirmación</label>
                     <input type="password" class="form-control" id="password2" name="password2" required placeholder="Ingrese su contraseña nuevamente">
                 </div>
-                <button type="submit" class="btn btn-primary">Regístrate</button>
+                <div class="botonesRegistro d-flex justify-content-center align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary">Regístrate</button>
+                    <span class="text-light">o</span>
+                    <a class="btn btn-light" href="/">Iniciá sesión</a>
+                </div>
+                
             </form>
-            <p class="text-light mt-3">O si ya tienes cuenta <a class="btn btn-light" href="/">Iniciá sesión</a></p>
             {% if errorUsuarioExistente %}
                 <p class="text-danger fw-bold">{{errorUsuarioExistente}}</p>
             {% endif %}
             {% if errorClavesNoIguales %}
                 <p class="text-danger fw-bold">{{errorClavesNoIguales}}</p>
+            {% endif %}
+            {% if errorEmailExistente %}
+                <p class="text-danger fw-bold">{{errorEmailExistente}}</p>
             {% endif %}
         </div>
     </section>

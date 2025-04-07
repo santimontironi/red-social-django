@@ -12,7 +12,7 @@ class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
     amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
     confirmado = models.BooleanField(default=False,blank=False) #Este campo es un booleano que indica si el perfil ha sido confirmado o no. Por defecto, se establece en False.
-
+    codigo_verificacion = models.CharField(max_length=6, blank=True, null=True)
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
     autor = models.ForeignKey(User,on_delete=models.CASCADE)
