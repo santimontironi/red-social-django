@@ -39,11 +39,21 @@
                    Cerrar
                 </button>
                 <h1>Ingreso de clave nueva</h1>
-                <form action="/cambiar-clave/">
+                <form action="/cambiar-clave/" method="post">
+                    {% csrf_token %}
                     <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su e-mail" required>
                     <input type="password" class="form-control" id="password1" name="password1" required placeholder="Ingrese su nueva clave">
                     <input type="password" class="form-control" id="password2" name="password2" required placeholder="Ingrese nuevamente la clave nueva">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                    {%if mensajeExito %}
+                        <p class="text-success fw-bold mt-3 bg-light w-100 text-center p-2">{{mensajeExito}}</p>
+                    {%endif%}
+                    {%if errorClavesNoIguales %}
+                        <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorClavesNoIguales}}</p>
+                    {%endif%}
+                    {%if errorEmailNoExistente %}
+                        <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorEmailNoExistente}}</p>
+                    {%endif%}
                 </form>
             </div>
             {% if errorCredenciales %}

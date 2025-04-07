@@ -96,16 +96,13 @@ def cambiarClave(request):
                     'mensajeExito':"La contraseña se ha cambiado correctamente. Por favor inicie sesión nuevamente."
                 })
             else:
-                return render(request,'cambiarClave.html',{
+                return render(request,'ingreso.html',{
                     'errorClavesNoIguales':"Las claves deben coincidir. Vuelva a intentarlo."
                 })
         else:
-            return render(request,'cambiarClave.html',{
+            return render(request,'ingreso.html',{
                 'errorEmailNoExistente':"El email ingresado no existe. Por favor vuelva a intentarlo."
-            })
-            
-        
-        
+            }) 
         
 @login_required
 def crearPerfil(request):
