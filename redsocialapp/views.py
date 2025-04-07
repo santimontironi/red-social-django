@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil
 from django.db.models import Q
+from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 import random
 
@@ -57,13 +58,16 @@ def registro(request):
                 
                 login(request,usuarioRegistrado)
                 
-                send_mail(
-                    "Código de verificación",
-                    f"Tu código es: {request.user.perfil.codigo_verificacion}",
-                    "santiimontironi@gmail.com",
-                    [email],
-                    fail_silently=False,
-                )
+                try:
+                    email = EmailMessage(
+                        subject="Código de verificación",
+                        body=f"Tu código es: {request.user.perfil.codigo_verificacion}",
+                        from_email="santiimontironi@gmail.com",
+                        to=[email],
+                    )
+                    email.send(fail_silently=False)
+                except Exception as e:
+                    print(f"Error al enviar el correo: {e}")
                 
                 return redirect('crear-perfil')
             
