@@ -7,7 +7,6 @@ from .forms import PerfilForm,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil
 from django.db.models import Q
 from django.core.mail import EmailMessage
-from django.core.mail import send_mail
 import random
 
 # Create your views here.
@@ -69,7 +68,9 @@ def registro(request):
                 except Exception as e:
                     print(f"Error al enviar el correo: {e}")
                 
-                return redirect('crear-perfil')
+                return render(request,'registro.html',{
+                    'mensajeVerificacion':"Se ha enviado un código de verificación a tu correo electrónico. Por favor, verifica tu cuenta para continuar."
+                })
             
             except IntegrityError:
                 return render(request,'registro.html',{

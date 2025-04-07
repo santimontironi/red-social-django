@@ -36,13 +36,16 @@
                 
             </form>
             {% if errorUsuarioExistente %}
-                <p class="text-danger fw-bold">{{errorUsuarioExistente}}</p>
+                <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorUsuarioExistente}}</p>
             {% endif %}
             {% if errorClavesNoIguales %}
-                <p class="text-danger fw-bold">{{errorClavesNoIguales}}</p>
+                <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorClavesNoIguales}}</p>
             {% endif %}
             {% if errorEmailExistente %}
-                <p class="text-danger fw-bold">{{errorEmailExistente}}</p>
+                <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorEmailExistente}}</p>
+            {% endif %}
+            {% if mensajeVerificacion %}
+                <p class="text-success fw-bold mt-3 bg-light w-100 text-center p-2">{{mensajeVerificacion}}</p>
             {% endif %}
         </div>
     </section>
