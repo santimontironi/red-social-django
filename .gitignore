@@ -1,2 +1,4 @@
 venv/
-__pycache_/
+redsocialproject/__pycache__/
+redsocialapp/__pycache__/
+redsocialapp/migrations/__pycache__/
