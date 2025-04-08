@@ -13,6 +13,8 @@ class Perfil(models.Model):
     amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
     confirmado = models.BooleanField(default=False,blank=False) #Este campo es un booleano que indica si el perfil ha sido confirmado o no. Por defecto, se establece en False.
     codigo_verificacion = models.CharField(max_length=6, blank=True, null=True)
+    creado = models.BooleanField(default=False)
+    
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
     autor = models.ForeignKey(User,on_delete=models.CASCADE)

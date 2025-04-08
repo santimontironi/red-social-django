@@ -40,34 +40,41 @@ def registro(request):
         clave1 = request.POST["password1"]
         clave2 = request.POST["password2"]
         email = request.POST["email"]
+        inputCodigo = "codigo" in request.POST
         codigo = request.POST["codigo"] if inputCodigo else None
-        if clave1 == clave2:
+        if clave1 != clave2:
+            return render(request,'registro.html',{
+                'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
+            })
+        if inputCodigo:
             try:
-                emailRepetido = Perfil.objects.filter(email = email).exists()
-                if emailRepetido:
-                    return render(request,'registro.html',{
-                        'errorEmailExistente':"Ya existe un usuario registrado con el email ingresado. Por favor vuelva a intentarlo."
-                    })
-                    
-                codigoRandom = random.randint(100000,999999) # se genera un código de verificación aleatorio de 6 dígitos
-                
-                usuarioRegistrado = User.objects.create_user(username = username, password = clave1, email = email)
-                perfil = Perfil.objects.create(user = usuarioRegistrado, email = email, codigo_verificacion = codigoRandom)
+                perfil = Perfil.objects.get(user__username=username)
                 if perfil.codigo_verificacion == codigo:
+                    perfil.confirmado = True
                     perfil.save()
-                    usuarioRegistrado.save()
-
-                login(request,usuarioRegistrado)
-                
-                try:
-                    email = EmailMessage(
+                    return redirect('crearPerfil')
+                else:
+                    return render(request,'registro.html',{
+                        'errorCodigoIncorrecto':"El código ingresado es incorrecto. Por favor vuelva a intentarlo."
+                    })
+            except Perfil.DoesNotExist:
+                return render(request,'registro.html',{
+                    'errorUsuarioNoExistente':"El usuario ingresado no existe. Por favor vuelva a intentarlo."
+                })
+        else:
+            try:
+                usuario = User.objects.create_user(username=username,email=email,password=clave1)
+                perfil = Perfil(user=usuario,email=email,nombre=username,apellido=username,confirmado=False)
+                perfil.codigo_verificacion = str(random.randint(100000,999999))
+                perfil.save()
+                email_msg = EmailMessage(
                         subject="Código de verificación",
                         body=f"""
                             <html>
                                 <body>
-                                    <h2>Hola {request.user.username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
+                                    <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
                                     <p>Tu código de verificación es:</p>
-                                    <h3 style="color: #2d89ef;">{request.user.perfil.codigo_verificacion}</h3>
+                                    <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
                                     <p>¡Gracias por registrarte!</p>
                                 </body>
                             </html>
@@ -75,28 +82,16 @@ def registro(request):
                         from_email="santiimontironi@gmail.com",
                         to=[email]
                     )
-                    
-                    inputCodigo = True
-                    
-                    email.content_subtype = "html"
-                    email.send(fail_silently=False)
-                    
-                except Exception as e:
-                    print(f"Error al enviar el correo: {e}")
-                
+                email_msg.content_subtype = "html"
+                email_msg.send(fail_silently=False)
                 return render(request,'registro.html',{
-                    'mensajeVerificacion':"Se ha enviado un código de verificación a tu correo electrónico. Por favor, ingresa el código para verificar tu cuenta.",
-                    'inputCodigo': inputCodigo
+                    'mensajeExito':"El usuario se ha registrado correctamente. Revisa tu correo para verificar tu cuenta."
                 })
-            
             except IntegrityError:
                 return render(request,'registro.html',{
-                    'errorUsuarioExistente':"Usuario ya existente con el username ingresado. Por favor vuelva a ingrese otro nuevamente."
+                    'errorUsuarioExistente':"El nombre de usuario ya existe. Por favor elige otro."
                 })
-        else:
-            return render(request,'registro.html',{
-                'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
-            })
+            
             
             
 def cambiarClave(request):
@@ -125,9 +120,12 @@ def cambiarClave(request):
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
+    if not perfil.creado:  # si el perfil no ha sido creado, se redirige a la vista de crear perfil
+        return redirect('crear-perfil')
     if request.method == "POST":
         form = PerfilForm(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
         form.save()  # se guarda el perfil
+        perfil.creado = True
         return redirect('inicio')
     else:
         form = PerfilForm(instance=perfil)  #instance=perfil se usa para mostrar el formulario con los datos del perfil
