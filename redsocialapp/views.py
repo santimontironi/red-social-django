@@ -71,8 +71,10 @@ def registro(request):
                             </html>
                         """,
                         from_email="santiimontironi@gmail.com",
-                        to=[email],
+                        to=[email]
                     )
+                    
+                    inputCodigo = True
                     
                     email.content_subtype = "html"
                     email.send(fail_silently=False)
@@ -82,6 +84,7 @@ def registro(request):
                 
                 return render(request,'registro.html',{
                     'mensajeVerificacion':"Se ha enviado un código de verificación a tu correo electrónico. Por favor, ingresa el código para verificar tu cuenta.",
+                    'inputCodigo': inputCodigo
                 })
             
             except IntegrityError:

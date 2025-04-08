@@ -28,6 +28,12 @@
                     <label for="password2" class="form-label text-light">Contraseña confirmación</label>
                     <input type="password" class="form-control" id="password2" name="password2" required placeholder="Ingrese su contraseña nuevamente">
                 </div>
+                {%if inputCodigo %}
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label text-light">Código de verificación</label>
+                        <input type="text" class="form-control" id="codigo" name="codigo" required placeholder="Ingrese su código de verificación">
+                    </div>
+                {%endif%}
                 <div class="botonesRegistro d-flex justify-content-center align-items-center gap-2">
                     <button type="submit" class="btn btn-primary">Regístrate</button>
                     <span class="text-light">o</span>
