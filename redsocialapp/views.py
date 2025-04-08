@@ -60,16 +60,28 @@ def registro(request):
                 try:
                     email = EmailMessage(
                         subject="Código de verificación",
-                        body=f"Tu código es: {request.user.perfil.codigo_verificacion}",
+                        body=f"""
+                            <html>
+                                <body>
+                                    <h2>Hola {request.user.username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
+                                    <p>Tu código de verificación es:</p>
+                                    <h3 style="color: #2d89ef;">{request.user.perfil.codigo_verificacion}</h3>
+                                    <p>¡Gracias por registrarte!</p>
+                                </body>
+                            </html>
+                        """,
                         from_email="santiimontironi@gmail.com",
                         to=[email],
                     )
+                    
+                    email.content_subtype = "html"
                     email.send(fail_silently=False)
+                    
                 except Exception as e:
                     print(f"Error al enviar el correo: {e}")
                 
                 return render(request,'registro.html',{
-                    'mensajeVerificacion':"Se ha enviado un código de verificación a tu correo electrónico. Por favor, verifica tu cuenta para continuar."
+                    'mensajeVerificacion':"Se ha enviado un código de verificación a tu correo electrónico. Por favor, ingresa el código para verificar tu cuenta.",
                 })
             
             except IntegrityError:
@@ -93,16 +105,17 @@ def cambiarClave(request):
                 usuario.set_password(claveNueva)
                 usuario.save()
                 return render(request,'ingreso.html',{
-                    'mensajeExito':"La contraseña se ha cambiado correctamente. Por favor inicie sesión nuevamente."
+                    'mensajeExito':"La contraseña se ha cambiado correctamente."
                 })
             else:
                 return render(request,'ingreso.html',{
-                    'errorClavesNoIguales':"Las claves deben coincidir. Vuelva a intentarlo."
+                    'errorClavesNoIguales':"Las claves deben coincidir. Por favor vuelva a intentarlo."
                 })
         except User.DoesNotExist:
             return render(request,'ingreso.html',{
                 'errorEmailNoExistente':"El email ingresado no existe. Por favor vuelva a intentarlo."
             }) 
+            
         
 @login_required
 def crearPerfil(request):

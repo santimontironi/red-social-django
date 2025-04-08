@@ -28,7 +28,7 @@
                 <div class="botonesIngreso d-flex justify-content-center align-items-center gap-3 mb-2">
                     <button type="submit" class="btn btn-primary">Ingresar</button>
                     <span class="text-light">o</span>
-                    <a class="btn btn-warning" href="registro/">Regístrate</a>
+                    <a class="btn btn-warning" href="{%url 'registro'%}">Regístrate</a>
                 </div>
             </form>
             <div>
@@ -39,7 +39,7 @@
                    Cerrar
                 </button>
                 <h1>Ingreso de clave nueva</h1>
-                <form action="/cambiar-clave/" method="post">
+                <form action="{%url 'cambiar-clave' %}" method="post">
                     {% csrf_token %}
                     <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su e-mail" required>
                     <input type="password" class="form-control" id="password1" name="password1" required placeholder="Ingrese su nueva clave">
