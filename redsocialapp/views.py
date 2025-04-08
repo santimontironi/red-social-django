@@ -40,6 +40,7 @@ def registro(request):
         clave1 = request.POST["password1"]
         clave2 = request.POST["password2"]
         email = request.POST["email"]
+        codigo = request.POST["codigo"] if inputCodigo else None
         if clave1 == clave2:
             try:
                 emailRepetido = Perfil.objects.filter(email = email).exists()
@@ -48,13 +49,14 @@ def registro(request):
                         'errorEmailExistente':"Ya existe un usuario registrado con el email ingresado. Por favor vuelva a intentarlo."
                     })
                     
-                usuarioRegistrado = User.objects.create_user(username = username, password = clave1, email = email)
-                usuarioRegistrado.save()
-                
                 codigoRandom = random.randint(100000,999999) # se genera un código de verificación aleatorio de 6 dígitos
-                perfil = Perfil.objects.create(user = usuarioRegistrado, email = email, codigo_verificacion = codigoRandom)
-                perfil.save()
                 
+                usuarioRegistrado = User.objects.create_user(username = username, password = clave1, email = email)
+                perfil = Perfil.objects.create(user = usuarioRegistrado, email = email, codigo_verificacion = codigoRandom)
+                if perfil.codigo_verificacion == codigo:
+                    perfil.save()
+                    usuarioRegistrado.save()
+
                 login(request,usuarioRegistrado)
                 
                 try:
