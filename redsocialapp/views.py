@@ -47,7 +47,6 @@ def ingreso(request):
                 })
             
         
-    
 def registro(request):
     if request.method == "GET":
         return render(request, 'registro.html')
@@ -118,6 +117,7 @@ def registro(request):
                 return render(request, 'registro.html', {
                     'errorUsuarioExistente': "El nombre de usuario ya existe. Por favor elige otro."
                 })
+            
             
 def cambiarClave(request):
     if request.method == "POST":
