@@ -55,69 +55,46 @@ def registro(request):
         clave1 = request.POST["password1"]
         clave2 = request.POST["password2"]
         email = request.POST["email"]
-        
-        codigo = request.POST.get("codigo")
-        inputCodigo = True if codigo else False
 
         if clave1 != clave2:
             return render(request, 'registro.html', {
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
+        try:
+            usuario = User.objects.create_user(username=username, email=email, password=clave1)
+            perfil = Perfil(user=usuario, email=email, confirmado=False)
+            perfil.codigo_verificacion = random.randint(100000, 999999)
+            perfil.save()
 
-        if inputCodigo:
-            try:
-                perfil = Perfil.objects.get(email=email, user__username=username)
-                if perfil.codigo_verificacion == codigo:
-                    perfil.confirmado = True
-                    perfil.save()
-                    login(request, perfil.user)
-                    return redirect('crear-perfil')
-                else:
-                    return render(request, 'registro.html', {
-                        'errorCodigoIncorrecto': "El código ingresado es incorrecto.",
-                        'inputCodigo': True,
-                        'username': username
-                    })
-            except Perfil.DoesNotExist:
-                return render(request, 'registro.html', {
-                    'errorUsuarioNoExistente': "El usuario ingresado no existe.",
-                    'inputCodigo': True
-                })
-        else:
-            try:
-                usuario = User.objects.create_user(username=username, email=email, password=clave1)
-                perfil = Perfil(user=usuario, email=email, confirmado=False)
-                perfil.codigo_verificacion = random.randint(100000, 999999)
-                perfil.save()
+            email_msg = EmailMessage(
+                subject="Código de verificación",
+                body=f"""
+                    <html>
+                        <body>
+                            <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
+                            <p>Tu código de verificación es:</p>
+                            <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
+                            <p>¡Gracias por registrarte!</p>
+                        </body>
+                    </html>
+                """,
+                from_email="santiimontironi@gmail.com",
+                to=[email]
+            )
+            email_msg.content_subtype = "html"
+            email_msg.send(fail_silently=False)
 
-                email_msg = EmailMessage(
-                    subject="Código de verificación",
-                    body=f"""
-                        <html>
-                            <body>
-                                <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
-                                <p>Tu código de verificación es:</p>
-                                <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
-                                <p>¡Gracias por registrarte!</p>
-                            </body>
-                        </html>
-                    """,
-                    from_email="santiimontironi@gmail.com",
-                    to=[email]
-                )
-                email_msg.content_subtype = "html"
-                email_msg.send(fail_silently=False)
-
-                return render(request, 'registro.html', {
-                    'mensajeVerificacion': "Revisa tu correo para verificar tu cuenta.",
-                    'inputCodigo': True,
-                    'username': username
-                })
-            except IntegrityError:
-                return render(request, 'registro.html', {
-                    'errorUsuarioExistente': "El nombre de usuario ya existe. Por favor elige otro."
-                })
+            return redirect('confirmar-usuario')
             
+        except IntegrityError:
+            return render(request, 'registro.html', {
+                'errorUsuarioExistente': "El nombre de usuario ya existe. Por favor elige otro."
+             })
+            
+            
+def confirmarUsuario(request):
+    return render(request,'verificarUsuario.html')
+    
             
 def cambiarClave(request):
     if request.method == "POST":
