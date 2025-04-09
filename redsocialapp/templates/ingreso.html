@@ -59,6 +59,9 @@
             {%if errorEmailNoExistente %}
                     <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorEmailNoExistente}}</p>
             {% endif %}
+            {% if errorNoConfirmacion %}
+                    <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorNoConfirmacion}}</p>
+            {% endif %}
         </div>
     </section>
 

@@ -16,7 +16,7 @@ def ingreso(request):
     else:
         username = request.POST["username"]
         password = request.POST["password"]
-        sessionActiva = request.POST.get("sessionActiva") == "on"
+        sessionActiva = request.POST.get("sessionActiva")
         usuarioAutenticado = authenticate(request,username = username, password = password)
         if usuarioAutenticado is None:
             return render(request,'ingreso.html',{
@@ -28,71 +28,96 @@ def ingreso(request):
             else:
                 request.session.set_expiry(0)
             request.session.modified = True
-            login(request,usuarioAutenticado)
-            return redirect('inicio')
+            # Si el usuario no tiene el perfil creado, redirigir a crear perfil
+            perfil = Perfil.objects.filter(user__username = username).first()
+            if perfil:
+                if perfil.confirmado == False:
+                    return render(request, 'ingreso.html', {
+                        'errorNoConfirmado': 'Debes confirmar tu cuenta antes de iniciar sesión.'
+                    })
+                elif perfil.creado == False:
+                    login(request,usuarioAutenticado)
+                    return redirect('crear-perfil')
+                else:
+                    login(request,usuarioAutenticado)
+                    return redirect('inicio')
+            else:
+                return render(request, 'ingreso.html', {
+                    'errorNoPerfil': 'Debes crear un perfil antes de iniciar sesión.'
+                })
+            
         
     
 def registro(request):
     if request.method == "GET":
-        return render(request,'registro.html')
+        return render(request, 'registro.html')
     else:
         username = request.POST["username"]
         clave1 = request.POST["password1"]
         clave2 = request.POST["password2"]
         email = request.POST["email"]
-        inputCodigo = "codigo" in request.POST
-        codigo = request.POST["codigo"] if inputCodigo else None
+        
+        codigo = request.POST.get("codigo")
+        inputCodigo = True if codigo else False
+
         if clave1 != clave2:
-            return render(request,'registro.html',{
+            return render(request, 'registro.html', {
                 'errorClavesNoIguales': 'Las claves deben coincidir. Vuelva a intentarlo.'
             })
+
         if inputCodigo:
             try:
-                perfil = Perfil.objects.get(user__username=username)
+                perfil = Perfil.objects.get(email=email, user__username=username)
                 if perfil.codigo_verificacion == codigo:
                     perfil.confirmado = True
                     perfil.save()
-                    return redirect('crearPerfil')
+                    login(request, perfil.user)
+                    return redirect('crear-perfil')
                 else:
-                    return render(request,'registro.html',{
-                        'errorCodigoIncorrecto':"El código ingresado es incorrecto. Por favor vuelva a intentarlo."
+                    return render(request, 'registro.html', {
+                        'errorCodigoIncorrecto': "El código ingresado es incorrecto.",
+                        'inputCodigo': True,
+                        'username': username
                     })
             except Perfil.DoesNotExist:
-                return render(request,'registro.html',{
-                    'errorUsuarioNoExistente':"El usuario ingresado no existe. Por favor vuelva a intentarlo."
+                return render(request, 'registro.html', {
+                    'errorUsuarioNoExistente': "El usuario ingresado no existe.",
+                    'inputCodigo': True
                 })
         else:
             try:
-                usuario = User.objects.create_user(username=username,email=email,password=clave1)
-                perfil = Perfil(user=usuario,email=email,nombre=username,apellido=username,confirmado=False)
-                perfil.codigo_verificacion = str(random.randint(100000,999999))
+                usuario = User.objects.create_user(username=username, email=email, password=clave1)
+                perfil = Perfil(user=usuario, email=email, confirmado=False)
+                perfil.codigo_verificacion = random.randint(100000, 999999)
                 perfil.save()
+
                 email_msg = EmailMessage(
-                        subject="Código de verificación",
-                        body=f"""
-                            <html>
-                                <body>
-                                    <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
-                                    <p>Tu código de verificación es:</p>
-                                    <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
-                                    <p>¡Gracias por registrarte!</p>
-                                </body>
-                            </html>
-                        """,
-                        from_email="santiimontironi@gmail.com",
-                        to=[email]
-                    )
+                    subject="Código de verificación",
+                    body=f"""
+                        <html>
+                            <body>
+                                <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
+                                <p>Tu código de verificación es:</p>
+                                <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
+                                <p>¡Gracias por registrarte!</p>
+                            </body>
+                        </html>
+                    """,
+                    from_email="santiimontironi@gmail.com",
+                    to=[email]
+                )
                 email_msg.content_subtype = "html"
                 email_msg.send(fail_silently=False)
-                return render(request,'registro.html',{
-                    'mensajeExito':"El usuario se ha registrado correctamente. Revisa tu correo para verificar tu cuenta."
+
+                return render(request, 'registro.html', {
+                    'mensajeVerificacion': "Revisa tu correo para verificar tu cuenta.",
+                    'inputCodigo': True,
+                    'username': username
                 })
             except IntegrityError:
-                return render(request,'registro.html',{
-                    'errorUsuarioExistente':"El nombre de usuario ya existe. Por favor elige otro."
+                return render(request, 'registro.html', {
+                    'errorUsuarioExistente': "El nombre de usuario ya existe. Por favor elige otro."
                 })
-            
-            
             
 def cambiarClave(request):
     if request.method == "POST":
@@ -120,8 +145,6 @@ def cambiarClave(request):
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
-    if not perfil.creado:  # si el perfil no ha sido creado, se redirige a la vista de crear perfil
-        return redirect('crear-perfil')
     if request.method == "POST":
         form = PerfilForm(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
         form.save()  # se guarda el perfil
