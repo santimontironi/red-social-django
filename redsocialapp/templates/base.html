@@ -14,7 +14,7 @@
 </head>
 <body>
     
-    {% if request.path != '/' and request.path != '/registro/' and request.path != '/crear-perfil/' and request.path != '/cambiar-clave/' and request.path != '/confirmar-usuario/' %}
+    {% if request.path != '/' and request.path != '/registro/' and request.path != '/crear-perfil/' and request.path != '/cambiar-clave/' and request.path|slice:":19" != '/confirmar-usuario/' %}
     <button class="btnAbrirMenu btn btn-primary">
       <i class="bi bi-list"></i>
     </button>

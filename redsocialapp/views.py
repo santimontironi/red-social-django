@@ -38,6 +38,9 @@ def ingreso(request):
                 elif perfil.creado == False:
                     login(request,usuarioAutenticado)
                     return redirect('crear-perfil')
+                elif perfil.confirmado == False:
+                    login(request,usuarioAutenticado)
+                    return redirect('confirmar-usuario')
                 else:
                     login(request,usuarioAutenticado)
                     return redirect('inicio')
@@ -84,7 +87,7 @@ def registro(request):
             email_msg.content_subtype = "html"
             email_msg.send(fail_silently=False)
 
-            return redirect('confirmar-usuario')
+            return redirect('confirmar-usuario',user_id=usuario.id)
             
         except IntegrityError:
             return render(request, 'registro.html', {
@@ -92,10 +95,30 @@ def registro(request):
              })
             
             
-def confirmarUsuario(request):
-    return render(request,'verificarUsuario.html')
-    
+
+def confirmarUsuario(request,user_id):
+    if request.method == "GET":
+        return render(request,'verificarUsuario.html')
+    else:
+        codigo = request.POST["codigo"]
+        try:
+            perfil = Perfil.objects.get(user__id = user_id)
+            if int(perfil.codigo_verificacion) == int(codigo):
+                perfil.confirmado = True
+                perfil.save()
+                login(request,perfil.user)
+                return redirect('crear-perfil')
+            else:
+                return render(request,'verificarUsuario.html',{
+                    'errorCodigoIncorrecto':"El código ingresado es incorrecto. Por favor vuelva a intentarlo."
+                })
+        except (User.DoesNotExist,Perfil.DoesNotExist):
+            return render(request,'verificarUsuario.html',{
+                'errorUsuarioNoExistente':"El usuario no existe. Por favor vuelva a intentarlo."
+            })
             
+            
+@login_required
 def cambiarClave(request):
     if request.method == "POST":
         email = request.POST["email"]

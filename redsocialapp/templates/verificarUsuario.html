@@ -6,13 +6,20 @@
     <section class="contenedorVerificarUsuario">
         <h1 class="text-light">Verificación de cuenta</h1>
         <img src="../static/img/logo.webp" alt="logoSocialByte" class="logoVerificarUsuario">
-        <form action="/confirmar-usuario/" method="post">
+        <form method="post">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="codigo" class="form-label text-light">Código de verificación</label>
                 <input type="text" class="form-control" id="codigo" name="codigo" required placeholder="Ingrese su código de verificación">
                 <button class="btn btn-success">Verificar</button>
             </div>
         </form>
+        {% if errorCodigoIncorrecto %}
+            <p class="text-danger fw-bold mt-3 bg-light w-100 text-center p-2">{{errorCodigoIncorrecto}}</p>
+        {% endif %}
+        {% if errorUsuarioNoExistente %}
+            <p class="text-success fw-bold mt-3 bg-light w-100 text-center p-2">{{errorUsuarioNoExistente}}</p>
+        {% endif %}
     </section>
 
 
