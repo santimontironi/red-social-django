@@ -287,6 +287,9 @@ def agregarAmigos(request):
             """    
         else:
             perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
+            perfil.save()
+            amigo.perfil.amigos.add(request.user) #te agregas como amigo del usuario
+            amigo.perfil.save()
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Amigo</button>
             """
