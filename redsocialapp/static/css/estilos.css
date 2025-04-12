@@ -374,12 +374,22 @@ nav ul li:hover span {
     padding-bottom: 50px;
 }
 
-.sinPublicaciones{
+.contenedorSinPublicaciones{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    text-align: center;
+    margin: auto;
+    width: 700px;
+    height: 90vh;
+}
+
+.contenedorSinPublicaciones .sinPublicaciones{
+    background-color: #04172c;
+    padding: 20px;
+    border: solid 2px #fff;
+    box-shadow: 10px 15px 10px #000;
 }
 
 .contenedor-publicacion{

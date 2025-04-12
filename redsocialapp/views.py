@@ -31,11 +31,7 @@ def ingreso(request):
             # Si el usuario no tiene el perfil creado, redirigir a crear perfil
             perfil = Perfil.objects.filter(user__username = username).first()
             if perfil:
-                if perfil.confirmado == False:
-                    return render(request, 'ingreso.html', {
-                        'errorNoConfirmado': 'Debes confirmar tu cuenta antes de iniciar sesión.'
-                    })
-                elif perfil.creado == False:
+                if perfil.creado == False:
                     login(request,usuarioAutenticado)
                     return redirect('crear-perfil')
                 elif perfil.confirmado == False:
