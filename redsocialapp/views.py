@@ -31,12 +31,12 @@ def ingreso(request):
             # Si el usuario no tiene el perfil creado, redirigir a crear perfil
             perfil = Perfil.objects.filter(user__username = username).first()
             if perfil:
-                if perfil.creado == False:
+                if perfil.confirmado == False:
+                    login(request,usuarioAutenticado)
+                    return redirect('confirmar-usuario',user_id = perfil.user.id)
+                elif perfil.creado == False:
                     login(request,usuarioAutenticado)
                     return redirect('crear-perfil')
-                elif perfil.confirmado == False:
-                    login(request,usuarioAutenticado)
-                    return redirect('confirmar-usuario',user_id = perfil.user__username)
                 else:
                     login(request,usuarioAutenticado)
                     return redirect('inicio')
