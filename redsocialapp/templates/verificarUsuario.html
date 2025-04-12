@@ -6,6 +6,11 @@
     <section class="contenedorVerificarUsuario">
         <h1 class="text-light">Verificación de cuenta</h1>
         <img src="../static/img/logo.webp" alt="logoSocialByte" class="logoVerificarUsuario">
+        <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
+            <p class="text-light">Para verificar tu cuenta, ingresa el código de verificación que te hemos enviado a tu correo electrónico.</p>
+            <p class="text-light">Si no has recibido el correo, verifica tu bandeja de entrada o revisa la carpeta de spam.</p>
+        </div>
+        
         <form method="post">
             {% csrf_token %}
             <div class="mb-3">
