@@ -268,7 +268,45 @@ def buscarUsuarios(request):
    
     return render(request, 'usuarios.html')
 
+        
+@login_required
+def verUsuario(request,id_usuario):
+    usuario = get_object_or_404(Perfil,id=id_usuario)
+    publicaciones = Publicacion.objects.filter(autor=usuario.user)
+    totalPublicaciones = Publicacion.objects.filter(autor=usuario.user).count()
+    totalAmigos = usuario.amigos.count()
+    if publicaciones:
+        return render(request,'usuario.html',{
+            'usuario':usuario,
+            'publicaciones':publicaciones,
+            'totalPublicaciones':totalPublicaciones,
+            'totalAmigos':totalAmigos
+        })
+    else:
+        noHayPublicaciones = "Este usuario aún no tiene publicaciones."
+        return render(request,'usuario.html',{
+            'usuario':usuario,
+            'noHayPublicaciones':noHayPublicaciones,
+            'totalAmigos':totalAmigos,
+            'totalPublicaciones':totalPublicaciones,
+        })
+     
 
+@login_required
+def misAmigos(request):
+    amigos = request.user.perfil.amigos.all()
+    if amigos:
+        hayAmigos = True
+        return render(request,'misAmigos.html',{
+            'amigos':amigos,
+            'hayAmigos':hayAmigos
+        })
+    else:
+        return render(request,'misAmigos.html',{
+            'noHayAmigos':'Todavia no has agregado a ningun amigo.',
+        })
+        
+    
 @login_required
 def agregarAmigos(request):
     if request.method == "POST":
@@ -291,44 +329,9 @@ def agregarAmigos(request):
             """
         
         return HttpResponse(respuesta)
-        
-        
-def verUsuario(request,id_usuario):
-    usuario = get_object_or_404(Perfil,id=id_usuario)
-    publicaciones = Publicacion.objects.filter(autor=usuario.user)
-    totalPublicaciones = Publicacion.objects.filter(autor=usuario.user).count()
-    totalAmigos = usuario.amigos.count()
-    if publicaciones:
-        return render(request,'usuario.html',{
-            'usuario':usuario,
-            'publicaciones':publicaciones,
-            'totalPublicaciones':totalPublicaciones,
-            'totalAmigos':totalAmigos
-        })
-    else:
-        noHayPublicaciones = "Este usuario aún no tiene publicaciones."
-        return render(request,'usuario.html',{
-            'usuario':usuario,
-            'noHayPublicaciones':noHayPublicaciones,
-            'totalAmigos':totalAmigos,
-            'totalPublicaciones':totalPublicaciones,
-        })
      
      
-def misAmigos(request):
-    amigos = request.user.perfil.amigos.all()
-    if amigos:
-        hayAmigos = True
-        return render(request,'misAmigos.html',{
-            'amigos':amigos,
-            'hayAmigos':hayAmigos
-        })
-    else:
-        return render(request,'misAmigos.html',{
-            'noHayAmigos':'Todavia no has agregado a ningun amigo.',
-        })
-     
-     
+@login_required     
 def eliminarAmigo(request):
     if request.method == "POST":
         id_amigo = request.POST.get("idAmigo") #se obtiene el id desde el formulario    

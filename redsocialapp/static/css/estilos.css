@@ -710,16 +710,24 @@ nav ul li:hover span {
 .contenedorMisAmigos{
     width: 100%;
     min-height: 100vh;
-    padding: 30px;
+    background: linear-gradient(100deg,#3a7bb8,#121a80);
 }
 
-.sinAmigos{
+.contenedorSinAmigos{
     height: 80vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 22px;
+}
+
+.contenedorMisAmigos .sinAmigos{
+    width: 600px;
+    padding: 20px;
+    border: solid 2px #fff;
+    box-shadow: 10px 15px 10px #000;
+    color: #fff;
 }
 
 .contenedorMisAmigos table{
@@ -867,12 +875,11 @@ nav ul li:hover span {
     .btnPublicar{
         right: 10px;
     }
-    .sinPublicaciones{
-        height: 400px;
-        text-align: center;
+    .contenedorSinPublicaciones{
+        width: 345px;
     }
-    .sinPublicaciones p{
-        width: 340px;
+    .sinPublicaciones{
+        text-align: center;
     }
     .publicacion{
         width: 350px;
@@ -952,6 +959,13 @@ nav ul li:hover span {
     }
     .contenedorMisAmigos{
         padding: 0px;
+        background: linear-gradient(350deg,#3a7bb8,#121a80);
+    }
+    .contenedorSinAmigos{
+        height: 600px;
+    }
+    .contenedorSinAmigos .sinAmigos{
+        width: 400px;
     }
     .contenedorMisAmigos{
         width: 100%;
