@@ -36,7 +36,7 @@ def ingreso(request):
                     return redirect('crear-perfil')
                 elif perfil.confirmado == False:
                     login(request,usuarioAutenticado)
-                    return redirect('confirmar-usuario')
+                    return redirect('confirmar-usuario',user_id = perfil.user__username)
                 else:
                     login(request,usuarioAutenticado)
                     return redirect('inicio')
@@ -67,20 +67,10 @@ def registro(request):
 
             email_msg = EmailMessage(
                 subject="Código de verificación",
-                body=f"""
-                    <html>
-                        <body>
-                            <h2>Hola {username}, somos de <span style="color:#2129a5;font-weight:bold">SocialByte</span></h2>
-                            <p>Tu código de verificación es:</p>
-                            <h3 style="color: #2d89ef;">{perfil.codigo_verificacion}</h3>
-                            <p>¡Gracias por registrarte!</p>
-                        </body>
-                    </html>
-                """,
+                body=f"Hola {username}, tu codigo es: {perfil.codigo_verificacion}",
                 from_email="santiimontironi@gmail.com",
                 to=[email]
             )
-            email_msg.content_subtype = "html"
             email_msg.send(fail_silently=False)
 
             return redirect('confirmar-usuario',user_id=usuario.id)
