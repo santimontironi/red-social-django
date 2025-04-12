@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 body{
     font-family: "Roboto Mono", monospace;
@@ -406,7 +407,7 @@ nav ul li:hover span {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    width: 350px;
+    width: 370px;
     padding: 15px;
     border: solid 2px #fff;
 }
@@ -419,6 +420,8 @@ nav ul li:hover span {
 
 .publicacion img{
     width: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 .publicacion p{
@@ -428,6 +431,7 @@ nav ul li:hover span {
 
 .publicacion span{
     color: #fff;
+    font-family: "Josefin Sans", sans-serif;
 }
 
 .publicacion:hover{

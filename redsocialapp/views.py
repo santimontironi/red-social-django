@@ -145,6 +145,7 @@ def crearPerfil(request):
         form = PerfilForm(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
         form.save()  # se guarda el perfil
         perfil.creado = True
+        perfil.save()
         return redirect('inicio')
     else:
         form = PerfilForm(instance=perfil)  #instance=perfil se usa para mostrar el formulario con los datos del perfil
