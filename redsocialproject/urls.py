@@ -37,7 +37,8 @@ urlpatterns = [
     path('usuario/<int:id_usuario>',views.verUsuario,name='usuario'),
     path('mis-amigos/',views.misAmigos,name='mis-amigos'),
     path('eliminar-amigo/',views.eliminarAmigo,name='eliminar-amigo'),
-    path('cerrar-sesion/',views.cerrarSesion, name='cerrar-sesion')
+    path('novedades/',views.verNovedades,name='novedades'),
+    path('cerrar-sesion/',views.cerrarSesion,name='cerrar-sesion')
 ]
 
 if settings.DEBUG:

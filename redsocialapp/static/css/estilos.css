@@ -671,8 +671,9 @@ nav ul li:hover span {
 
 .usuario .fotoPerfilUsuario img{
     width: 200px;
+    height: 200px;
     border-radius: 1000px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .contenedorUsuario{

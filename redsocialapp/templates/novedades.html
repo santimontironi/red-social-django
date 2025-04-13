@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block content%}
+
+    <h1>Novedades</h1>.
+
+    {%if novedades%}
+        {%for novedad in novedades%}
+            <p>{{novedad.novedad}}</p>
+        {%endfor%}
+    {%else%}
+        <p>No hay novedades</p>
+    {%endif%}
+
+    
+
+{%endblock%}
