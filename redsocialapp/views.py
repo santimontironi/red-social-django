@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm,PublicacionForm,ComentarioForm
-from .models import Publicacion,Perfil
+from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import EmailMessage
 import random
@@ -310,6 +310,7 @@ def agregarAmigos(request):
             perfil.save()
             amigo.perfil.amigos.remove(request.user)
             amigo.perfil.save()
+            Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.")
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
             """    
