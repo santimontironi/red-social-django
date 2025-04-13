@@ -310,8 +310,6 @@ def agregarAmigos(request):
             perfil.save()
             amigo.perfil.amigos.remove(request.user)
             amigo.perfil.save()
-            novedades = Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.")
-            novedades.save()
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
             """    
@@ -320,6 +318,8 @@ def agregarAmigos(request):
             perfil.save()
             amigo.perfil.amigos.add(request.user) #te agregas como amigo del usuario
             amigo.perfil.save()
+            novedades = Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.")
+            novedades.save()
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Amigo</button>
             """
