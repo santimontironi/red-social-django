@@ -111,10 +111,8 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 # Configuración de sesiones
 SESSION_COOKIE_AGE = 1209600  # 2 semanas en segundos (por defecto)
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # La sesión no expira al cerrar el navegador
-SESSION_COOKIE_SECURE = False  # True si usas HTTPS (en producción)
-SESSION_COOKIE_HTTPONLY = True  # Protege contra XSS
-SESSION_SAVE_EVERY_REQUEST = True  # Guarda la sesión en cada petición (opcional)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # La sesión expira al cerrar el navegador
+SESSION_SAVE_EVERY_REQUEST = True  # Renovar la sesión con cada actividad
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

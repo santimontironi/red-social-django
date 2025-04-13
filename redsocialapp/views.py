@@ -16,34 +16,37 @@ def ingreso(request):
     else:
         username = request.POST["username"]
         password = request.POST["password"]
-        sessionActiva = request.POST.get("sessionActiva")
-        usuarioAutenticado = authenticate(request,username = username, password = password)
-        if usuarioAutenticado is None:
-            return render(request,'ingreso.html',{
-                'errorCredenciales': 'Usuario o contraseña no válidos.'
-            })
-        else:
-            if sessionActiva:
-                request.session.set_expiry(1209600)
-            else:
-                request.session.set_expiry(0)
-            request.session.modified = True
-            # Si el usuario no tiene el perfil creado, redirigir a crear perfil
-            perfil = Perfil.objects.filter(user__username = username).first()
-            if perfil:
-                if perfil.confirmado == False:
-                    login(request,usuarioAutenticado)
-                    return redirect('confirmar-usuario',user_id = perfil.user.id)
-                elif perfil.creado == False:
-                    login(request,usuarioAutenticado)
-                    return redirect('crear-perfil')
-                else:
-                    login(request,usuarioAutenticado)
-                    return redirect('inicio')
-            else:
-                return render(request, 'ingreso.html', {
-                    'errorNoPerfil': 'Debes crear un perfil antes de iniciar sesión.'
+        sessionActiva = request.POST.get("sessionActiva") == "on" #es True cuando el checkbox esta marcado
+        
+        busquedaUsuario = User.objects.filter(Q(username=username) | Q(perfil__email = username)).first()
+        
+        if busquedaUsuario:
+            usuarioAutenticado = authenticate(request,username = busquedaUsuario.username, password = password)
+            if usuarioAutenticado is None:
+                return render(request,'ingreso.html',{
+                    'errorCredenciales': 'Usuario o contraseña no válidos.'
                 })
+            else:
+                
+                if sessionActiva:
+                    request.session.set_expiry(1209600)
+                else:
+                    request.session.set_expiry(0)
+                request.session.modified = True
+                
+                # Si el usuario no tiene el perfil creado, redirigir a crear perfil
+                perfil = busquedaUsuario.perfil
+                if perfil:
+                    if perfil.confirmado == False:
+                        login(request,usuarioAutenticado)
+                        return redirect('confirmar-usuario',user_id = perfil.user.id)
+                    elif perfil.creado == False:
+                        login(request,usuarioAutenticado)
+                        return redirect('crear-perfil')
+                    else:
+                        login(request,usuarioAutenticado)
+                        return redirect('inicio')
+            
             
         
 def registro(request):

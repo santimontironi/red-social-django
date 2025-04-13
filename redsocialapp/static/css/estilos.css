@@ -749,6 +749,13 @@ nav ul li:hover span {
     background: linear-gradient(100deg,#3a7bb8,#121a80);
 }
 
+.contenedorMisAmigos h1{
+    font-family: "Josefin Sans", sans-serif;
+    color: #fff;
+    font-size: 60px;
+    border-bottom: solid 1px #fff;
+}
+
 .contenedorSinAmigos{
     height: 80vh;
     width: 100%;

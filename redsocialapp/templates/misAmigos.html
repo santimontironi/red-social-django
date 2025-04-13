@@ -5,8 +5,8 @@
 
     <section class="contenedorMisAmigos">
         {%if hayAmigos%}
-            <h1 class="text-center d-flex justify-content-center align-items-center text-light mb-3">Mis amigos</h1>
-            <table class="table text-center table-bordered table-responsive table-info table-hover table-striped-columns">
+            <h1 class="text-center d-flex justify-content-center align-items-center mb-3">Mis amigos</h1>
+            <table class="table text-center table-bordered table-responsive table-info table-warning table-striped-columns">
                 <thead>
                     <tr>
                         <th scope="col">Usuario</th>
@@ -19,7 +19,7 @@
                     {%for amigo in amigos%}
                         <tr>
                             <td class="align-middle">
-                                <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" style="border-radius: 9999px;">
+                                <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" height="50" style="border-radius: 9999px; object-fit:cover">
                                 <a href="{% url 'usuario' amigo.perfil.id %}" style="text-decoration: none;"><h6>{{ amigo.username }}</h6></a>
                             </td>
                             <td class="align-middle">{{amigo.perfil.nombre}}</td>
