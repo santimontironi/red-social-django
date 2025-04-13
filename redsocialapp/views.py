@@ -306,7 +306,10 @@ def agregarAmigos(request):
         perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
         
         if amigo in perfil.amigos.all():
-            perfil.amigos.remove(amigo) #se elimina al amigo en caso de ya serlo
+            perfil.amigos.remove(amigo)
+            perfil.save()
+            amigo.perfil.amigos.remove(request.user)
+            amigo.perfil.save()
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
             """    
