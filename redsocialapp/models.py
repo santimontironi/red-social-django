@@ -29,3 +29,9 @@ class Comentario(models.Model):
     publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE)
     comentario = models.TextField(max_length=150)
     fechaComentario = models.DateTimeField(auto_now_add=True)
+    
+
+class Novedades(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    novedad = models.CharField(max_length=150,blank=False)
+    fecha = models.DateTimeField(auto_now_add=True)
