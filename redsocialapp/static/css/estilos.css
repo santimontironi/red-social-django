@@ -410,6 +410,7 @@ nav ul li:hover span {
     width: 370px;
     padding: 15px;
     border: solid 2px #fff;
+    font-family: "Josefin Sans", sans-serif;
 }
 
 .publicacion h2{
@@ -431,7 +432,6 @@ nav ul li:hover span {
 
 .publicacion span{
     color: #fff;
-    font-family: "Josefin Sans", sans-serif;
 }
 
 .publicacion:hover{
@@ -672,6 +672,7 @@ nav ul li:hover span {
 .usuario .fotoPerfilUsuario img{
     width: 200px;
     border-radius: 1000px;
+    object-fit: contain;
 }
 
 .contenedorUsuario{
@@ -686,7 +687,7 @@ nav ul li:hover span {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: linear-gradient(230deg,#fff,#c8cbfd);
+    background: linear-gradient(150deg,#ebf1c7,#84b3e5);
     padding: 10px;
     box-shadow: 5px 10px 15px #000;
 }
@@ -702,11 +703,12 @@ nav ul li:hover span {
 
 .publicaciones-usuario{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     margin-top: 35px;
     place-items: center;
     align-items: start;
     gap: 40px;
+    margin-left: 40px;
 }
 
 .publicaciones-usuario .publicacion-usuario{
@@ -715,10 +717,20 @@ nav ul li:hover span {
     padding: 15px;
     background-color: #2129a5;
     box-shadow: 5px 5px 5px #000;
+    border-radius: 30px;
+}
+
+.publicaciones-usuario .publicacion-usuario figure{
+    overflow: hidden;
 }
 
 .publicaciones-usuario .publicacion-usuario img{
     width: 100%;
+}
+
+.publicaciones-usuario .publicacion-usuario img:hover{
+    transform: scale(1.1);
+    transition: .8s;
 }
 
 .publicacion-usuario p{
@@ -730,6 +742,7 @@ nav ul li:hover span {
 }
 
 .contenedorMisAmigos{
+    padding-top: 30px;
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(100deg,#3a7bb8,#121a80);
