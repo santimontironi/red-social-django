@@ -639,13 +639,36 @@ nav ul li:hover span {
     width: 100%;
     min-height: 100vh;
     padding-bottom: 40px;
+    background: linear-gradient(80deg,#4d3ea1,#121a80);
 }
 
 .contenedorBusquedaUsuarios h1{
     text-align: center;
     font-family: "Tektur", sans-serif;
-    margin-top: 30px;
+    color: #fff;
     font-size: 50px;
+    padding-top: 30px;
+    border-bottom: solid 2px #fff;
+}
+
+.contenedorUsuariosNoEncontrados{
+    width: 600px;
+    height: 200px;
+    background: linear-gradient(60deg,#ff1a1a,#e91b1b);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: 6px 5px 15px #000;
+    border: solid 2px #fff;
+}
+
+.contenedorUsuariosNoEncontrados p{
+    color: #fff;
+    font-size: 30px;
 }
 
 .usuarios{
@@ -665,7 +688,8 @@ nav ul li:hover span {
     gap: 30px;
     width: 500px;
     padding: 10px;
-    background-color: #ebf1c7;
+    background: linear-gradient(100deg,#0c294b,#101010);
+    border-radius: 40px;
     box-shadow: 5px 5px 15px #000;
 }
 

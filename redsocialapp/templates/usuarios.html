@@ -15,8 +15,8 @@
                     
                     <div class="datos-usuario">
                         <a href="{% url 'usuario' usuario.id %}"><h2>{{ usuario.user.username }}</h2></a>
-                        <p>Nombre: {{ usuario.nombre }}</p>
-                        <p>Apellido: {{ usuario.apellido }}</p>
+                        <p class="text-light">Nombre: {{ usuario.nombre }}</p>
+                        <p class="text-light">Apellido: {{ usuario.apellido }}</p>
                         {%if usuario.user.id != request.user.id%}
                             <form 
                                 hx-post="/agregar-amigos/" 
@@ -41,7 +41,9 @@
         </div>
     
         {% if usuariosNoEncontrados %}
-            <p class="text-center d-flex justify-content-center align-items-center fs-4">{{ usuariosNoEncontrados }}</p>
+            <section class="contenedorUsuariosNoEncontrados">
+                <p>{{ usuariosNoEncontrados }}</p>
+            </section>
         {% endif %}
     </section>
 

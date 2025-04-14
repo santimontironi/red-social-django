@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import PerfilForm,PublicacionForm,ComentarioForm
+from .forms import PerfilFormCompleto,PerfilFormReducido,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import EmailMessage
@@ -135,13 +135,13 @@ def cambiarClave(request):
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
     if request.method == "POST":
-        form = PerfilForm(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
+        form = PerfilFormCompleto(request.POST, request.FILES, instance=perfil)  #instance=perfil se usa para editar el perfil existente
         form.save()  # se guarda el perfil
         perfil.creado = True
         perfil.save()
         return redirect('inicio')
     else:
-        form = PerfilForm(instance=perfil)  #instance=perfil se usa para mostrar el formulario con los datos del perfil
+        form = PerfilFormCompleto(instance=perfil)  #instance=perfil se usa para mostrar el formulario con los datos del perfil
     
     return render(request,'crearPerfil.html',{
         'form':form
@@ -229,7 +229,7 @@ def miPerfil(request):
     perfil = request.user.perfil
     if request.method == "GET":
         cantidadPublicaciones = Publicacion.objects.filter(autor=request.user).count()
-        formularioPerfil = PerfilForm(instance=perfil)
+        formularioPerfil = PerfilFormReducido(instance=perfil)
         misPublicaciones = Publicacion.objects.filter(autor = request.user)
         return render(request, 'miPerfil.html', {
             'form': formularioPerfil,
@@ -237,7 +237,7 @@ def miPerfil(request):
             'misPublicaciones': misPublicaciones
         })
     else:
-        formularioPerfil = PerfilForm(request.POST,request.FILES,instance=perfil)
+        formularioPerfil = PerfilFormReducido(request.POST,request.FILES,instance=perfil)
         perfilEditado = formularioPerfil.save(commit=False)
         perfilEditado.user = request.user
         perfilEditado.save()

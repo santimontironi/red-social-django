@@ -1,10 +1,16 @@
 from .models import Perfil,Publicacion,Comentario
 from django import forms
 
-class PerfilForm(forms.ModelForm):
+class PerfilFormCompleto(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ['imagen', 'descripcion']
+        fields = ['imagen', 'descripcion', 'nombre', 'apellido']
+        
+
+class PerfilFormReducido(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['imagen','descripcion']
         
 class PublicacionForm(forms.ModelForm):
     class Meta:
