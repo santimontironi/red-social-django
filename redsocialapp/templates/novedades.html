@@ -4,16 +4,22 @@
 
 {%block content%}
 
-    <h1>Novedades</h1>.
+    <section class="contenedorNovedades">
+        <h1>Novedades</h1>
 
-    {%if novedades%}
-        {%for novedad in novedades%}
-            <p>{{novedad.novedad}}</p>
-        {%endfor%}
-    {%else%}
-        <p>No hay novedades</p>
-    {%endif%}
-
+        {%if novedades%}
+            <div class="novedades">
+                {%for novedad in novedades%}
+                    <div class="novedad">
+                        <p>{{novedad.novedad}}</p>
+                        <span>Fecha:{{novedad.fecha|date:"d-m-Y"}}</span>
+                    </div>
+                {%endfor%}
+            </div>
+        {%else%}
+                <p>No hay novedades</p>
+        {%endif%}
     
+    </section>
 
 {%endblock%}

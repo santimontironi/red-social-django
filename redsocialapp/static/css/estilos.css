@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
 
 body{
     font-family: "Roboto Mono", monospace;
@@ -410,7 +410,7 @@ nav ul li:hover span {
     width: 370px;
     padding: 15px;
     border: solid 2px #fff;
-    font-family: "Josefin Sans", sans-serif;
+    font-family: "Tektur", sans-serif;
 }
 
 .publicacion h2{
@@ -803,7 +803,55 @@ nav ul li:hover span {
     width: 1000px;
 }
 
+.contenedorNovedades{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, #6a93ff, #cce4ff, #93baff, #6a93ff);
+}
 
+.contenedorNovedades h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 250px;
+    font-size: 100px;
+    color: #fff;
+    font-family: "Unbounded", sans-serif;
+    background: linear-gradient(#04172c,#090d47);
+    box-shadow: 5px 15px 20px #000;
+}
+
+.novedades{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-content: center;
+    place-items: center;
+    justify-content: center;
+    padding-left: 90px;
+}
+
+.novedad{
+    margin-top: 30px;
+    width: 300px;
+    height: 120px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(20deg,#121a80,#101010);
+    box-shadow: 6px 10px 12px #000;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.novedad:hover{
+    transform: scale(1.1);
+    transition: .8s;
+}
 
 @media (max-width:800px){
     .contenedorVerificarUsuario{
