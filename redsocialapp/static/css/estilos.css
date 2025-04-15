@@ -1093,4 +1093,12 @@ nav ul li:hover span {
     .btnEditarPerfil{
         margin-top: 0px;
     }
+    .contenedorNovedades h1{
+        font-size: 40px;
+    }
+    .contenedorNovedades .novedades{
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+    }
 }

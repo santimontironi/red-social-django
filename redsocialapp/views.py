@@ -108,6 +108,7 @@ def confirmarUsuario(request,user_id):
             })
             
             
+            
 @login_required
 def cambiarClave(request):
     if request.method == "POST":
@@ -132,6 +133,7 @@ def cambiarClave(request):
             }) 
             
         
+        
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
@@ -147,6 +149,7 @@ def crearPerfil(request):
     return render(request,'crearPerfil.html',{
         'form':form
     })
+
 
             
 @login_required            
@@ -164,6 +167,7 @@ def inicio(request):
                 'noHayPublicaciones': True
             })
     
+    
             
 @login_required
 def agregarPublicacion(request):
@@ -178,6 +182,7 @@ def agregarPublicacion(request):
         nuevaPublicacion.autor = request.user
         nuevaPublicacion.save()
         return redirect('inicio')
+    
     
         
 @login_required
@@ -207,6 +212,7 @@ def agregarMeGusta(request, id_post):
     return HttpResponse(respuesta)
     
     
+    
 @login_required
 def agregarComentario(request):
     idPublicacion = request.POST.get("idPublicacion")
@@ -225,6 +231,7 @@ def agregarComentario(request):
         return render(request,'inicio.html',{
             'formComentario':formularioComentario
         })
+
 
 
 @login_required
@@ -247,6 +254,7 @@ def miPerfil(request):
         return redirect('mi-perfil')
         
         
+        
 @login_required
 def buscarUsuarios(request):
     if request.method == "POST":
@@ -264,6 +272,7 @@ def buscarUsuarios(request):
             })
    
     return render(request, 'usuarios.html')
+
 
         
 @login_required
@@ -288,6 +297,7 @@ def verUsuario(request,id_usuario):
             'totalPublicaciones':totalPublicaciones,
         })
      
+     
 
 @login_required
 def misAmigos(request):
@@ -302,6 +312,7 @@ def misAmigos(request):
         return render(request,'misAmigos.html',{
             'noHayAmigos':'Todavia no has agregado a ningun amigo.',
         })
+        
         
     
 @login_required
@@ -333,6 +344,7 @@ def agregarAmigos(request):
         return HttpResponse(respuesta)
      
      
+     
 @login_required     
 def eliminarAmigo(request):
     if request.method == "POST":
@@ -342,6 +354,7 @@ def eliminarAmigo(request):
         perfil.amigos.remove(amigo) #se elimina ese amigo del modelo 
         
     return redirect('mis-amigos')
+
 
 @login_required
 def verNovedades(request):
