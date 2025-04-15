@@ -188,6 +188,8 @@ def agregarMeGusta(request, id_post):
             publicacion.liked_by.remove(request.user)
             publicacion.likes -= 1
             liked = False
+            novedad = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} le ha dado me gusta a tu publicación")
+            novedad.save()
         else:
             publicacion.liked_by.add(request.user)
             publicacion.likes += 1
