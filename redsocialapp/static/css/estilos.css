@@ -639,7 +639,7 @@ nav ul li:hover span {
     width: 100%;
     min-height: 100vh;
     padding-bottom: 40px;
-    background: linear-gradient(80deg,#4d3ea1,#121a80);
+    background: linear-gradient(80deg,#121a80,#090d47);
 }
 
 .contenedorBusquedaUsuarios h1{
@@ -686,9 +686,9 @@ nav ul li:hover span {
     align-items: center;
     justify-content: center;
     gap: 30px;
-    width: 500px;
+    width: 600px;
     padding: 10px;
-    background: linear-gradient(100deg,#0c294b,#101010);
+    background: linear-gradient(100deg,#101010,#04172c);
     border-radius: 40px;
     box-shadow: 5px 5px 15px #000;
 }

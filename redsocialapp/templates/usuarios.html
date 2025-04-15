@@ -14,7 +14,7 @@
                     </div>
                     
                     <div class="datos-usuario">
-                        <a href="{% url 'usuario' usuario.id %}"><h2>{{ usuario.user.username }}</h2></a>
+                        <a href="{% url 'usuario' usuario.id %}"><h2 class="text-light">{{ usuario.user.username }}</h2></a>
                         <p class="text-light">Nombre: {{ usuario.nombre }}</p>
                         <p class="text-light">Apellido: {{ usuario.apellido }}</p>
                         {%if usuario.user.id != request.user.id%}
