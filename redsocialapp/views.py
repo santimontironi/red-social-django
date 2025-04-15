@@ -6,18 +6,20 @@ from django.contrib.auth.decorators import login_required
 from .forms import PerfilFormCompleto,PerfilFormReducido,PublicacionForm,ComentarioForm
 from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 import random
 
 # Create your views here.
 def ingreso(request):
+    if request.user.is_authenticated: #si la cookie del usuario está, se abre la app en inicio.
+        return redirect('inicio')
+    
     if request.method == "GET":
         return render(request,'ingreso.html')
     else:
         username = request.POST["username"]
         password = request.POST["password"]
-        sessionActiva = request.POST.get("sessionActiva") == "on" #es True cuando el checkbox esta marcado
-        
+
         busquedaUsuario = User.objects.filter(Q(username=username) | Q(perfil__email = username)).first()
         
         if busquedaUsuario:
@@ -28,12 +30,11 @@ def ingreso(request):
                 })
             else:
                 
-                if sessionActiva:
+                if request.POST.get("sessionActiva"):
                     request.session.set_expiry(1209600)
                 else:
                     request.session.set_expiry(0)
-                request.session.modified = True
-                
+                    
                 # Si el usuario no tiene el perfil creado, redirigir a crear perfil
                 perfil = busquedaUsuario.perfil
                 if perfil:
@@ -68,13 +69,13 @@ def registro(request):
             perfil.codigo_verificacion = random.randint(100000, 999999)
             perfil.save()
 
-            email_msg = EmailMessage(
+            send_mail(
                 subject="Código de verificación",
-                body=f"Hola {username}, tu codigo es: {perfil.codigo_verificacion}",
+                message=f"Hola {username}, tu codigo es: {perfil.codigo_verificacion}",
                 from_email="santiimontironi@gmail.com",
-                to=[email]
+                recipient_list=[email],
+                fail_silently=False
             )
-            email_msg.send(fail_silently=False)
 
             return redirect('confirmar-usuario',user_id=usuario.id)
             
