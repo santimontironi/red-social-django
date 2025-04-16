@@ -7,7 +7,7 @@ body{
 }
 
 header{
-    width: 147px;
+    width: 130px;
     height: 100vh;
     padding: 15px;
     position: fixed;
@@ -21,6 +21,15 @@ header{
     gap: 30px;
     transition: width 0.3s ease-in-out;
     z-index: 1;
+}
+
+header.expandido {
+    width: 370px !important;
+}
+
+header:hover{
+    width: 240px;
+    transition: .4s;
 }
 
 .btnAbrirMenu{
@@ -58,6 +67,8 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: absolute;
+    left: -20px;
 }
 
 nav ul{
@@ -65,12 +76,7 @@ nav ul{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-}
-
-nav ul li button{
-    padding: 10px;
-    border-radius: 999px;
+    gap: 20px;
 }
 
 nav ul li a{
@@ -79,31 +85,45 @@ nav ul li a{
 }
 
 nav .iconoSeccionNav{
-    width: 38px;
+    width: 35px;
 }
 
-nav .btnBusqueda{
-    position: relative;
+nav .iconoSeccionNavLupa{
+    width: 25px;
 }
 
 nav #formBusqueda{
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
     position: absolute;
-    left: 90%;
-    top: 0;
-    width: 160px;
+    left: -20px;
+}
+
+nav .contenidoFormBusqueda{
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 nav #formBusqueda input[type="text"]{
-    width: 120px;
+    width: 130px;
+    padding: 4px 0px 4px 4px;
+    position: relative;
+}
+
+nav #formBusqueda button{
+    position: absolute;
+    right: 0;
 }
 
 .btnBuscar{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 40px;
+    border: none;
+    background-color: transparent;
 }
 
 .btnCerrarFormBusqueda{
@@ -776,10 +796,17 @@ nav ul li:hover span {
 }
 
 .contenedorMisAmigos h1{
-    font-family: "Josefin Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-family: "Unbounded", sans-serif;
+    height: 200px;
+    width: 100%;
+    font-size: 100px;
     color: #fff;
-    font-size: 60px;
-    border-bottom: solid 1px #fff;
+    background: linear-gradient(#04172c,#090d47);
+    box-shadow: 5px 15px 20px #000;
 }
 
 .contenedorSinAmigos{

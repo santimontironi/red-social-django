@@ -25,47 +25,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     //Los if para cada contenedor sirven para asegurarse de que los elementos existen en el DOM antes de intentar modificar sus estilos.
 
-    const btnBusquedaUsuarios = document.querySelector(".btnBusquedaUsuarios")
-    const btnCerrarFormBusqueda = document.querySelector(".btnCerrarFormBusqueda")
-    const formBusqueda = document.getElementById("formBusqueda")
     const header = document.getElementById("header")
-
-    let busquedaActiva = false
-
-    if (header){
-        header.addEventListener("mouseenter",function(){
-            if (!busquedaActiva){
-                header.style.width = "320px"
-            }
-        })
-        header.addEventListener("mouseleave",function(){
-            if (!busquedaActiva){
-                header.style.width = "147px"
-            }
-        })
-    }
-    
-    if(btnBusquedaUsuarios && header){
-        btnBusquedaUsuarios.addEventListener("click",function(){
-            formBusqueda.style.display = "flex"
-            formBusqueda.style.flexDirection = "column"
-            formBusqueda.style.alignItems = "center"
-            formBusqueda.style.textAlign = "center"
-            formBusqueda.style.justifyContent = "center"
-            formBusqueda.style.gap = "10px"
-            header.style.width = "410px"
-            busquedaActiva = true
-        })
-    }
-
-    if(btnCerrarFormBusqueda && header){
-        btnCerrarFormBusqueda.addEventListener("click",function(){
-            formBusqueda.style.display = "none"
-            header.style.width = "147px"
-            busquedaActiva = false
-        })
-    }
-    
     const btnAbrirMenu = document.querySelector(".btnAbrirMenu")
     const btnCerrarMenu = document.querySelector(".btnCerrarMenu")
 
@@ -73,6 +33,7 @@ document.addEventListener("DOMContentLoaded",function(){
         btnAbrirMenu.addEventListener("click",function(){
             header.style.display = "flex"
             header.style.width = "200px"
+            header.style.transition = ".8s"
         })
     }
 

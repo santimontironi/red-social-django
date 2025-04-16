@@ -21,65 +21,73 @@
     <header id="header">
       <nav>
         <ul>
+
           <li>
             <a href="/inicio/" class="enlaceMenu">
               <img src="../static/img/logo.webp" alt="logoApp" class="logoNav">
             </a>
           </li>
+
+          <li>
+            <form id="formBusqueda" action="/usuarios/" method="post">
+              {% csrf_token %}
+              <div class="contenidoFormBusqueda">
+                <input class="form-control" type="text" name="buscador" placeholder="Usuario" required>
+                <button class="btnBuscar" type="submit">
+                  <img src="https://img.icons8.com/?size=100&id=132&format=png&color=000000" class="iconoSeccionNavLupa" alt="imgBuscarUsuario">
+                </button>
+              </div>
+            </form>
+          </li>
+
           <li class="itemCerrarMenu">
             <button class="btn btn-light btnCerrarMenu">
               <i class="bi bi-x-lg"></i>
             </button>
           </li>
+
           <li>
             <a class="hvr-bounce-to-right" href="/inicio/">
               <img src="https://img.icons8.com/?size=100&id=73&format=png&color=ffffff" alt="imgInicio" class="iconoSeccionNav">
             </a>
             <span class="text-light">Inicio</span>
           </li>
+
           <li>
             <a class="hvr-bounce-to-right" href="/novedades/">
               <img src="https://img.icons8.com/?size=100&id=kjPFPGWm7WyE&format=png&color=ffffff" alt="imgNotificaciones" class="iconoSeccionNav">
             </a>
             <span class="text-light">Novedades</span>
           </li>
-          <li>
-            <button class="hvr-bounce-to-right btnBusquedaUsuarios" style="background-color: transparent; border:none;">
-              <img src="https://img.icons8.com/?size=100&id=132&format=png&color=ffffff" class="iconoSeccionNav" alt="imgBuscarUsuario">
-            </button>
-            <form id="formBusqueda" action="/usuarios/" method="post">
-              {% csrf_token %}
-              <input class="form-control" type="text" name="buscador" placeholder="Usuario" required>
-              <div class="botonesFormBusqueda d-flex gap-2"> 
-                <button class="btn btn-success btnBuscar" type="submit">Buscar</button>
-                <p class="btnCerrarFormBusqueda">x</p>
-              </div>
-            </form>
-          </li>
+          
           <li>
             <a class="hvr-bounce-to-right" href="/mis-amigos/">
               <img class="iconoSeccionNav" src="https://img.icons8.com/?size=100&id=cykh8BZMTKkb&format=png&color=ffffff" alt="imgMisAmigos">
             </a>
             <span class="text-light">Mis amigos</span>
           </li>
+
           <li>
             <a class="hvr-bounce-to-right" href="/agregar-publicacion/">
               <img src="https://img.icons8.com/?size=100&id=24717&format=png&color=ffffff" alt="imgAgregarPublicacion" class="iconoSeccionNav">
             </a>
             <span class="text-light">Agregar publicación</span>
           </li>
+
           <li>
             <a class="hvr-bounce-to-right" href="/mi-perfil/">
               <img src="https://img.icons8.com/?size=100&id=23264&format=png&color=ffffff" alt="imgMiPerfil" class="iconoSeccionNav">
             </a>
             <span class="text-light">Mi perfil</span>
           </li>
+
           <li>
             <a class="hvr-bounce-to-right" href="/cerrar-sesion/">
               <img src="https://img.icons8.com/?size=100&id=2445&format=png&color=ffffff" alt="imgCerrarSesion" class="iconoSeccionNav">
             </a>
             <span class="text-light">Cerrar sesión</span>
           </li>
+
         </ul>
       </nav>
     </header>
