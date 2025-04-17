@@ -45,10 +45,17 @@ document.addEventListener("DOMContentLoaded",function(){
         })
     }
 
-    if(btnCerrarMenu && header){
-        btnCerrarMenu.addEventListener("click",function(){
-            header.style.display = "none"
-        })
+    if (btnCerrarMenu && header) {
+        btnCerrarMenu.addEventListener("click", function () {
+            header.style.animation = "cerrarMenu 0.3s ease-in-out forwards";
+            
+            // Esperar a que termine la animación para ocultar el menú
+            header.addEventListener("animationend",function(){
+                header.style.display = "none";
+                // Resetear la animación para la próxima apertura
+                header.style.animation = "";
+            },{once:true}) //asegura que el evento animationend solo se ejecute una vez al cerrar el menú, y luego el listener se elimina automáticamente.
+        });
     }
     
     const btnOlvidarClave = document.querySelector(".btnOlvidarClave")

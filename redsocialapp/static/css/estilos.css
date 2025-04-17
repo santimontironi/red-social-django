@@ -901,7 +901,7 @@ nav ul li:hover span {
         padding: 0px;
         height: 100vh;
         position: fixed;
-        animation: movimientoHeader ease-in-out .3s;
+        animation: movimientoHeader ease-in-out .3s forwards;
     }
     @keyframes movimientoHeader {
         from{
@@ -909,6 +909,16 @@ nav ul li:hover span {
         }
         to{
             transform: translateX(0px);
+        }
+    }
+    @keyframes cerrarMenu{
+        from{
+            transform: translateX(0px);
+            opacity: 1;
+        }
+        to{
+            transform: translateX(-100px);
+            opacity: 0;
         }
     }
     .enlaceMenu{
