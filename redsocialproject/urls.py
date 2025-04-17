@@ -38,6 +38,7 @@ urlpatterns = [
     path('mis-amigos/',views.misAmigos,name='mis-amigos'),
     path('eliminar-amigo/',views.eliminarAmigo,name='eliminar-amigo'),
     path('novedades/',views.verNovedades,name='novedades'),
+    path('publicacion/<int:idPost>',views.publicacion,name='publicacion'),
     path('cerrar-sesion/',views.cerrarSesion,name='cerrar-sesion')
 ]
 

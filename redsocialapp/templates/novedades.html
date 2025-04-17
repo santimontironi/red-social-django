@@ -13,6 +13,7 @@
                     <div class="novedad">
                         <p>{{novedad.novedad}}</p>
                         <span>Fecha:{{novedad.fecha|date:"d-m-Y"}}</span>
+                        <a href="{% url 'publicacion' novedad.post.id%}">Ver publicación</a>
                     </div>
                 {%endfor%}
             </div>

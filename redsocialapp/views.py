@@ -193,7 +193,7 @@ def agregarMeGusta(request, id_post):
             publicacion.liked_by.remove(request.user)
             publicacion.likes -= 1
             liked = False
-            novedad = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} le ha dado me gusta a tu publicación")
+            novedad = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} le ha dado me gusta a tu publicación",post = publicacion)
             novedad.save()
         else:
             publicacion.liked_by.add(request.user)
@@ -364,6 +364,13 @@ def verNovedades(request):
             'novedades':novedades
         })
     
+    
+@login_required
+def publicacion(request,idPost):
+    post = get_object_or_404(Publicacion, id=idPost)
+    return render(request,'publicacion.html',{
+        'publicacion':post
+    })
      
 @login_required
 def cerrarSesion(request):
