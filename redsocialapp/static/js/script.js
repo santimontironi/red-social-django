@@ -29,11 +29,19 @@ document.addEventListener("DOMContentLoaded",function(){
     const btnAbrirMenu = document.querySelector(".btnAbrirMenu")
     const btnCerrarMenu = document.querySelector(".btnCerrarMenu")
 
+    header.addEventListener("mouseover",function(){
+        header.classList.add("abierto")
+    })
+
+    header.addEventListener("mouseleave",function(){
+        header.classList.remove("abierto")
+    })
+
     if(btnAbrirMenu && header){
         btnAbrirMenu.addEventListener("click",function(){
             header.style.display = "flex"
-            header.style.width = "200px"
-            header.style.transition = ".8s"
+            header.style.width = "150px"
+            header.classList.remove("abierto")
         })
     }
 

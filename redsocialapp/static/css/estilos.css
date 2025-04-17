@@ -23,7 +23,7 @@ header{
     z-index: 1;
 }
 
-header:hover{
+header.abierto{
     width: 240px;
     transition: .4s;
 }
@@ -899,8 +899,17 @@ nav ul li:hover span {
     header{
         display: none;
         padding: 0px;
-        width: 70px;
         height: 100vh;
+        position: fixed;
+        animation: movimientoHeader ease-in-out .3s;
+    }
+    @keyframes movimientoHeader {
+        from{
+            transform: translateX(-100px);
+        }
+        to{
+            transform: translateX(0px);
+        }
     }
     .enlaceMenu{
         display: none;
