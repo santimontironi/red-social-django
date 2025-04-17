@@ -32,9 +32,9 @@ class Comentario(models.Model):
     
 
 class Novedades(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuarioPertenecienteNovedad')
     novedad = models.CharField(max_length=150,blank=False)
     fecha = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL)
-    publicacion = models.ForeignKey(Publicacion, null=True, blank=True, on_delete=models.SET_NULL,related_name='seguimiento')
+    publicacion = models.ForeignKey(Publicacion, null=True, blank=True, on_delete=models.SET_NULL,related_name='nuevoAmigo')
     #SET_NULL indica que si se elimina la publicación o el usuario, no se borra la novedad, simplemente el campo queda en NULL.
