@@ -7,7 +7,7 @@ body{
 }
 
 header{
-    width: 130px;
+    width: 140px;
     height: 100vh;
     padding: 15px;
     position: fixed;
@@ -21,10 +21,6 @@ header{
     gap: 30px;
     transition: width 0.3s ease-in-out;
     z-index: 1;
-}
-
-header.expandido {
-    width: 370px !important;
 }
 
 header:hover{
@@ -61,6 +57,7 @@ header:hover{
     width: 90px;
     border-radius: 999px;
     object-fit: cover;
+    margin-bottom: 30px;
 }
 
 nav{
@@ -68,7 +65,7 @@ nav{
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    left: -20px;
+    left: 10px;
 }
 
 nav ul{
@@ -76,7 +73,9 @@ nav ul{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    position: relative;
+    top: -20px;
 }
 
 nav ul li a{
@@ -88,66 +87,17 @@ nav .iconoSeccionNav{
     width: 35px;
 }
 
-nav .iconoSeccionNavLupa{
-    width: 25px;
-}
-
-nav #formBusqueda{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 200px;
-    position: absolute;
-    left: -20px;
-}
-
-nav .contenidoFormBusqueda{
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-nav #formBusqueda input[type="text"]{
-    width: 130px;
-    padding: 4px 0px 4px 4px;
-    position: relative;
-}
-
-nav #formBusqueda button{
-    position: absolute;
-    right: 0;
-}
-
-.btnBuscar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: transparent;
-}
-
-.btnCerrarFormBusqueda{
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 9999px;
-    background-color: #a52b1c;
-    padding: 10px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 nav ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    left: -20px;
 }
 
 nav ul li span{
     display: none;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 nav ul li:hover span {
@@ -393,6 +343,43 @@ nav ul li:hover span {
     min-height: 100vh;
     background: linear-gradient(to left,#4d3ea1,#103e6e,#000);
     padding-bottom: 50px;
+}
+
+.formularioBusqueda{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 300px;
+}
+
+.formularioBusqueda form{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.formularioBusqueda input{
+    position: relative;
+}
+
+.formularioBusqueda button{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    border: none;
+    height: 100%;
+    width: 35px;
+    background-color: transparent;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formularioBusqueda button img{
+    width: 100%;
 }
 
 .contenedorSinPublicaciones{

@@ -22,28 +22,16 @@
       <nav>
         <ul>
 
-          <li>
-            <a href="/inicio/" class="enlaceMenu">
-              <img src="../static/img/logo.webp" alt="logoApp" class="logoNav">
-            </a>
-          </li>
-
-          <li>
-            <form id="formBusqueda" action="/usuarios/" method="post">
-              {% csrf_token %}
-              <div class="contenidoFormBusqueda">
-                <input class="form-control" type="text" name="buscador" placeholder="Usuario" required>
-                <button class="btnBuscar" type="submit">
-                  <img src="https://img.icons8.com/?size=100&id=132&format=png&color=000000" class="iconoSeccionNavLupa" alt="imgBuscarUsuario">
-                </button>
-              </div>
-            </form>
-          </li>
-
           <li class="itemCerrarMenu">
             <button class="btn btn-light btnCerrarMenu">
               <i class="bi bi-x-lg"></i>
             </button>
+          </li>
+
+          <li>
+            <a href="/inicio/" class="enlaceMenu">
+              <img src="../static/img/logo.webp" alt="logoApp" class="logoNav">
+            </a>
           </li>
 
           <li>
