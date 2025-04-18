@@ -335,7 +335,7 @@ def agregarAmigos(request):
             perfil.save()
             amigo.perfil.amigos.add(request.user) #te agregas como amigo del usuario
             amigo.perfil.save()
-            novedades = Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.")
+            novedades = Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.",usuario=request.user)
             novedades.save()
             respuesta = f"""
                 <button class="btn btn-success" id="boton-{amigo.id}">Amigo</button>
@@ -360,6 +360,7 @@ def eliminarAmigo(request):
 def verNovedades(request):
     if request.method == "GET":
         novedades = Novedades.objects.filter(user = request.user)
+        novedades= novedades.order_by('-fecha')
         return render(request,'novedades.html',{
             'novedades':novedades
         })

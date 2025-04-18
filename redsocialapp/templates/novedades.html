@@ -13,7 +13,12 @@
                     <div class="novedad">
                         <p>{{novedad.novedad}}</p>
                         <span>Fecha:{{novedad.fecha|date:"d-m-Y"}}</span>
-                        <a href="{% url 'publicacion' novedad.post.id%}">Ver publicación</a>
+                        {%if novedad.post%}
+                            <a class="btn btn-success" href="{% url 'publicacion' novedad.post.id %}">Ver publicación</a>
+                        {%endif%}
+                        {%if novedad.usuario%}
+                            <a class="btn btn-primary" href="{% url 'usuario' novedad.usuario.id %}">Ir a su perfil</a>
+                        {%endif%}
                     </div>
                 {%endfor%}
             </div>
