@@ -17,7 +17,7 @@
                             <a class="btn btn-success" href="{% url 'publicacion' novedad.post.id %}">Ver publicación</a>
                         {%endif%}
                         {%if novedad.usuario%}
-                            <a class="btn btn-primary" href="{% url 'usuario' novedad.usuario.id %}">Ir a su perfil</a>
+                            <a class="btn btn-primary" href="{% url 'usuario' request.user.perfil.id %}">Ir a su perfil</a>
                         {%endif%}
                     </div>
                 {%endfor%}
