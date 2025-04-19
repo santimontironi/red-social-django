@@ -5,8 +5,9 @@
 {% block content %}
 
     <section class="contenedorPublicacion">
-        <h2>{{publicacion.autor.username}}</h2>
-        <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+        <div class="publicacionUsuario">
+            <h2 class="fw-lighter">{{publicacion.autor.username}}</h2>
+            <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
             <div class="publicacion-operaciones d-flex align-items-center justify-content-center">
                 <form
                     class="d-flex justify-content-center align-items-center gap-2" 
@@ -32,6 +33,7 @@
             </div>
             <p>{{publicacion.descripcion}}</p>
             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+        </div>
     </section>
 
 
