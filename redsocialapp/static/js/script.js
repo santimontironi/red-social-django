@@ -29,13 +29,18 @@ document.addEventListener("DOMContentLoaded",function(){
     const btnAbrirMenu = document.querySelector(".btnAbrirMenu")
     const btnCerrarMenu = document.querySelector(".btnCerrarMenu")
 
-    header.addEventListener("mouseover",function(){
-        header.classList.add("abierto")
-    })
+    if(header){
+        header.addEventListener("mouseover",function(){
+            header.classList.add("abierto")
+        })
+    }
+    
+    if(header){
+        header.addEventListener("mouseleave",function(){
+            header.classList.remove("abierto")
+        })
+    }
 
-    header.addEventListener("mouseleave",function(){
-        header.classList.remove("abierto")
-    })
 
     if(btnAbrirMenu && header){
         btnAbrirMenu.addEventListener("click",function(){
