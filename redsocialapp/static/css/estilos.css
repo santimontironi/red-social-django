@@ -745,13 +745,15 @@ nav ul li:hover span {
     margin-top: 35px;
     place-items: center;
     align-items: start;
-    gap: 40px;
-    margin-left: 40px;
+    gap: 20px;
+    width: 900px;
+    margin: 40px auto 0 auto;
+
 }
 
 .publicaciones-usuario .publicacion-usuario{
     width: 350px;
-    min-height: 300px;
+    max-height: 650px;
     padding: 15px;
     background-color: #2129a5;
     box-shadow: 5px 5px 5px #000;
@@ -764,6 +766,8 @@ nav ul li:hover span {
 
 .publicaciones-usuario .publicacion-usuario img{
     width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 .publicaciones-usuario .publicacion-usuario img:hover{
