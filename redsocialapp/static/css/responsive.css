@@ -20,6 +20,10 @@
         width: 200px;
         left: 26%;
     }
+    header{
+        position: initial;
+        height: 100px;
+    }
     .perfilHeader{
         margin-right: 15px;
     }
@@ -151,6 +155,15 @@
     }
     .btnPublicar{
         right: 10px;
+    }
+    .contenedorPublicaciones{
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .contenedor-publicacion{
+        margin-top: 0px;
     }
     .contenedorSinPublicaciones{
         width: 345px;
