@@ -25,40 +25,40 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     //Los if para cada contenedor sirven para asegurarse de que los elementos existen en el DOM antes de intentar modificar sus estilos.
 
-    const header = document.getElementById("header")
+    const aside = document.getElementById("aside")
     const btnAbrirMenu = document.querySelector(".btnAbrirMenu")
     const btnCerrarMenu = document.querySelector(".btnCerrarMenu")
 
-    if(header){
-        header.addEventListener("mouseover",function(){
-            header.classList.add("abierto")
+    if(aside){
+        aside.addEventListener("mouseover",function(){
+            aside.classList.add("abierto")
         })
     }
     
-    if(header){
-        header.addEventListener("mouseleave",function(){
-            header.classList.remove("abierto")
+    if(aside){
+        aside.addEventListener("mouseleave",function(){
+            aside.classList.remove("abierto")
         })
     }
 
 
-    if(btnAbrirMenu && header){
+    if(btnAbrirMenu && aside){
         btnAbrirMenu.addEventListener("click",function(){
-            header.style.display = "flex"
-            header.style.width = "150px"
-            header.classList.remove("abierto")
+            aside.style.display = "flex"
+            aside.style.width = "150px"
+            aside.classList.remove("abierto")
         })
     }
 
-    if (btnCerrarMenu && header) {
+    if (btnCerrarMenu && aside) {
         btnCerrarMenu.addEventListener("click", function () {
-            header.style.animation = "cerrarMenu 0.3s ease-in-out forwards";
+            aside.style.animation = "cerrarMenu 0.3s ease-in-out forwards";
             
             // Esperar a que termine la animación para ocultar el menú
-            header.addEventListener("animationend",function(){
-                header.style.display = "none";
+            aside.addEventListener("animationend",function(){
+                aside.style.display = "none";
                 // Resetear la animación para la próxima apertura
-                header.style.animation = "";
+                aside.style.animation = "";
             },{once:true}) //asegura que el evento animationend solo se ejecute una vez al cerrar el menú, y luego el listener se elimina automáticamente.
         });
     }

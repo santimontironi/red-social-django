@@ -6,9 +6,10 @@
     <section class="contenedorMisAmigos">
         <h1>Mis amigos</h1>
         {%if hayAmigos%}
-            <table class="table text-center table-bordered table-responsive table-info table-warning table-striped-columns">
+            <table class="table text-center table-bordered table-responsive table-warning">
                 <thead>
                     <tr>
+                        <th scope="col">Foto de perfil</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
@@ -20,6 +21,8 @@
                         <tr>
                             <td class="align-middle">
                                 <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" height="50" style="border-radius: 9999px; object-fit:cover">
+                            </td>
+                            <td class="align-middle">
                                 <a href="{% url 'usuario' amigo.perfil.id %}" style="text-decoration: none;"><h6>{{ amigo.username }}</h6></a>
                             </td>
                             <td class="align-middle">{{amigo.perfil.nombre}}</td>

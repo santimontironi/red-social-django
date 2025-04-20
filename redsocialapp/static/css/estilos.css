@@ -6,7 +6,7 @@ body{
     font-family: "Roboto Mono", monospace;
 }
 
-header{
+aside{
     width: 130px;
     height: 100vh;
     padding: 15px;
@@ -23,7 +23,7 @@ header{
     z-index: 1;
 }
 
-header.abierto{
+aside.abierto{
     width: 240px;
     transition: .4s;
 }
@@ -823,9 +823,13 @@ nav ul li:hover span {
 
 .contenedorMisAmigos table{
     box-shadow: 5px 5px 15px #000;
-    margin: auto;
-    width: 1000px;
+    width: 1200px;
     margin-top: 50px;
+    margin-left: 11%;
+}
+
+.contenedorMisAmigos table td{
+    width: 100px;
 }
 
 .contenedorNovedades{
@@ -940,7 +944,7 @@ nav ul li:hover span {
     .contenedorVerificarUsuario form input[type="text"]{
         width: 350px;
     }
-    header{
+    aside{
         display: none;
         padding: 0px;
         height: 100vh;
