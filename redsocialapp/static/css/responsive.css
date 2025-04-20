@@ -16,6 +16,20 @@
     .contenedorVerificarUsuario form input[type="text"]{
         width: 350px;
     }
+    .formularioBusqueda{
+        width: 200px;
+        left: 26%;
+    }
+    .perfilHeader{
+        margin-right: 15px;
+    }
+    .perfilHeader img{
+        width: 46px;
+        height: 46px;
+    }
+    .perfilHeaderDatos{
+        display: none;
+    }
     aside{
         display: none;
         padding: 0px;
@@ -134,10 +148,6 @@
     }
     .contenedorInicio{
         padding-top: 70px;
-    }
-    .formularioBusqueda{
-        width: 240px;
-        top: 40px;
     }
     .btnPublicar{
         right: 10px;
