@@ -15,6 +15,24 @@
 <body>
     
     {% if request.path != '/' and request.path != '/registro/' and request.path != '/crear-perfil/' and request.path != '/cambiar-clave/' and request.path|slice:":19" != '/confirmar-usuario/' %}
+    <header>
+      <div class="formularioBusqueda">
+        <form id="formBusqueda" action="/usuarios/" method="post">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="buscador" placeholder="Buscar usuario" required>
+            <button class="btnBuscar" type="submit">
+                <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="iconoBuscar">
+            </button>
+        </form>
+      </div>
+      <div class="perfilHeader">
+        <a href="/mi-perfil/" style="text-decoration: none;"><img src="{{request.user.perfil.imagen.url}}" alt="fotoPerfil"></a>
+        <div class="perfilHeaderDatos">
+          <h2>{{request.user.username}}</h2>
+          <span>{{request.user.email}}</span>
+        </div>
+      </div>
+    </header>
     <button class="btnAbrirMenu btn btn-primary">
       <i class="bi bi-list"></i>
     </button>
