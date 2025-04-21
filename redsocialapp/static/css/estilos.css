@@ -110,17 +110,8 @@ aside.abierto{
     display: none;
 }
 
-.btnAbrirMenu i{
-    font-size: 40px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .btnCerrarMenu{
     display: none;
-    background-color: transparent;
 }
 
 .logoNav{

@@ -18,7 +18,7 @@
     }
     .formularioBusqueda{
         width: 200px;
-        left: 26%;
+        left: 23%;
     }
     header{
         position: initial;
@@ -28,8 +28,8 @@
         margin-right: 15px;
     }
     .perfilHeader img{
-        width: 46px;
-        height: 46px;
+        width: 60px;
+        height: 60px;
     }
     .perfilHeaderDatos{
         display: none;
@@ -73,6 +73,8 @@
         position: absolute;
         left: 20px;
         top: 20px;
+        background-color: transparent;
+        color: #fff;
     }
     nav ul li{
         display: flex;
@@ -90,12 +92,10 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        color: #fff;
     }
     .btnCerrarMenu i{
-        font-size: 32px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font-size: 35px;
     }
     nav{
         align-items: center;
