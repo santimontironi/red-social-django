@@ -6,38 +6,40 @@
     <section class="contenedorMisAmigos">
         <h1>Mis amigos</h1>
         {%if hayAmigos%}
-            <table class="table text-center table-bordered table-responsive table-responsive-sm table-warning">
-                <thead>
-                    <tr>
-                        <th scope="col">Foto de perfil</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Operación</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {%for amigo in amigos%}
+            <div class="table-responsive">
+                <table class="table text-center table-bordered table-warning align-middle">
+                    <thead>
                         <tr>
-                            <td class="align-middle">
-                                <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" height="50" style="border-radius: 9999px; object-fit:cover">
-                            </td>
-                            <td class="align-middle">
-                                <a href="{% url 'usuario' amigo.perfil.id %}" style="text-decoration: none;"><h6>{{ amigo.username }}</h6></a>
-                            </td>
-                            <td class="align-middle">{{amigo.perfil.nombre}}</td>
-                            <td class="align-middle">{{amigo.perfil.apellido}}</td>
-                            <td class="align-middle">
-                                <form action="/eliminar-amigo/" method="post" onsubmit="return confirm('¿Deseas realmente eliminar a {{amigo.username}} de tus amigos?')">
-                                    {%csrf_token%}
-                                    <input type="hidden" value="{{amigo.id}}" name="idAmigo">
-                                    <input type="submit" class="btn btn-danger" value="Eliminar amigo">
-                                </form>
-                            </td>
+                            <th scope="col">Foto de perfil</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Operación</th>
                         </tr>
-                    {%endfor%}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {%for amigo in amigos%}
+                            <tr>
+                                <td>
+                                    <img src="{{amigo.perfil.imagen.url}}" alt="foto de {{amigo.username}}" width="50" height="50" style="border-radius: 9999px; object-fit:cover">
+                                </td>
+                                <td>
+                                    <a href="{% url 'usuario' amigo.perfil.id %}" style="text-decoration: none;"><h6>{{ amigo.username }}</h6></a>
+                                </td>
+                                <td>{{amigo.perfil.nombre}}</td>
+                                <td>{{amigo.perfil.apellido}}</td>
+                                <td>
+                                    <form action="/eliminar-amigo/" method="post" onsubmit="return confirm('¿Deseas realmente eliminar a {{amigo.username}} de tus amigos?')">
+                                        {%csrf_token%}
+                                        <input type="hidden" value="{{amigo.id}}" name="idAmigo">
+                                        <input type="submit" class="btn btn-danger" value="Eliminar amigo">
+                                    </form>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
         {%else%}
             <section class="contenedorSinAmigos">
                 <div class="sinAmigos">

@@ -646,10 +646,11 @@ nav ul li:hover span {
     flex-direction: column;
     align-items: flex-start;
     width: 350px;
-    height: 100%;
+    min-height: 350px;
     padding: 15px;
     background-color: #00000054;
     box-shadow: 5px 5px 15px #000;
+    border-radius: 30px;
 }
 
 .miPublicacion h2{
@@ -665,6 +666,8 @@ nav ul li:hover span {
 
 .miPublicacion img{
     width: 100%;
+    height: 380px;
+    object-fit: cover;
 }
 
 .miPublicacion span{
