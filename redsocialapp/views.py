@@ -302,11 +302,13 @@ def verUsuario(request,id_usuario):
 @login_required
 def misAmigos(request):
     amigos = request.user.perfil.amigos.all()
+    cantidadAmigos = request.user.perfil.amigos.all().count()
     if amigos:
         hayAmigos = True
         return render(request,'misAmigos.html',{
             'amigos':amigos,
-            'hayAmigos':hayAmigos
+            'hayAmigos':hayAmigos,
+            'cantidadAmigos':cantidadAmigos
         })
     else:
         return render(request,'misAmigos.html',{

@@ -835,6 +835,40 @@ nav ul li:hover span {
     top: 40px;
 }
 
+
+.contenedorMisAmigos .operacionesMisAmigos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 7%;
+    padding-left: 15%;
+    padding-right: 10%;
+}
+
+.contenedorMisAmigos .operacionesMisAmigos p{
+    background-color: #000;
+    color: #fff;
+    padding: 15px;
+    box-shadow: 10px 5px 20px #000;
+}
+
+.contenedorMisAmigos .operacionesMisAmigos form{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contenedorMisAmigos .operacionesMisAmigos form input[type="text"]{
+    width: 200px;
+}
+
+.contenedorMisAmigos .operacionesMisAmigos form input[type="submit"]{
+    display: block;
+    width: 100px;
+}
+
 .contenedorSinAmigos{
     height: 80vh;
     width: 100%;
@@ -855,7 +889,7 @@ nav ul li:hover span {
 .contenedorMisAmigos table{
     box-shadow: 5px 5px 15px #000;
     width: 1180px;
-    margin-top: 80px;
+    margin-top: 20px;
     margin-left: 11%;
 }
 

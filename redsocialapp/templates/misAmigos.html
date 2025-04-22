@@ -6,6 +6,13 @@
     <section class="contenedorMisAmigos">
         <h1>Mis amigos</h1>
         {%if hayAmigos%}
+            <div class="operacionesMisAmigos">
+                <p class="cantidadAmigos">Total de amigos: {{cantidadAmigos}}</p>
+                <form action="/buscar-amigos/">
+                    <input class="form-control" type="input" placeholder="Buscar amigos">
+                    <input class="form-control btn btn-success" type="submit" value="Buscar">
+                </form>
+            </div>
             <div class="table-responsive">
                 <table class="table text-center table-bordered table-warning align-middle">
                     <thead>
