@@ -818,17 +818,19 @@ nav ul li:hover span {
 }
 
 .contenedorMisAmigos h1{
-    height: 150px;
+    height: 200px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     font-family: "Unbounded", sans-serif;
-    font-size: 60px;
+    font-size: 70px;
     color: #fff;
     background: linear-gradient(#04172c,#090d47);
     box-shadow: 5px 15px 20px #000;
+    position: relative;
+    top: 40px;
 }
 
 .contenedorSinAmigos{
@@ -851,7 +853,7 @@ nav ul li:hover span {
 .contenedorMisAmigos table{
     box-shadow: 5px 5px 15px #000;
     width: 1180px;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-left: 11%;
 }
 
