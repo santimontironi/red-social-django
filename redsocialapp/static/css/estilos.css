@@ -627,9 +627,9 @@ nav ul li:hover span {
     align-content: center;
     align-items: center;
     align-self: center;
-    padding: 50px 250px 40px 250px;
+    padding: 50px 300px 40px 300px;
     grid-template-columns: repeat(2,1fr);
-    gap: 30px;
+    gap: 40px;
     background: linear-gradient(#04172c,#103e6e);
 }
 
