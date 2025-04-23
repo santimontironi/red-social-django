@@ -678,9 +678,10 @@ nav ul li:hover span {
     width: 100%;
     min-height: 100vh;
     padding-bottom: 40px;
-    background: linear-gradient(rgba(0,0,0,0.20),rgba(0,0,0,0.0)),url(../img/fondoContenedorUsuarios.jpg);
+    background: linear-gradient(#090d47,#04172c);
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 60px;
 }
 
 .contenedorBusquedaUsuarios h1{
@@ -724,12 +725,14 @@ nav ul li:hover span {
 
 .usuario{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    width: 600px;
+    width: 300px;
+    height: 450px;
     padding: 10px;
-    background: linear-gradient(100deg,#101010,#04172c);
+    background: linear-gradient(100deg,#020599,#052850);
     border-radius: 40px;
     box-shadow: 5px 5px 15px #000;
 }

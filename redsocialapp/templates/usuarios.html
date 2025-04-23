@@ -8,7 +8,7 @@
         <h1>Resultados de la busqueda</h1>
         <div class="usuarios">
             {% for usuario in usuarios %}
-                <div class="usuario">
+                <div class="usuario card">
                     <div class="fotoPerfilUsuario">
                         <img src="{{ usuario.imagen.url }}" alt="foto de {{usuario.nombre}}">
                     </div>
