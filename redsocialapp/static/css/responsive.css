@@ -232,6 +232,9 @@
     .btnEditarPerfil{
         margin-top: 35px;
     }
+    .contenedorBusquedaUsuarios{
+        padding-top: 10px;
+    }
     .contenedorBusquedaUsuarios h1{
         font-size: 40px;
     }
