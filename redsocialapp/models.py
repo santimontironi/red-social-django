@@ -7,11 +7,13 @@ class Perfil(models.Model):
     email = models.EmailField(unique=True) #El campo email es único, lo que significa que no puede haber dos usuarios con el mismo correo electrónico en la base de datos.
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100, null=True)
+    token = models.CharField(max_length=200,null=True, blank=True)
+    token_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE) #oneToOneField indica que la relacion entre el usuario y el perfil de 1 a 1, es decir, 1 usuario tiene 1 perfil.
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
-    confirmado = models.BooleanField(default=False,blank=False) #Este campo es un booleano que indica si el perfil ha sido confirmado o no. Por defecto, se establece en False.
+    confirmado = models.BooleanField(default=False,blank=False)
     codigo_verificacion = models.CharField(max_length=6, blank=True, null=True)
     creado = models.BooleanField(default=False)
     

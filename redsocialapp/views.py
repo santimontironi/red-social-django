@@ -136,6 +136,7 @@ def cambiarClave(request):
                 'errorEmailNoExistente':"El email o nombre de usuario ingresado no existe. Por favor vuelva a intentarlo."
             }) 
             
+            
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
