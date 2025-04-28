@@ -112,24 +112,15 @@ def confirmarUsuario(request,user_id):
 @login_required
 def cambiarClave(request):
     if request.method == "POST":
-        email = request.POST["email"]
-        claveNueva = request.POST["password1"]
-        claveNuevaRepetida = request.POST["password2"]
-        try:
-            usuario = User.objects.get(email = email)
-            if claveNueva == claveNuevaRepetida:
-                usuario.set_password(claveNueva)
-                usuario.save()
-                return render(request,'ingreso.html',{
-                    'mensajeExito':"La contraseña se ha cambiado correctamente."
-                })
-            else:
-                return render(request,'ingreso.html',{
-                    'errorClavesNoIguales':"Las claves deben coincidir. Por favor vuelva a intentarlo."
-                })
-        except User.DoesNotExist:
+        emailUsuario = request.POST["email"]
+        usuario = User.objects.filter(Q(user=emailUsuario) | Q(user__perfil__email=emailUsuario))
+        if usuario.exists():
             return render(request,'ingreso.html',{
-                'errorEmailNoExistente':"El email ingresado no existe. Por favor vuelva a intentarlo."
+                'mensajeExito':"La contraseña se ha cambiado correctamente."
+            })
+        else:
+            return render(request,'ingreso.html',{
+                'errorEmailNoExistente':"El email o nombre de usuario ingresado no existe. Por favor vuelva a intentarlo."
             }) 
             
         

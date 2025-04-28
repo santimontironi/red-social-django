@@ -6,7 +6,6 @@ class PerfilFormCompleto(forms.ModelForm):
         model = Perfil
         fields = ['imagen', 'descripcion', 'nombre', 'apellido']
         
-
 class PerfilFormReducido(forms.ModelForm):
     class Meta:
         model = Perfil
