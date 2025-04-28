@@ -8,6 +8,8 @@ from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import send_mail
 import random
+import secrets
+from django.urls import reverse
 
 # Create your views here.
 def ingreso(request):
@@ -113,9 +115,15 @@ def cambiarClave(request):
         emailUsuario = request.POST["email"]
         usuario = User.objects.filter(Q(username=emailUsuario) | Q(perfil__email=emailUsuario)).first()
         if usuario:
+            
+            token = secrets.token_urlsafe() #se genera un token aleatorio
+            
+            #se genera la url para cambiar clave agregando el id del usuario y el token seguro
+            url_cambio_clave = request.build_absolute_uri(reverse('cambiar-clave', args=[usuario.id]) + f"?token={token}")
+            
             send_mail(
                 subject="Cambio de contraseña.",
-                message=f"Hola {usuario.username}, has restablecido tu contraseña de SocialByte",
+                message=f"Hola {usuario.username}, has restablecido tu contraseña de SocialByte. Para cambiarla haz click en este enlace: \n{url_cambio_clave}",
                 from_email="santiimontironi@gmail.com",
                 recipient_list=[usuario.perfil.email],
                 fail_silently=False
@@ -128,7 +136,6 @@ def cambiarClave(request):
                 'errorEmailNoExistente':"El email o nombre de usuario ingresado no existe. Por favor vuelva a intentarlo."
             }) 
             
-     
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
