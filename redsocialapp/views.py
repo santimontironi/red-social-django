@@ -108,23 +108,27 @@ def confirmarUsuario(request,user_id):
             })
             
             
-            
-@login_required
 def cambiarClave(request):
     if request.method == "POST":
         emailUsuario = request.POST["email"]
-        usuario = User.objects.filter(Q(user=emailUsuario) | Q(user__perfil__email=emailUsuario))
-        if usuario.exists():
+        usuario = User.objects.filter(Q(username=emailUsuario) | Q(perfil__email=emailUsuario)).first()
+        if usuario:
+            send_mail(
+                subject="Cambio de contraseña.",
+                message=f"Hola {usuario.username}, has restablecido tu contraseña de SocialByte",
+                from_email="santiimontironi@gmail.com",
+                recipient_list=[usuario.perfil.email],
+                fail_silently=False
+            )
             return render(request,'ingreso.html',{
-                'mensajeExito':"La contraseña se ha cambiado correctamente."
+                'mensajeExito':"Se ha enviado un correo electrónico a tu bandeja de entrada."
             })
         else:
             return render(request,'ingreso.html',{
                 'errorEmailNoExistente':"El email o nombre de usuario ingresado no existe. Por favor vuelva a intentarlo."
             }) 
             
-        
-        
+     
 @login_required
 def crearPerfil(request):
     perfil = Perfil.objects.filter(user = request.user).first()  # se obtiene el primer perfil encontrado con el id del usuario
