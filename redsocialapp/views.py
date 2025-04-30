@@ -7,8 +7,8 @@ from .forms import PerfilFormCompleto,PerfilFormReducido,PublicacionForm,Comenta
 from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import send_mail
-import random
-import secrets
+import random, secrets
+from django.utils import timezone
 from django.urls import reverse
 
 # Create your views here.
@@ -117,6 +117,10 @@ def cambiarClave(request):
         if usuario:
             
             token = secrets.token_urlsafe() #se genera un token aleatorio
+            
+            usuario.perfil.token = token #se le asigna al usuario su token
+            usuario.perfil.token_created = timezone.now() #se le asigna al usuario la fecha y hora del token creado
+            usuario.save()
             
             #se genera la url para cambiar clave agregando el id del usuario y el token seguro
             url_cambio_clave = request.build_absolute_uri(reverse('cambiar-clave', args=[usuario.id]) + f"?token={token}")
