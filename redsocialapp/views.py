@@ -8,6 +8,7 @@ from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import send_mail
 import random, secrets
+from datetime import timedelta
 from django.utils import timezone
 from django.urls import reverse
 
@@ -87,7 +88,6 @@ def registro(request):
              })
             
             
-
 def confirmarUsuario(request,user_id):
     if request.method == "GET":
         return render(request,'verificarUsuario.html')
@@ -110,7 +110,7 @@ def confirmarUsuario(request,user_id):
             })
             
             
-def cambiarClave(request):
+def enviarToken(request):
     if request.method == "POST":
         emailUsuario = request.POST["email"]
         usuario = User.objects.filter(Q(username=emailUsuario) | Q(perfil__email=emailUsuario)).first()
@@ -138,7 +138,32 @@ def cambiarClave(request):
         else:
             return render(request,'ingreso.html',{
                 'errorEmailNoExistente':"El email o nombre de usuario ingresado no existe. Por favor vuelva a intentarlo."
-            }) 
+            })
+            
+    return render(request, "cambiarClave.html", {
+        'usuario': usuario
+    }) 
+
+
+def cambiarClave(request,id):
+    usuario = User.objects.get(id = id)
+    tiempoLimite = usuario.perfil.token_created + timedelta(hours=1) #se le suma una hora a la hora que fue creado el token
+    if timezone.now() > tiempoLimite:
+        return render(request,'cambiarClave.html',{
+            'tokenExpirado': 'El token de confirmación ha vencido, por favor vuelve a solicitarlo.',
+            'usuario': usuario
+        })
+    if request.method == "POST":
+        inputCambiarClave = request.POST["claveNueva"]
+        try:
+            usuario.set_password(inputCambiarClave)
+            usuario.perfil.token = None
+            usuario.perfil.token_created = None
+            usuario.save()
+        except User.DoesNotExist:
+            return render(request,'cambiarClave.html',{
+                'usuarioNoExistente': 'Error. El usuario correspondiente no es válido.'
+            })
             
             
 @login_required

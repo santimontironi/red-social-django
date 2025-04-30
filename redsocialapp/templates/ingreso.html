@@ -39,7 +39,7 @@
                    Cerrar
                 </button>
                 <h1>Ingreso de clave nueva</h1>
-                <form action="{%url 'cambiar-clave' %}" method="post">
+                <form action="{%url 'enviar-token' %}" method="post">
                     {% csrf_token %}
                     <input type="email" name="email" class="form-control" id="email" placeholder="Ingrese su e-mail o nombre de usuario" required>
                     <button type="submit" class="btn btn-primary">Verificar usuario</button>

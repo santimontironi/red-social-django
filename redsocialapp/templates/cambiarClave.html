@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block content%}
+
+    <section class="contenedorClaveNueva">
+        <form action="{% url 'cambiar-clave' usuario.id %}" method="post">
+            {%csrf_token%}
+            <input type="password" name="claveNueva">
+            <button>Cambiar</button>
+        </form>
+    </section>
+
+{%endblock%}
