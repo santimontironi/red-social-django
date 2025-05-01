@@ -119,8 +119,8 @@ def enviarToken(request):
             token = secrets.token_urlsafe() #se genera un token aleatorio
             
             usuario.perfil.token = token #se le asigna al usuario su token
-            usuario.perfil.token_created = timezone.localtime(timezone.now()) #se le asigna al usuario la fecha y hora del token creado
-            usuario.save()
+            usuario.perfil.token_created = timezone.now() #se le asigna al usuario la fecha y hora del token creado
+            usuario.perfil.save()
             
             #se genera la url para cambiar clave agregando el id del usuario y el token seguro
             url_cambio_clave = request.build_absolute_uri(reverse('cambiar-clave', args=[usuario.id]) + f"?token={token}")
@@ -148,13 +148,9 @@ def enviarToken(request):
 def cambiarClave(request,id):
     try:
         usuario = User.objects.get(id = id)
-        usuario.perfil.token_created = timezone.localtime(timezone.now())
         tiempoLimite = usuario.perfil.token_created + timedelta(hours=1) #se le suma una hora a la hora que fue creado el token
-        ahora =  timezone.localtime(timezone.now())
+        ahora =  timezone.now() #horario actual
         if ahora > tiempoLimite:
-            print("la hora de ahora es ",ahora)
-            print("el tiempo limite es ",tiempoLimite)
-            print("el token fue creado ", usuario.perfil.token_created)
             return render(request,'cambiarClave.html',{
                 'tokenExpirado': 'El token de confirmación ha vencido, por favor vuelve a solicitarlo.',
                 'usuario': usuario
