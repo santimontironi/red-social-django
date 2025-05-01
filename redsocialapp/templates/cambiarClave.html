@@ -10,6 +10,18 @@
             <input type="password" name="claveNueva">
             <button>Cambiar</button>
         </form>
+
+        {%if usuarioNoExistente%}
+            <p>{{usuarioNoExistente}}/p>
+        {%endif%}
+
+        {%if tokenExpirado%}
+            <p>{{tokenExpirado}}</p>
+        {%endif%}
+
+        {%if cambioCorrecto%}
+            <p>{{cambioCorrecto}}</p>
+        {%endif%}
     </section>
 
 {%endblock%}

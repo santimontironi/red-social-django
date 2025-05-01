@@ -119,7 +119,7 @@ def enviarToken(request):
             token = secrets.token_urlsafe() #se genera un token aleatorio
             
             usuario.perfil.token = token #se le asigna al usuario su token
-            usuario.perfil.token_created = timezone.now() #se le asigna al usuario la fecha y hora del token creado
+            usuario.perfil.token_created = timezone.localtime(timezone.now()) #se le asigna al usuario la fecha y hora del token creado
             usuario.save()
             
             #se genera la url para cambiar clave agregando el id del usuario y el token seguro
@@ -146,24 +146,38 @@ def enviarToken(request):
 
 
 def cambiarClave(request,id):
-    usuario = User.objects.get(id = id)
-    tiempoLimite = usuario.perfil.token_created + timedelta(hours=1) #se le suma una hora a la hora que fue creado el token
-    if timezone.now() > tiempoLimite:
-        return render(request,'cambiarClave.html',{
-            'tokenExpirado': 'El token de confirmación ha vencido, por favor vuelve a solicitarlo.',
-            'usuario': usuario
-        })
-    if request.method == "POST":
-        inputCambiarClave = request.POST["claveNueva"]
-        try:
+    try:
+        usuario = User.objects.get(id = id)
+        usuario.perfil.token_created = timezone.localtime(timezone.now())
+        tiempoLimite = usuario.perfil.token_created + timedelta(hours=1) #se le suma una hora a la hora que fue creado el token
+        ahora =  timezone.localtime(timezone.now())
+        if ahora > tiempoLimite:
+            print("la hora de ahora es ",ahora)
+            print("el tiempo limite es ",tiempoLimite)
+            print("el token fue creado ", usuario.perfil.token_created)
+            return render(request,'cambiarClave.html',{
+                'tokenExpirado': 'El token de confirmación ha vencido, por favor vuelve a solicitarlo.',
+                'usuario': usuario
+            })
+        if request.method == "POST":
+            inputCambiarClave = request.POST["claveNueva"]
             usuario.set_password(inputCambiarClave)
             usuario.perfil.token = None
             usuario.perfil.token_created = None
             usuario.save()
-        except User.DoesNotExist:
             return render(request,'cambiarClave.html',{
-                'usuarioNoExistente': 'Error. El usuario correspondiente no es válido.'
+                'cambioCorrecto': 'Contraseña cambiada correctamente, ya puedes iniciar sesión nuevamente en: ',
+                'usuario':usuario
             })
+        else:
+            return render(request,'cambiarClave.html',{
+                'usuario':usuario
+            })
+    except User.DoesNotExist:
+        return render(request,'cambiarClave.html',{
+            'usuarioNoExistente': 'Error. El usuario correspondiente no es válido.'
+        })
+            
             
             
 @login_required
