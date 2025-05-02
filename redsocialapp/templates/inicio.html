@@ -51,11 +51,11 @@
                             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
                             {% if publicacion.cantidadComentarios >= 2 %}
                             
-                                <details class="mt-3">
+                                <details class="mt-3 contenedorComentarios w-100">
                                     <summary class="text-light">Ver comentarios</summary>
-                                    <ul>
+                                    <ul class="mt-3 d-flex flex-column gap-3 listadoComentarios">
                                         {% for comentario in publicacion.comentario.all %}
-                                            <li class="d-flex gap-3">
+                                            <li class="d-flex gap-3 bg-primary h-auto rounded-3" style="padding: 3px;">
                                                 <p>@{{comentario.autor}}</p>
                                                 <p>{{comentario.comentario}}</p>
                                             </li>
