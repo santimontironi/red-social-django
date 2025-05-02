@@ -257,7 +257,7 @@ def agregarMeGusta(request, id_post):
     
 @login_required
 def agregarComentario(request):
-    idPublicacion = request.POST.get("idPublicacion")
+    idPublicacion = request.POST.get("publicacion_id")
     idPublicacion = Publicacion.objects.get(id = idPublicacion)
     if request.method == "POST":
         formularioComentario = ComentarioForm(request.POST)

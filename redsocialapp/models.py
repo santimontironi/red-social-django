@@ -28,7 +28,7 @@ class Publicacion(models.Model):
     
 
 class Comentario(models.Model):
-    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comentarios')
     publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE)
     comentario = models.TextField(max_length=150)
     fechaComentario = models.DateTimeField(auto_now_add=True)

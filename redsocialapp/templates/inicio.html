@@ -49,6 +49,14 @@
                             </div>
                             <p>{{publicacion.descripcion}}</p>
                             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+                            {% if publicacion.cantidadComentarios >= 2 %}
+                            
+                                <details>
+                                    <summary class="text-light">Ver comentarios</summary>
+                                    <p>Este es el contenido que se despliega al hacer clic.</p>
+                                </details>
+
+                            {% endif %}
                         </div>
                     </div>
             {% endfor %}
