@@ -235,8 +235,9 @@ def agregarMeGusta(request, id_post):
             publicacion.liked_by.remove(request.user)
             publicacion.likes -= 1
             liked = False
-            novedad = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} le ha dado me gusta a tu publicación",post = publicacion)
-            novedad.save()
+            if publicacion.autor != request.user:
+                novedad = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} le ha dado me gusta a tu publicación",post = publicacion)
+                novedad.save()
         else:
             publicacion.liked_by.add(request.user)
             publicacion.likes += 1
@@ -268,7 +269,7 @@ def agregarComentario(request):
         publicacion.save()
         comentarioRealizado.save()
         if publicacion.autor != request.user:
-            novedades = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} ha comentado tu foto.", usuario=request.user, comentario = comentarioRealizado)
+            novedades = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} ha comentado tu foto.", usuario=request.user, comentario = comentarioRealizado, publicacion=publicacion)
             novedades.save()
         
         return redirect('inicio')
