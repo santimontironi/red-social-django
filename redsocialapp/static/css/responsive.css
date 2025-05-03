@@ -249,10 +249,22 @@
     }
     .usuario-datos{
         flex-direction: column;
-        padding-top: 80px;
+        padding-top: 30px;
+        height: auto;
     }
     .usuario-datos img{
-        width: 200px;
+        width: 240px;
+        height: 240px;
+    }
+    .nombre-usuario h1{
+        font-size: 45px;
+    }
+    .nombre-usuario span{
+        font-size: 20px;
+        font-weight: lighter;
+    }
+    .nombre-usuario p{
+        font-size: 22px;
     }
     .publicaciones-usuario{
         display: flex;

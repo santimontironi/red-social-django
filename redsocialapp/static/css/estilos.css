@@ -786,13 +786,14 @@ nav ul li:hover span {
     align-items: center;
     width: 100%;
     background: linear-gradient(150deg,#ebf1c7,#84b3e5);
-    padding: 10px;
+    padding-top: 40px;
     box-shadow: 5px 10px 15px #000;
+    height: 350px;
 }
 
 .usuario-datos img{
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 220px;
     object-fit: cover;
     border-radius: 99999px;
     border: solid 2px #fff;
