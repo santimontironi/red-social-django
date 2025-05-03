@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
-                'redsocialapp.context_processors.novedades'
+                'redsocialapp.context_processors.novedadesNuevas'
             ],
         },
     },

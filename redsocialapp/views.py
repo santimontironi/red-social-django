@@ -197,19 +197,16 @@ def crearPerfil(request):
 @login_required            
 def inicio(request):
     if request.method == "GET":
-        tiene_novedades = Novedades.objects.filter(leida = False, user=request.user).exists()
         amigos = request.user.perfil.amigos.all() 
         publicaciones = Publicacion.objects.filter(autor__in=amigos) | Publicacion.objects.filter(autor=request.user)
         publicaciones = publicaciones.order_by('-fechaPublicacion')
         if publicaciones.exists():
             return render(request,'inicio.html', {
-                'publicaciones':publicaciones,
-                'tiene_novedades':tiene_novedades
+                'publicaciones':publicaciones
             })
         else:
             return render(request,'inicio.html',{
-                'noHayPublicaciones': True,
-                'tiene_novedades':tiene_novedades
+                'noHayPublicaciones': True
             })
     
     
