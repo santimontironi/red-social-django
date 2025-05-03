@@ -49,15 +49,16 @@
                             </div>
                             <p>{{publicacion.descripcion}}</p>
                             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+
                             {% if publicacion.cantidadComentarios > 1 %}
                             
                                 <details class="mt-3 contenedorComentarios w-100">
                                     <summary class="text-light">Ver comentarios ({{publicacion.comentario.all.count}})</summary>
                                     <ul class="mt-3 d-flex flex-column gap-3 listadoComentarios">
                                         {% for comentario in publicacion.comentario.all %}
-                                            <li class="d-flex gap-3 bg-primary h-auto rounded-3" style="padding: 3px;">
-                                                <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;"><p>@{{comentario.autor}}</p></a>
-                                                <p>{{comentario.comentario}}</p>
+                                            <li class="d-flex gap-3 bg-info h-auto rounded-3" style="padding: 3px;">
+                                                <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;"><p class="text-dark fw-bold">@{{comentario.autor}}:</p></a>
+                                                <p class="text-dark fw-bold">{{comentario.comentario}}</p>
                                             </li>
                                         {% endfor %}
                                     </ul>
