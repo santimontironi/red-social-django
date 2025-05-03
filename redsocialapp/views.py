@@ -408,13 +408,19 @@ def eliminarAmigo(request):
 @login_required
 def verNovedades(request):
     if request.method == "GET":
-        novedades = Novedades.objects.filter(user = request.user)
-        novedades.update(leida = True)
-        novedades = novedades.order_by('-fecha')
-        return render(request,'novedades.html',{
-            'novedades':novedades
+        # Filtramos las novedades para el usuario autenticado
+        novedades = Novedades.objects.filter(user=request.user)
+
+        # Actualizamos los registros a 'leída' sin afectar la lista de novedades
+        novedades.update(leida=True)
+
+        # Ahora, ordenamos las novedades después de la actualización
+        novedades = Novedades.objects.filter(user=request.user).order_by('-fecha')
+
+        # Renderizamos la vista con las novedades
+        return render(request, 'novedades.html', {
+            'novedades': novedades
         })
-    
     
 @login_required
 def publicacion(request,idPost):
