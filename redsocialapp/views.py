@@ -258,14 +258,14 @@ def agregarMeGusta(request, id_post):
 @login_required
 def agregarComentario(request):
     idPublicacion = request.POST.get("publicacion_id")
-    idPublicacion = Publicacion.objects.get(id = idPublicacion)
+    publicacion = Publicacion.objects.get(id = idPublicacion)
     if request.method == "POST":
         formularioComentario = ComentarioForm(request.POST)
         comentarioRealizado = formularioComentario.save(commit=False)
         comentarioRealizado.autor = request.user
-        comentarioRealizado.publicacion = idPublicacion
-        idPublicacion.cantidadComentarios += 1
-        idPublicacion.save()
+        comentarioRealizado.publicacion = publicacion
+        publicacion.cantidadComentarios += 1
+        publicacion.save()
         comentarioRealizado.save()
         return redirect('inicio')
     else:

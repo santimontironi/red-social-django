@@ -22,7 +22,7 @@
                 {% for publicacion in publicaciones %}
                     <div class="contenedor-publicacion">
                         <div class="publicacion" data-aos="zoom-in" data-aos-duration="700">
-                            <h2>{{publicacion.autor.username}}</h2>
+                            <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;"><h2>{{publicacion.autor.username}}</h2></a>
                             <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                             <div class="publicacion-operaciones d-flex align-items-center justify-content-center">
                                 <form
@@ -52,7 +52,7 @@
                             {% if publicacion.cantidadComentarios > 1 %}
                             
                                 <details class="mt-3 contenedorComentarios w-100">
-                                    <summary class="text-light">Ver comentarios</summary>
+                                    <summary class="text-light">Ver comentarios ({{publicacion.comentario.all.count}})</summary>
                                     <ul class="mt-3 d-flex flex-column gap-3 listadoComentarios">
                                         {% for comentario in publicacion.comentario.all %}
                                             <li class="d-flex gap-3 bg-primary h-auto rounded-3" style="padding: 3px;">
