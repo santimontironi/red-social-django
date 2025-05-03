@@ -267,6 +267,10 @@ def agregarComentario(request):
         publicacion.cantidadComentarios += 1
         publicacion.save()
         comentarioRealizado.save()
+        if publicacion.autor != request.user:
+            novedades = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} ha comentado tu foto.", usuario=request.user, comentario = comentarioRealizado)
+            novedades.save()
+        
         return redirect('inicio')
     else:
         formularioComentario = ComentarioForm()

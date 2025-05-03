@@ -39,4 +39,5 @@ class Novedades(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL)
     post = models.ForeignKey(Publicacion, null=True, blank=True, on_delete=models.SET_NULL,related_name='nuevoAmigo')
+    comentario = models.TextField(max_length=150, null=True, blank=True)
     #SET_NULL indica que si se elimina la publicación o el usuario, no se borra la novedad, simplemente el campo queda en NULL.
