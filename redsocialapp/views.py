@@ -409,7 +409,8 @@ def eliminarAmigo(request):
 def verNovedades(request):
     if request.method == "GET":
         novedades = Novedades.objects.filter(user = request.user)
-        novedades= novedades.order_by('-fecha')
+        novedades.update(leida = True)
+        novedades = novedades.order_by('-fecha')
         return render(request,'novedades.html',{
             'novedades':novedades
         })

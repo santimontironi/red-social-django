@@ -165,6 +165,15 @@ nav ul li:hover span {
     left: 120%;
 }
 
+nav ul li .iconoHayNovedades{
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+    width: 10px;
+}
+
 .contenedorLogin{
     max-width: 100%;
     min-height: 100vh;
