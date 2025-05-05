@@ -9,6 +9,7 @@ Este proyecto es una red social en desarrollo, creada con Django. Actualmente, p
 - ✅ Publicaciones con texto e imágenes.  
 - ✅ Sistema de "Me gusta" en publicaciones.  
 - ✅ Búsqueda de usuarios por nombre, apellido o nombre de usuario.  
-- ✅ Posibilidad de agregar amigos.  
+- ✅ Posibilidad de agregar amigos.
+- ✅ Agregaciones de comentarios.
 
 ### Todavía este proyecto está en la fase de desarrollo y mejora, por lo que algunas funcionalidades pueden cambiar o expandirse en futuras versiones.  
