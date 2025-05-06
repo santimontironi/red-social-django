@@ -37,6 +37,7 @@ urlpatterns = [
     path('agregar-amigos/',views.agregarAmigos,name='agregar-amigos'),
     path('usuario/<int:id_usuario>',views.verUsuario,name='usuario'),
     path('mis-amigos/',views.misAmigos,name='mis-amigos'),
+    path('buscar-amigos/',views.buscarAmigos,name='buscar-amigos'),
     path('eliminar-amigo/',views.eliminarAmigo,name='eliminar-amigo'),
     path('novedades/',views.verNovedades,name='novedades'),
     path('publicacion/<int:idPost>',views.publicacion,name='publicacion'),
