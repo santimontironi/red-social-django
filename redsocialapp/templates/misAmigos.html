@@ -8,8 +8,9 @@
         {%if hayAmigos%}
             <div class="operacionesMisAmigos">
                 <p class="cantidadAmigos">Total de amigos: {{cantidadAmigos}}</p>
-                <form action="/buscar-amigos/">
-                    <input class="form-control" type="input" placeholder="Buscar amigos">
+                <form action="/buscar-amigos/" method="post">
+                    {%csrf_token%}
+                    <input class="form-control" type="text" name="buscadorAmigos" placeholder="Buscar amigos">
                     <input class="form-control btn btn-success" type="submit" value="Buscar">
                 </form>
             </div>
@@ -55,9 +56,7 @@
                     <p class="text-center">Puedes buscar amigos en la sección de búsqueda.</p>
                 </div>
             </section>
-            
         {%endif%}
-
     </section>
 
     <section class="contenedorSinInternet d-none flex-column justify-content-center align-items-center gap-5"> 

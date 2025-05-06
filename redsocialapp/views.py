@@ -362,7 +362,28 @@ def misAmigos(request):
             'noHayAmigos':'Todavia no has agregado a ningun amigo.',
         })
         
+
+@login_required
+def buscarAmigos(request):
+    if request.method == "POST":
+        busquedaAmigos = request.POST["buscadorAmigos"]
+        amigos = request.user.perfil.amigos.filter(
+            Q(username__icontains=busquedaAmigos) | Q(perfil__nombre__icontains=busquedaAmigos) | Q(perfil__apellido__icontains=busquedaAmigos)
+        )
+        cantidadAmigos = amigos.count()
+        if amigos.exists():
+            hayAmigos = True
+            return render(request,'misAmigos.html',{
+                'hayAmigos':hayAmigos,
+                'amigos':amigos,
+                'cantidadAmigos':cantidadAmigos
+            })
+        else:
+            return render(request,'misAmigos.html',{
+                'hayAmigos':False
+            })
         
+    return redirect('mis-amigos')
     
 @login_required
 def agregarAmigos(request):
