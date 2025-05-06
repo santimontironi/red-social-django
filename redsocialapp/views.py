@@ -370,7 +370,7 @@ def buscarAmigos(request):
         amigos = request.user.perfil.amigos.filter(
             Q(username__icontains=busquedaAmigos) | Q(perfil__nombre__icontains=busquedaAmigos) | Q(perfil__apellido__icontains=busquedaAmigos)
         )
-        cantidadAmigos = amigos.count()
+        cantidadAmigos = request.user.perfil.amigos.all().count()
         if amigos.exists():
             hayAmigos = True
             return render(request,'misAmigos.html',{
@@ -380,7 +380,8 @@ def buscarAmigos(request):
             })
         else:
             return render(request,'misAmigos.html',{
-                'hayAmigos':False
+                'hayAmigos':False,
+                'cantidadAmigos':cantidadAmigos
             })
         
     return redirect('mis-amigos')

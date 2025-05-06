@@ -912,7 +912,7 @@ nav ul li .iconoHayNovedades{
 }
 
 .contenedorSinAmigos{
-    height: 80vh;
+    height: 280px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -922,10 +922,13 @@ nav ul li .iconoHayNovedades{
 
 .contenedorMisAmigos .sinAmigos{
     width: 600px;
-    padding: 20px;
-    border: solid 2px #fff;
-    box-shadow: 10px 15px 10px #000;
     color: #fff;
+    height: 100%;
+}
+
+.contenedorMisAmigos .sinAmigos h1{
+    font-size: 30px;
+    height: 100px;
 }
 
 .contenedorMisAmigos table{
