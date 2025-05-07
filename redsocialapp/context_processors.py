@@ -1,4 +1,5 @@
 from .models import Novedades
+from django.conf import settings
 
 def novedadesNuevas(request):
     
@@ -8,5 +9,6 @@ def novedadesNuevas(request):
         novedadesSinLeer = False 
 
     return {
-        'novedadesSinLeer': novedadesSinLeer
+        'novedadesSinLeer': novedadesSinLeer,
+        'WEBHOOK_URL': settings.WEBHOOK_URL
     }

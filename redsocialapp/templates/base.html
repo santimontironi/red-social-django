@@ -114,36 +114,9 @@
       AOS.init();
     </script>
     <script src="{% static 'js/script.js' %}" defer></script>
-    <script type="module">
-      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-    
-      createChat({
-        webhookUrl: 'http://localhost:5678/webhook/cc5de35f-b3f8-4114-85bd-fad60523f27c/chat',
-        webhookConfig: {
-          method: 'POST',
-          headers: {}
-        },
-        target: '#n8n-chat',
-        mode: 'window',
-        chatInputKey: 'chatInput',
-        chatSessionKey: 'sessionId',
-        metadata: {},
-        showWelcomeScreen: false,
-        defaultLanguage: 'es',
-        initialMessages: [
-          'Hola! 👋',
-          'Mi nombre es Raulito, ¿en que te puedo ayudar hoy?'
-        ],
-        i18n: {
-          en: {
-            title: 'Hi there! 👋',
-            subtitle: "Start a chat. We're here to help you 24/7.",
-            footer: '',
-            getStarted: 'New Conversation',
-            inputPlaceholder: 'Type your question..',
-          },
-        },
-      });
+    <script>
+      window.N8N_CHAT_WEBHOOK = "{{ WEBHOOK_URL }}";
     </script>
+    <script type="module" src="{% static 'js/chatBot.js' %}" defer></script>
 </body>
 </html>
