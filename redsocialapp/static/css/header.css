@@ -1,0 +1,167 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(120deg,#2129a5,#000);
+    position: fixed;
+    z-index: 1;
+}
+
+.formularioBusqueda{
+    position: relative;
+    left: 15%;
+    width: 300px;
+}
+
+.formularioBusqueda form{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.formularioBusqueda input{
+    position: relative;
+}
+
+.formularioBusqueda button{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    border: none;
+    height: 100%;
+    width: 35px;
+    background-color: transparent;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formularioBusqueda button img{
+    width: 100%;
+}
+
+.perfilHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: 50px;
+    color: #fff;
+}
+
+.perfilHeader img{
+    width: 47px;
+    height: 47px;
+    border-radius: 99999px;
+    object-fit: cover;
+}
+
+.perfilHeaderDatos{
+    display: flex;
+    flex-direction: column;
+}
+
+.perfilHeaderDatos h2{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.perfilHeaderDatos span{
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+aside{
+    width: 130px;
+    height: 100vh;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(150deg,#121a80,#101010,#000);
+    box-shadow: 6px 5px 15px #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: width 0.3s ease-in-out;
+    z-index: 1;
+}
+
+aside.abierto{
+    width: 240px;
+    transition: .4s;
+}
+
+.btnAbrirMenu{
+    display: none;
+}
+
+.btnCerrarMenu{
+    display: none;
+}
+
+.logoNav{
+    width: 90px;
+    border-radius: 999px;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 10px;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    top: -20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav .iconoSeccionNav{
+    width: 35px;
+}
+
+nav ul li{
+    position: relative;
+    left: -25px;
+}
+
+nav ul li span{
+    display: none;
+    font-size: 16px;
+}
+
+nav ul li:hover span {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 120%;
+}
+
+nav ul li .iconoHayNovedades{
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+    width: 10px;
+}
