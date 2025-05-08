@@ -142,3 +142,11 @@
     backdrop-filter: blur(10px);
     padding-top: 30px;
 }
+
+.formAgregarPublicacion{
+    height: 400px;
+    width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
