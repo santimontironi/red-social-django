@@ -1,0 +1,31 @@
+.contenedorPublicacion{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to left,#000,#4d3ea1,#103e6e);
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorPublicacion .publicacionUsuario{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    width: 370px;
+    padding: 15px;
+    border: solid 2px #fff;
+    font-family: "Tektur", sans-serif;
+    color: #fff;
+    box-shadow: 5px 5px 15px #000;
+    margin-top: 30px;
+}
+
+.contenedorPublicacion .publicacionUsuario:hover{
+    background: linear-gradient(to left,#000,#103e6e,#4d3ea1);
+}
+
+.contenedorPublicacion .publicacionUsuario img{
+    width: 100%;
+}

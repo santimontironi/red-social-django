@@ -1,0 +1,171 @@
+.contenedorBusquedaUsuarios{
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 40px;
+    background: linear-gradient(#090d47,#04172c);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+}
+
+.contenedorBusquedaUsuarios h1{
+    text-align: center;
+    font-family: "Tektur", sans-serif;
+    color: #fff;
+    font-size: 50px;
+    padding-top: 30px;
+    border-bottom: solid 2px #fff;
+}
+
+.contenedorUsuariosNoEncontrados{
+    width: 600px;
+    height: 200px;
+    background: linear-gradient(60deg,#ff1a1a,#e91b1b);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: 6px 5px 15px #000;
+    border: solid 2px #fff;
+}
+
+.contenedorUsuariosNoEncontrados p{
+    color: #fff;
+    font-size: 30px;
+}
+
+.usuarios{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 300px;
+    height: 450px;
+    padding: 10px;
+    background: linear-gradient(100deg,#020599,#052850);
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px #000;
+    border: solid 2px #fff;
+}
+
+.fotoPerfilUsuario{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(100deg,#04172c,#2129a5);
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    position: absolute;
+    top: 0;
+    border-bottom: solid 2px #fff;
+}
+
+.usuario .fotoPerfilUsuario img{
+    width: 160px;
+    height: 160px;
+    border-radius: 1000px;
+    object-fit: cover;
+}
+
+.datos-usuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    position: absolute;
+    bottom: 0;
+}
+
+.datos-usuario a{
+    text-decoration: underline solid 1px #fff;
+}
+
+.contenedorUsuario{
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.usuario-datos{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(150deg,#ebf1c7,#84b3e5);
+    padding-top: 40px;
+    box-shadow: 5px 10px 15px #000;
+    height: 350px;
+}
+
+.usuario-datos img{
+    height: 220px;
+    width: 220px;
+    object-fit: cover;
+    border-radius: 99999px;
+    border: solid 2px #fff;
+}
+
+.usuario-datos p{
+    max-width: 600px;
+}
+
+.publicaciones-usuario{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 35px;
+    place-items: center;
+    align-items: start;
+    gap: 20px;
+    width: 900px;
+    margin: 40px auto 0 auto;
+}
+
+.publicaciones-usuario .publicacion-usuario{
+    width: 350px;
+    max-height: 650px;
+    padding: 15px;
+    background-color: #2129a5;
+    box-shadow: 5px 5px 5px #000;
+    border-radius: 30px;
+}
+
+.publicaciones-usuario .publicacion-usuario figure{
+    overflow: hidden;
+}
+
+.publicaciones-usuario .publicacion-usuario img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.publicaciones-usuario .publicacion-usuario img:hover{
+    transform: scale(1.1);
+    transition: .8s;
+}
+
+.publicacion-usuario p{
+    margin-top: 15px;
+}
+
+.publicacion-usuario .publicacion-operaciones span{
+    color: #fff;
+}
