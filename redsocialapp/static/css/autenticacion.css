@@ -1,0 +1,217 @@
+.contenedorLogin{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.17)), url(../img/fondoIngreso.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ingresoMensajeBienvenida h1{
+    color: #fff;
+    letter-spacing: 4px;
+    font-family: "Tektur", sans-serif;
+}
+
+.ingresoMensajeBienvenida img{
+    width: 118px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 20px #000;
+}
+
+.btnOlvidarClave{
+    background-color: transparent;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btnOlvidarClave:hover{
+    text-decoration: underline;
+}
+
+.formLogin input{
+    width: 300px;
+}
+
+.formLogin input[type="checkbox"]{
+    width: initial;
+}
+
+#contenedorCambiarClave{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 350px;
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.70);
+    position: absolute;
+    top: 20%;
+    background: linear-gradient(150deg,#121a80,#101010);
+    color: #fff;
+    border-radius: 30px;
+    border: solid 3px #fff;
+    display: none;
+}
+
+.btnCerrarContenedorCambiarClave{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    text-decoration: underline;
+}
+
+#contenedorCambiarClave h1{
+    font-family: "Tektur", sans-serif;
+    font-size: 35px;
+    text-align: center;
+}
+
+#contenedorCambiarClave form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#contenedorCambiarClave form input{
+    width: 300px;
+    font-size: 13px;
+}
+
+.contenedorRegistro{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.50)), url(../img/fondoRegistro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contenedorRegistro form input{
+    width: 350px;
+}
+
+.contenedorVerificarUsuario{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(150deg,#2a588a,#101010,#000);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorVerificarUsuario h1{
+    color: #fff;
+    font-family: "Tektur", sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.contenedorVerificarUsuario img{
+    width: 150px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 20px #000;
+}
+
+.contenedorVerificarUsuario form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 300px;
+    height: 220px;
+}
+
+.contenedorVerificarUsuario form input[type="text"]{
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.contenedorCrearPerfil{
+    max-width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(150deg,#2a588a,#101010,#000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenidoCrearPerfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+}
+
+.textoCrearPerfil{
+    height: 500px;
+    padding: 50px 15px 20px 15px;
+    background: url(../img/textoCrearPerfil.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 400px;
+}
+
+.tituloCrearPerfil{
+    color: #fff;
+}
+
+.parrafoCrearPerfil{
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil{
+    background-color: #fff;
+    height: 500px;
+    overflow-y: hidden;
+}
+
+.formCrearPerfil{
+    width: 400px;
+}
+
+.contenedorFormCrearPerfil form ::placeholder{
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form{
+    padding: 0px 0px 0px 60px;
+}
+
+.contenedorFormCrearPerfil form input{
+    width: 300px;
+    background-color: #000;
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form textarea{
+    width: 300px;
+    background-color: #000;
+    color: #fff;
+}
+
+.contenedorFormCrearPerfil form .inputImagen{
+    cursor: pointer;
+}

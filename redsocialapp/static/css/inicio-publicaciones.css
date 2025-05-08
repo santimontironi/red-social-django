@@ -1,0 +1,144 @@
+.contenedorInicio{
+    min-height: 100vh;
+    background: linear-gradient(to left,#4d3ea1,#103e6e,#000);
+    padding-bottom: 50px;
+}
+
+.contenedorSinPublicaciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    width: 700px;
+    height: 90vh;
+}
+
+.contenedorSinPublicaciones .sinPublicaciones{
+    background-color: #04172c;
+    padding: 20px;
+    border: solid 2px #fff;
+    box-shadow: 10px 15px 10px #000;
+}
+
+.contenedorPublicaciones{
+    padding-top: 55px
+}
+
+.contenedor-publicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.publicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 300px;
+    width: 340px;
+    padding: 15px;
+    border: solid 2px #fff;
+    font-family: "Tektur", sans-serif;
+    box-shadow: 8px 8px 15px #000;
+    border-radius: 20px;
+}
+
+.publicacion h2{
+    color: #fff;
+    font-weight: lighter;
+    font-size: 17px;
+}
+
+.publicacion img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.publicacion p{
+    color: #fff;
+    margin-top: 10px;
+}
+
+.publicacion span{
+    color: #fff;
+}
+
+.publicacion:hover{
+    background-color: #00000054;
+}
+
+.publicacion-operaciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 20px 0px 0px;
+    width: 100%;
+}
+
+.publicacion-operaciones .btn-like{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    border: solid 1px #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.publicacion-operaciones .btn-like:hover{
+    background-color: rgba(255, 0, 0, 0.575);
+}
+
+.publicacion-operaciones .liked{
+    background-color: rgba(255, 0, 0, 0.541);
+}
+
+.publicacion-operaciones .datosComentarios .btnComentario{
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #559ae4;
+}
+
+.publicacion-operaciones .datosComentarios .btnComentario:hover{
+    background-color: #3a7bb8;
+}
+
+.publicacion-operaciones .datosComentarios .inputComentario{
+    width: 230px;
+}
+
+.contenedorAgregarPublicacion{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.20)),url(../img/fondoContenedorAgregarPublicacion.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenidoAgregarPublicacion{
+    display: flex;
+    width: 850px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px #000;
+    backdrop-filter: blur(10px);
+    padding-top: 30px;
+}

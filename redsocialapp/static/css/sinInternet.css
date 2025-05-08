@@ -1,0 +1,13 @@
+.contenedorSinInternet{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(220deg,#101010,#121a80);
+}
+
+.contenedorSinInternet img{
+    width: 180px;
+}
+
+.contenedorSinInternet p{
+    text-align: center;
+}
