@@ -19,11 +19,11 @@ createChat({
   ],
   i18n: {
     en: {
-      title: 'Hi there! 👋',
-      subtitle: "Start a chat. We're here to help you 24/7.",
+      title: 'Hola! 👋',
+      subtitle: "Empieza el chat conmigo. Estoy para ayudarte 24/7.",
       footer: '',
-      getStarted: 'New Conversation',
-      inputPlaceholder: 'Type your question..',
+      getStarted: 'Nueva conversación',
+      inputPlaceholder: 'Ingresa tu mensaje..',
     },
   },
 });
