@@ -18,7 +18,7 @@ createChat({
     'Mi nombre es Raulito, ¿en qué te puedo ayudar hoy?'
   ],
   i18n: {
-    en: {
+    es: {
       title: 'Hola! 👋',
       subtitle: "Empieza el chat conmigo. Estoy para ayudarte 24/7.",
       footer: '',
