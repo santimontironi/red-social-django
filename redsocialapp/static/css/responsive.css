@@ -280,13 +280,41 @@
         background: linear-gradient(350deg,#3a7bb8,#121a80);
         overflow-x: auto;
     }
-    .contenedorMisAmigos h1{
+    .contenedorMisAmigos .titulo{
         top: 0;
         font-size: 50px;
         height: 160px;
     }
     .contenedorMisAmigos .amigosResponsive{
+        width: 280px;
+        height: auto;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-top: 20px;
+        padding: 15px 15px 15px 15px;
+        border: solid 2px #fff;
+        background-color: #121a80;
+        box-shadow: 15px 15px 12px #000;
+    }
+    .contenedorMisAmigos .amigosResponsive img{
+        width: 100%;
+        border-radius: 99999px;
+        height: 240px;
+        object-fit: cover;
+    }
+    .contenedorMisAmigos .amigosResponsive .datosAmigo{
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        margin-top: 15px;
+        border-top: solid 2px #fff;
+    }
+    .contenedorMisAmigos .amigosResponsive .datosAmigo a{
+        text-decoration: none;
+        color: #8bb7e0;
     }
     .contenedorMisAmigos .operacionesMisAmigos{
         gap: 10px;

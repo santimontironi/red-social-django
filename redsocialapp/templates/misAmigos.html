@@ -4,7 +4,7 @@
 {%block content%}
 
     <section class="contenedorMisAmigos">
-        <h1>Mis amigos</h1>
+        <h1 class="titulo">Mis amigos</h1>
         {%if hayAmigos%}
             <div class="operacionesMisAmigos">
                 <p class="cantidadAmigos">Total de amigos: {{cantidadAmigos}}</p>
@@ -53,7 +53,7 @@
                         <img src="{{amigo.perfil.imagen.url}}" alt="foto-perfil">
                         <div class="contenidoAmigo">
                             <div class="datosAmigo">
-                                <h1>{{amigo.username}}</h1>
+                                <a href="{% url 'usuario' amigo.perfil.id %}">{{amigo.username}}</a>
                                 <p>{{amigo.perfil.descripcion}}</p>
                             </div>
                             <form action="/eliminar-amigo/" method="post" onsubmit="return confirm('¿Deseas realmente eliminar a {{amigo.username}} de tus amigos?')">

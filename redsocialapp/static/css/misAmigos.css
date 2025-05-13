@@ -8,7 +8,7 @@
     display: none;
 }
 
-.contenedorMisAmigos h1{
+.contenedorMisAmigos .titulo{
     height: 200px;
     width: 100%;
     display: flex;
