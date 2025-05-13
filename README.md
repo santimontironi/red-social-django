@@ -1,7 +1,7 @@
 # 📌 Aplicación de Red Social (En Desarrollo)
 
 ## 📖 Descripción  
-Este proyecto es una red social en desarrollo, creada con Django. Actualmente, permite a los usuarios registrarse, iniciar sesión, crear un perfil, realizar publicaciones, interactuar con otras publicaciones mediante "Me gusta" y buscar amigos para posteriormente agregar como amigos o ver su perfil.  
+Este proyecto universitario es una red social en desarrollo, creada con Django y SQL.
 
 ## 🚀 Características Implementadas  
 - ✅ Registro e inicio de sesión de usuarios.  
