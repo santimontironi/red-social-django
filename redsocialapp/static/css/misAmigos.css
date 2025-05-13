@@ -4,6 +4,10 @@
     background: linear-gradient(100deg,#3a7bb8,#121a80);
 }
 
+.contenedorMisAmigos .amigosResponsive{
+    display: none;
+}
+
 .contenedorMisAmigos h1{
     height: 200px;
     width: 100%;
@@ -19,7 +23,6 @@
     position: relative;
     top: 40px;
 }
-
 
 .contenedorMisAmigos .operacionesMisAmigos{
     width: 100%;

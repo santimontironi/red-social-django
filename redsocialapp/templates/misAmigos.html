@@ -47,6 +47,23 @@
                         {%endfor%}
                     </tbody>
                 </table>
+
+                {%for amigo in amigos%}
+                    <div class="amigosResponsive">
+                        <img src="{{amigo.perfil.imagen.url}}" alt="foto-perfil">
+                        <div class="contenidoAmigo">
+                            <div class="datosAmigo">
+                                <h1>{{amigo.username}}</h1>
+                                <p>{{amigo.perfil.descripcion}}</p>
+                            </div>
+                            <form action="/eliminar-amigo/" method="post" onsubmit="return confirm('¿Deseas realmente eliminar a {{amigo.username}} de tus amigos?')">
+                                {%csrf_token%}
+                                <input type="hidden" value="{{amigo.id}}" name="idAmigo">
+                                <input type="submit" class="btn btn-danger" value="Eliminar amigo">
+                            </form>
+                        </div>
+                    </div>
+                {%endfor%}
             </div>
         {%else%}
             <div class="operacionesMisAmigos">

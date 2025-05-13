@@ -285,9 +285,8 @@
         font-size: 50px;
         height: 160px;
     }
-    .contenedorSinAmigos{
-        height: 600px;
-        width: 400px;
+    .contenedorMisAmigos .amigosResponsive{
+        display: flex;
     }
     .contenedorMisAmigos .operacionesMisAmigos{
         gap: 10px;
@@ -305,6 +304,10 @@
     }
     .contenedorMisAmigos table{
         display: none;
+    }
+    .contenedorSinAmigos{
+        height: 600px;
+        width: 400px;
     }
     .btnEditarPerfil{
         margin-top: 0px;
