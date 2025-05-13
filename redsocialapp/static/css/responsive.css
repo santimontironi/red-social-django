@@ -287,29 +287,24 @@
     }
     .contenedorSinAmigos{
         height: 600px;
-    }
-    .contenedorSinAmigos .sinAmigos{
         width: 400px;
     }
-    .contenedorMisAmigos .table-responsive{
-        overflow-x: auto;
-        width: 400px;
-        padding: 40px;
+    .contenedorMisAmigos .operacionesMisAmigos{
+        gap: 10px;
+        max-width: 350px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .contenedorMisAmigos .operacionesMisAmigos p{
+        width: 100px;
+    }
+    .contenedorMisAmigos .operacionesMisAmigos form{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
+        flex-direction: column;
+        gap: 10px;
     }
     .contenedorMisAmigos table{
-        margin: 35px 0px 30px 30px;
-        max-width: 100%;
-        margin-left: 0;
-        padding: 0px;
-        -webkit-overflow-scrolling: touch;
-        
-    }
-    .contenedorMisAmigos table td{
-        width: 20px;
+        display: none;
     }
     .btnEditarPerfil{
         margin-top: 0px;
