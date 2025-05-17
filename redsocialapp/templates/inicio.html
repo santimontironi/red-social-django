@@ -38,7 +38,7 @@
                                         <button class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit">❤️</button>
                                     </div>
                                 </form>
-                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/"> 
+                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/" hx-post="{% url 'agregarComentario' %}" hx-target="#comentarios-{{ publicacion.id }}" hx-swap="outerHTML"> 
                                     {% csrf_token %}
                                     <input type="hidden" name="publicacion_id" value="{{publicacion.id}}">
                                     <input type="text" name="comentario" class="form-control inputComentario" placeholder="Escribe un comentario" required>
@@ -50,30 +50,32 @@
                             <p>{{publicacion.descripcion}}</p>
                             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
 
-                            {% if publicacion.cantidadComentarios > 1 %}
+                            <div class="comentarios-{{publicacion.id}}">
+                                {% if publicacion.cantidadComentarios > 1 %}
                             
-                                <details class="mt-3 contenedorComentarios w-100">
-                                    <summary class="text-light">Ver comentarios ({{publicacion.comentario.all.count}})</summary>
-                                    <ul class="mt-3 d-flex flex-column gap-3 listadoComentarios">
-                                        {% for comentario in publicacion.comentario.all %}
-                                            <li class="d-flex align-items-center gap-3 h-auto rounded-3" style="padding: 3px; box-shadow:5px 15px 10px rgba(0, 0, 0, 0.712);">
-                                                <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;">
-                                                    <p class="text-light">@{{comentario.autor}}:</p>
-                                                </a>
-                                                <p class="text-light">{{comentario.comentario}}</p>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </details>
-                            {%else%}
-                                {%for comentario in publicacion.comentario.all%}
-                                    <div class="comentario d-flex gap-3 w-100 border-top border-2 border-light mt-3">
-                                        <a href="{%url 'usuario' publicacion.autor.perfil.id %}" style="text-decoration: none;"><p>@{{comentario.autor}}:</p></a>
-                                        <p>{{comentario.comentario}}</p>
-                                    </div>
-                                {%endfor%}
-                            {% endif %}
-
+                                    <details class="mt-3 contenedorComentarios w-100">
+                                        <summary class="text-light">Ver comentarios ({{publicacion.comentario.all.count}})</summary>
+                                        <ul class="mt-3 d-flex flex-column gap-3 listadoComentarios">
+                                            {% for comentario in publicacion.comentario.all %}
+                                                <li class="d-flex align-items-center gap-3 h-auto rounded-3" style="padding: 3px; box-shadow:5px 15px 10px rgba(0, 0, 0, 0.712);">
+                                                    <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;">
+                                                        <p class="text-light">@{{comentario.autor}}:</p>
+                                                    </a>
+                                                    <p class="text-light">{{comentario.comentario}}</p>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </details>
+                                {%else%}
+                                    {%for comentario in publicacion.comentario.all%}
+                                        <div class="comentario d-flex gap-3 w-100 border-top border-2 border-light mt-3">
+                                            <a href="{%url 'usuario' publicacion.autor.perfil.id %}" style="text-decoration: none;"><p>@{{comentario.autor}}:</p></a>
+                                            <p>{{comentario.comentario}}</p>
+                                        </div>
+                                    {%endfor%}
+                                {% endif %}
+                                
+                            </div>
                         </div>
                     </div>
             {% endfor %}
