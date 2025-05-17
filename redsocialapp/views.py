@@ -7,6 +7,7 @@ from .forms import PerfilFormCompleto,PerfilFormReducido,PublicacionForm,Comenta
 from .models import Publicacion,Perfil,Novedades
 from django.db.models import Q
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 import random, secrets
 from datetime import timedelta
 from django.utils import timezone
@@ -261,18 +262,28 @@ def agregarComentario(request):
     idPublicacion = request.POST.get("publicacion_id")
     publicacion = Publicacion.objects.get(id = idPublicacion)
     if request.method == "POST":
+        
         formularioComentario = ComentarioForm(request.POST)
         comentarioRealizado = formularioComentario.save(commit=False)
+        
         comentarioRealizado.autor = request.user
         comentarioRealizado.publicacion = publicacion
+        comentarioRealizado.save()
+        
         publicacion.cantidadComentarios += 1
         publicacion.save()
-        comentarioRealizado.save()
+        
         if publicacion.autor != request.user:
             novedades = Novedades(user = publicacion.autor,novedad = f"El usuario {request.user} ha comentado tu foto.", usuario=request.user, comentario = comentarioRealizado, post=publicacion)
             novedades.save()
         
-        return redirect('inicio')
+        html = render_to_string(
+                "comentarios.html", 
+                {"publicacion": publicacion},
+                request=request
+        )
+        return HttpResponse(html)
+    
     else:
         formularioComentario = ComentarioForm()
         return render(request,'inicio.html',{
