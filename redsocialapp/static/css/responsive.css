@@ -349,6 +349,13 @@
         display: flex;
         flex-direction: column;
     }
+    .contenedorNovedades .novedades .novedad{
+        width: 320px;
+        padding-top: 10px;
+    }
+    .contenedorNovedades .novedades .novedad p{
+        font-size: 18px;
+    }
     .contenedorNoHayNovedades{
         width: 300px;
     }
