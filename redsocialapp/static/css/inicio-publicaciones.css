@@ -125,9 +125,7 @@
 .contenedorAgregarPublicacion{
     height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.20)),url(../img/fondoContenedorAgregarPublicacion.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(20deg,#121a80,#101010);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,11 +133,11 @@
 
 .contenidoAgregarPublicacion{
     display: flex;
-    width: 850px;
+    width: 400px;
     height: auto;
     border-radius: 20px;
     box-shadow: 10px 10px 20px #000;
-    backdrop-filter: blur(10px);
+    background: linear-gradient(200deg,#6657f0,#121a80);
     padding-top: 30px;
 }
 
@@ -149,4 +147,10 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formAgregarPublicacion textarea{
+    width: 300px;
 }

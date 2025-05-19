@@ -359,4 +359,7 @@
     .contenedorNoHayNovedades{
         width: 300px;
     }
+    .contenidoAgregarPublicacion{
+        padding-top: 0;
+    }
 }
