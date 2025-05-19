@@ -20,10 +20,10 @@
 
 .novedades{
     max-width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    align-content: center;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     padding-left: 90px;
     padding-bottom: 60px;
@@ -31,7 +31,7 @@
 
 .novedad{
     margin-top: 30px;
-    width: 300px;
+    width: 600px;
     height: 200px;
     padding: 20px;
     display: flex;
@@ -43,11 +43,20 @@
     box-shadow: 6px 10px 12px #000;
     border-radius: 20px;
     color: #fff;
-    border: solid 1px #fff;
+}
+
+.novedad p{
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 7px;
+    border-bottom: solid 2px #fff;
 }
 
 .novedad:hover{
-    transform: scale(1.05);
+    border: solid 1px #fff;
+    background: linear-gradient(20deg,#090c31,#101010);
 }
 
 .contenedorNoHayNovedades{
