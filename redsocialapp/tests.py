@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
-from .models import Perfil,Publicacion
+from .models import Perfil
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -12,7 +12,7 @@ class IngresoViewTest(TestCase):
         self.client = Client()
         self.user = User.objects.create_user(username='testuser', password='testpass123')
         
-        # Crear imagen simulada para el perfil
+        #se crea una simulacion de una imagen para el perfil
         imagen_perfil = SimpleUploadedFile(
             name='test_profile.jpg', 
             content=b'', 
@@ -21,9 +21,9 @@ class IngresoViewTest(TestCase):
         
         self.perfil = Perfil.objects.create(
             user=self.user,
-            email='test@example.com',  # Campo requerido
+            email='test@example.com', 
             nombre='Test',
-            imagen=imagen_perfil,      # Campo requerido
+            imagen=imagen_perfil,    
             confirmado=True,
             creado=True
         )
@@ -52,4 +52,4 @@ class IngresoViewTest(TestCase):
             'password': 'testpass123'
         }, follow=True)  # Añade follow=True
         self.assertRedirects(response, reverse('inicio'))
-        self.assertTrue(response.context['user'].is_authenticated)  # Verifica autenticación
+        self.assertTrue(response.context['user'].is_authenticated)  #verifica autenticación
