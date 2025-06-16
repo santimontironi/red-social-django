@@ -51,6 +51,10 @@ def ingreso(request):
                     else:
                         login(request,usuarioAutenticado)
                         return redirect('inicio')
+        else:
+            return render(request,'ingreso.html',{
+                    'errorCredenciales': 'Usuario o contraseña no válidos.'
+                    })
             
             
         

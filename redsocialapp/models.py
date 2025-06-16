@@ -19,7 +19,7 @@ class Perfil(models.Model):
     
 class Publicacion(models.Model):
     imagen = models.ImageField(upload_to='publicaciones/')
-    autor = models.ForeignKey(User,on_delete=models.CASCADE)
+    autor = models.ForeignKey(User,on_delete=models.CASCADE, related_name='publicacion')
     descripcion = models.TextField(max_length=150, blank=True)
     fechaPublicacion = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0, validators=[MinValueValidator(0)]) #validators=[MinValueValidator(0)] es una validación que asegura que el valor del campo no sea menor que un mínimo especificado, en este caso, 0.

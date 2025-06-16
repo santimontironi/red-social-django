@@ -25,7 +25,9 @@
 
                             <a href="{%url 'usuario' publicacion.autor.perfil.id%}" style="text-decoration: none;"><h2>{{publicacion.autor.username}}</h2></a>
 
-                            <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+                            {% if publicacion.imagen %}
+                                <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
+                            {% endif %}
 
                             <div class="publicacion-operaciones d-flex align-items-center justify-content-center">
 
