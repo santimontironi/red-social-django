@@ -4,3 +4,4 @@ redsocialapp/__pycache__/
 redsocialapp/migrations/__pycache__/
 .env
 /media/
+db.sqlite3
