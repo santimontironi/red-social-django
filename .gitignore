@@ -3,5 +3,4 @@ redsocialproject/__pycache__/
 redsocialapp/__pycache__/
 redsocialapp/migrations/__pycache__/
 .env
-.env
 db.sqlite3
