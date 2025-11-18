@@ -12,7 +12,6 @@ class Perfil(models.Model):
     imagen = models.ImageField(upload_to='fotos_perfil/')
     descripcion = models.TextField(max_length=300, blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    amigos = models.ManyToManyField(User,blank=True,related_name='mis_amigos')
     confirmado = models.BooleanField(default=False,blank=False)
     codigo_verificacion = models.CharField(max_length=6, blank=True, null=True)
     creado = models.BooleanField(default=False)
@@ -26,7 +25,6 @@ class Publicacion(models.Model):
     liked_by = models.ManyToManyField(User, related_name='likes', blank=True) #Cada usuario puede dar "Me gusta" a múltiples publicaciones, y cada publicación puede recibir "Me gusta" de múltiples usuarios.
     cantidadComentarios = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     
-
 class Comentario(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE,related_name='comentario')
@@ -42,3 +40,13 @@ class Novedades(models.Model):
     comentario = models.TextField(max_length=150, null=True, blank=True)
     leida = models.BooleanField(default=False,null=True,blank=True)
     #SET_NULL indica que si se elimina la publicación o el usuario, no se borra la novedad, simplemente el campo queda en NULL.
+
+class Amigo(models.Model):
+    solicitante = models.ForeignKey(User, on_delete=models.CASCADE, related_name='amigos_enviados')
+    receptor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='amigos_recibidos')
+    aceptado = models.BooleanField(default=False)
+    fecha_solicitud = models.DateTimeField(auto_now_add=True)
+    
+    #se define una restricción única compuesta en esos dos campos.
+    class Meta:
+        unique_together = {'solicitante','receptor'}
