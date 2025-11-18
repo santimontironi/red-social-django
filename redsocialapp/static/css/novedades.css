@@ -1,70 +1,128 @@
 .contenedorNovedades{
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg, #6a93ff, #cce4ff, #93baff, #6a93ff);
+    padding-bottom: 80px;
+    background: radial-gradient(circle at top, #dbe7ff, #b0c7ff, #8ba9ff);
 }
 
 .contenedorNovedades h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 300px;
-    font-size: 100px;
+    height: 260px;
+    font-size: 70px;
     color: #fff;
     font-family: "Unbounded", sans-serif;
-    background: linear-gradient(#04172c,#090d47);
-    box-shadow: 5px 15px 20px #000;
+    background: linear-gradient(160deg,#12244a ,#0a1226);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    border-bottom: 4px solid rgba(255,255,255,0.2);
+    letter-spacing: 3px;
 }
 
 .novedades{
-    max-width: 100%;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    padding-left: 90px;
-    padding-bottom: 60px;
+    align-items: center;
+    padding-top: 40px;
+    gap: 25px;
 }
 
 .novedad{
-    margin-top: 30px;
-    width: 600px;
-    height: 200px;
-    padding: 20px;
+    width: 90%;
+    max-width: 650px;
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(100deg,#12244a,#2764ff);
+    border: 2px solid #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 7px;
-    background: linear-gradient(20deg,#121a80,#101010);
-    box-shadow: 6px 10px 12px #000;
-    border-radius: 20px;
-    color: #fff;
-}
-
-.novedad p{
-    font-weight: bold;
-    font-size: 25px;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 7px;
-    border-bottom: solid 2px #fff;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: all 0.35s ease;
 }
 
 .novedad:hover{
-    border: solid 1px #fff;
-    background: linear-gradient(20deg,#090c31,#101010);
+    transform: translateY(-5px) scale(1.02);
+    border: 1px solid rgba(255,255,255,0.45);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+.novedad p{
+    font-weight: 600;
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+}
+
+.novedad span{
+    font-size: 15px;
+    color: #e8e8e8;
+    opacity: 0.8;
+}
+
+.novedad .btn{
+    margin-top: 5px;
+    width: 150px;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-success{
+    background: #4caf50;
+    border: none;
+}
+
+.btn-success:hover{
+    background: #3d8f42;
+    transform: scale(1.05);
+}
+
+.btn-danger{
+    background: #d9534f;
+    border: none;
+}
+.btn-danger:hover{
+    background: #b84743;
+    transform: scale(1.05);
+}
+
+.btn-primary{
+    background: #2764ff;
+    border: none;
+}
+
+.btn-primary:hover{
+    background: #1b49c5;
+    transform: scale(1.05);
 }
 
 .contenedorNoHayNovedades{
-    height: 300px;
-    width: 550px;
-    padding: 20px;
-    margin: 40px auto 0 auto;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 550px;
+    padding: 30px;
+    background: #1b49c5;
     border-radius: 20px;
-    box-shadow: 5px 5px 15px #000;
-    background: linear-gradient(200deg,#e91b1b,#a52b1c);
+    border: 2px solid #fff;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
+
+.contenedorNoHayNovedades h2{
+    color: #fff;
+    font-size: 28px;
+    margin-top: 12px;
+}
+.contenedorNoHayNovedades p{
+    color: #e8e8e8;
+    margin-top: 10px;
+}
+

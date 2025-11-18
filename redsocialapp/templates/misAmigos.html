@@ -18,7 +18,7 @@
 
     {% if hayAmigos %}
         <div class="table-responsive">
-            <table class="table text-center table-bordered table-warning align-middle">
+            <table class="table table-striped table-hover text-center table-bordered table-warning align-middle shadow-sm rounded-3">
                 <thead>
                     <tr>
                         <th scope="col">Foto de perfil</th>
@@ -33,9 +33,9 @@
                         <tr>
                             <td>
                                 <img src="{{ amigo.perfil.imagen.url }}" 
-                                     alt="foto de {{ amigo.username }}"
-                                     width="50" height="50" 
-                                     style="border-radius:9999px; object-fit:cover;">
+                                    alt="foto de {{ amigo.username }}"
+                                    width="50" height="50" 
+                                    style="border-radius:9999px; object-fit:cover;">
                             </td>
 
                             <td>
@@ -49,7 +49,7 @@
 
                             <td>
                                 <form action="/eliminar-amigo/" method="post"
-                                      onsubmit="return confirm('¿Deseas realmente eliminar a {{ amigo.username }} de tus amigos?')">
+                                    onsubmit="return confirm('¿Deseas realmente eliminar a {{ amigo.username }} de tus amigos?')">
                                     {% csrf_token %}
                                     <input type="hidden" name="idAmigo" value="{{ amigo.id }}">
                                     <input type="submit" class="btn btn-danger" value="Eliminar amigo">
