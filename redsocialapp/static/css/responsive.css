@@ -187,7 +187,15 @@
         padding: 15px;
     }
     .formAgregarPublicacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         width: 300px;
+        overflow-x: hidden;
+    }
+    .descripcion-publicacion{
+        width: 100%;
     }
     .contenedorMiPerfil{
         display: flex;
