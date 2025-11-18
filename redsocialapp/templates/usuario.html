@@ -13,7 +13,7 @@
                 <p><strong>Descripción:</strong> {{usuario.descripcion}}</p>
                 <p><strong>{{totalAmigos}} amigos</strong></p>
                 <p><strong>{{totalPublicaciones}} publicaciones<p></p>
-                {%if usuario.user.id != request.user.id%}
+                {% if usuario.user.id != request.user.id %}
                     <form 
                         hx-post="/agregar-amigos/" 
                         hx-target="#boton-{{ usuario.user.id }}" 
@@ -22,14 +22,14 @@
                         {% csrf_token %}
                         <input type="hidden" name="id_usuario" value="{{ usuario.user.id }}">
                         <button class="btn btn-success" id="boton-{{ usuario.user.id }}">
-                            {% if usuario.user in request.user.perfil.amigos.all %}
+                            {% if esAmigo %}
                                 Amigo
                             {% else %}
                                 Agregar a amigos
                             {% endif %}
                         </button>
                     </form>
-                {%endif%}
+                {% endif %}
             </div>
             
         </div>

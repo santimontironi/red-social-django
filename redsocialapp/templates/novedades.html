@@ -6,30 +6,61 @@
 <section class="contenedorNovedades">
     <h1>Novedades</h1>
 
+
+    {% if solicitudes_pendientes %}
+        <h2>Solicitudes de amistad</h2>
+
+        <div class="novedades">
+            {% for solicitud in solicitudes_pendientes %}
+                <div class="novedad" id="novedad-{{ solicitud.id }}">
+
+                    <p>{{ solicitud.novedad }}</p>
+                    <span>Fecha: {{ solicitud.fecha|date:"d-m-Y" }}</span>
+
+                    <a class="btn btn-primary" href="{% url 'usuario' solicitud.usuario.perfil.id %}">
+                        Ver perfil
+                    </a>
+
+                    <form 
+                        hx-post="{% url 'responder-solicitud-amistad' solicitud.id %}"
+                        hx-target="#novedad-{{ solicitud.id }}"
+                        hx-swap="outerHTML"
+                        method="post"
+                    >
+                        {% csrf_token %}
+                        <button name="accion" value="aceptar" class="btn btn-success">Aceptar</button>
+                        <button name="accion" value="rechazar" class="btn btn-danger">Rechazar</button>
+                    </form>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <hr>
+
     {% if novedades %}
+        <h2>Otras novedades</h2>
+
         <div class="novedades">
             {% for novedad in novedades %}
                 <div class="novedad">
-                    
-                    <!-- Texto principal -->
-                    <p>{{ novedad.novedad }}</p>
 
-                    <!-- Fecha -->
+                    <p>{{ novedad.novedad }}</p>
                     <span>Fecha: {{ novedad.fecha|date:"d-m-Y" }}</span>
 
-                    <!-- Botón para ver publicación (si corresponde) -->
                     {% if novedad.post %}
                         <a class="btn btn-success" href="{% url 'publicacion' novedad.post.id %}">
                             Ver publicación
                         </a>
                     {% endif %}
 
-                    <!-- Botón para ir al perfil del usuario que generó la novedad -->
                     {% if novedad.usuario %}
                         <a class="btn btn-primary" href="{% url 'usuario' novedad.usuario.perfil.id %}">
                             Ir a su perfil
                         </a>
                     {% endif %}
+
                 </div>
             {% endfor %}
         </div>
@@ -39,9 +70,7 @@
             <div class="sinNovedades">
                 <img src="https://img.icons8.com/?size=100&id=78339&format=png&color=ffffff" alt="No hay publicaciones">
                 <h2 class="text-light">No hay novedades disponibles</h2>
-                <p class="text-light">
-                    Parece que aún no se ha realizado ninguna acción para que tengas novedades.
-                </p>
+                <p class="text-light">Parece que aún no se ha realizado ninguna acción para que tengas novedades.</p>
             </div>
         </section>
     {% endif %}

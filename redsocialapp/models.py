@@ -60,4 +60,4 @@ class Amigo(models.Model):
     
     #se define una restricción única compuesta en esos dos campos.
     class Meta:
-        unique_together = {'solicitante','receptor'}
+        unique_together = ('solicitante','receptor')
