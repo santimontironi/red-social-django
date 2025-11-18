@@ -298,66 +298,81 @@ def agregarPublicacion(request):
 @login_required
 def agregarMeGusta(request, id_post):
     publicacion = get_object_or_404(Publicacion, id=id_post)
+
     if request.method == "POST":
+        liked = False
+
         if request.user in publicacion.liked_by.all():
             publicacion.liked_by.remove(request.user)
             publicacion.likes -= 1
-            liked = False
-            if publicacion.autor != request.user:
-                novedad = Novedades(
-                    user=publicacion.autor,
-                    novedad=f"El usuario {request.user} le ha dado me gusta a tu publicación",
-                    post=publicacion,
-                )
-                novedad.save()
         else:
             publicacion.liked_by.add(request.user)
             publicacion.likes += 1
             liked = True
 
+            # Crear novedad solo si el autor de la publicación no es quien dio like
+            if publicacion.autor != request.user:
+                novedad = Novedades(
+                    user=publicacion.autor,
+                    novedad=f"El usuario {request.user.username} le ha dado me gusta a tu publicación",
+                    tipo='like',
+                    usuario=request.user,
+                    post=publicacion,
+                    leida=False,
+                    aceptada=False
+                )
+                novedad.save()
+
         publicacion.save()
 
         respuesta = f"""
-                <div class="contenedor-btnLike-{publicacion.id} d-flex align-items-center justify-content-center gap-2">
-                    <span id="likes-{publicacion.id}">{publicacion.likes}</span>
-                    <button class="btn-like {'liked' if liked else ''}" type="submit">❤️</button>
-                </div>
+            <div class="contenedor-btnLike-{publicacion.id} d-flex align-items-center justify-content-center gap-2">
+                <span id="likes-{publicacion.id}">{publicacion.likes}</span>
+                <button class="btn-like {'liked' if liked else ''}" type="submit">❤️</button>
+            </div>
         """
+        return HttpResponse(respuesta)
 
-    return HttpResponse(respuesta)
+
 
 
 @login_required
 def agregarComentario(request):
-    idPublicacion = request.POST.get("publicacion_id")
-    publicacion = Publicacion.objects.get(id=idPublicacion)
     if request.method == "POST":
+        idPublicacion = request.POST.get("publicacion_id")
+        publicacion = Publicacion.objects.get(id=idPublicacion)
 
         formularioComentario = ComentarioForm(request.POST)
-        comentarioRealizado = formularioComentario.save(commit=False)
+        if formularioComentario.is_valid():
+            comentarioRealizado = formularioComentario.save(commit=False)
+            comentarioRealizado.autor = request.user
+            comentarioRealizado.publicacion = publicacion
+            comentarioRealizado.save()
 
-        comentarioRealizado.autor = request.user
-        comentarioRealizado.publicacion = publicacion
-        comentarioRealizado.save()
+            publicacion.cantidadComentarios += 1
+            publicacion.save()
 
-        publicacion.cantidadComentarios += 1
-        publicacion.save()
+            # Crear novedad solo si el autor de la publicación no es quien comenta
+            if publicacion.autor != request.user:
+                novedades = Novedades(
+                    user=publicacion.autor,
+                    novedad=f"El usuario {request.user.username} ha comentado tu foto.",
+                    tipo='comentario',
+                    usuario=request.user,
+                    comentario=comentarioRealizado.text,  # Guarda solo el texto del comentario
+                    post=publicacion,
+                    leida=False,
+                    aceptada=False
+                )
+                novedades.save()
 
-        if publicacion.autor != request.user:
-            novedades = Novedades(
-                user=publicacion.autor,
-                novedad=f"El usuario {request.user} ha comentado tu foto.",
-                usuario=request.user,
-                comentario=comentarioRealizado,
-                post=publicacion,
+            html = render_to_string(
+                "comentarios.html", {"publicacion": publicacion}, request=request
             )
-            novedades.save()
-
-        html = render_to_string(
-            "comentarios.html", {"publicacion": publicacion}, request=request
-        )
-        return HttpResponse(html)
-
+            return HttpResponse(html)
+        else:
+            # Si el formulario no es válido, puedes devolver un error o renderizar de nuevo
+            return HttpResponse("Formulario inválido", status=400)
     else:
         formularioComentario = ComentarioForm()
         return render(request, "inicio.html", {"formComentario": formularioComentario})
@@ -617,51 +632,6 @@ def responderSolicitudAmistad(request, id_novedad):
 
     return HttpResponse("Método no permitido.", status=405)
 
-
-@login_required
-def responderSolicitudAmistad(request, id_novedad):
-    solicitud = get_object_or_404(
-        Novedades,
-        id=id_novedad,
-        user=request.user,
-        tipo="amigo",
-        aceptada=False
-    )
-
-    if request.method == "POST":
-        accion = request.POST.get("accion")
-
-        # Buscar relación de amistad sin importar el orden
-        amistad = Amigo.objects.filter(
-            Q(solicitante=solicitud.usuario, receptor=request.user) |
-            Q(solicitante=request.user, receptor=solicitud.usuario)
-        ).first()
-
-        if accion == "aceptar":
-            solicitud.aceptada = True
-            solicitud.novedad = (
-                f"Aceptaste la solicitud de {solicitud.usuario.username}."
-            )
-            solicitud.save()
-
-            if amistad:
-                amistad.aceptado = True
-                amistad.save()
-
-            # HTMX borra la tarjeta
-            return HttpResponse("")
-
-        elif accion == "rechazar":
-            if amistad:
-                amistad.delete()
-
-            solicitud.delete()
-            return HttpResponse("")
-
-        return HttpResponse("Acción inválida.", status=400)
-
-    return HttpResponse("Método no permitido.", status=405)
-
 @login_required
 def eliminarAmigo(request):
     if request.method == "POST":
@@ -680,7 +650,6 @@ def eliminarAmigo(request):
             relacion.delete()
 
     return redirect("mis-amigos")
-
 
 @login_required
 def verNovedades(request):
@@ -701,12 +670,10 @@ def verNovedades(request):
         },
     )
     
-    
 @login_required
 def publicacion(request, idPost):
     post = get_object_or_404(Publicacion, id=idPost)
     return render(request, "publicacion.html", {"publicacion": post})
-
 
 @login_required
 def cerrarSesion(request):
