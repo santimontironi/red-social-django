@@ -1,37 +1,51 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
 
-{%load static%}
+{% block content %}
 
-{%block content%}
+<section class="contenedorNovedades">
+    <h1>Novedades</h1>
 
-    <section class="contenedorNovedades">
-        <h1>Novedades</h1>
+    {% if novedades %}
+        <div class="novedades">
+            {% for novedad in novedades %}
+                <div class="novedad">
+                    
+                    <!-- Texto principal -->
+                    <p>{{ novedad.novedad }}</p>
 
-        {%if novedades%}
-            <div class="novedades">
-                {%for novedad in novedades%}
-                    <div class="novedad">
-                        <p>{{novedad.novedad}}</p>
-                        <span>Fecha:{{novedad.fecha|date:"d-m-Y"}}</span>
-                        {%if novedad.post%}
-                            <a class="btn btn-success" href="{% url 'publicacion' novedad.post.id %}">Ver publicación</a>
-                        {%endif%}
-                        {%if novedad.usuario%}
-                            <a class="btn btn-primary" href="{% url 'usuario' novedad.usuario.perfil.id %}">Ir a su perfil</a>
-                        {%endif%}
-                    </div>
-                {%endfor%}
+                    <!-- Fecha -->
+                    <span>Fecha: {{ novedad.fecha|date:"d-m-Y" }}</span>
+
+                    <!-- Botón para ver publicación (si corresponde) -->
+                    {% if novedad.post %}
+                        <a class="btn btn-success" href="{% url 'publicacion' novedad.post.id %}">
+                            Ver publicación
+                        </a>
+                    {% endif %}
+
+                    <!-- Botón para ir al perfil del usuario que generó la novedad -->
+                    {% if novedad.usuario %}
+                        <a class="btn btn-primary" href="{% url 'usuario' novedad.usuario.perfil.id %}">
+                            Ir a su perfil
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <section class="contenedorNoHayNovedades">
+            <div class="sinNovedades">
+                <img src="https://img.icons8.com/?size=100&id=78339&format=png&color=ffffff" alt="No hay publicaciones">
+                <h2 class="text-light">No hay novedades disponibles</h2>
+                <p class="text-light">
+                    Parece que aún no se ha realizado ninguna acción para que tengas novedades.
+                </p>
             </div>
-        {%else%}
-                <section class="contenedorNoHayNovedades">
-                    <div class="sinNovedades">
-                        <img src="https://img.icons8.com/?size=100&id=78339&format=png&color=ffffff" alt="No hay publicaciones">
-                        <h2 class="text-light">No hay novedades disponibiles</h2>
-                        <p class="text-light">Parece que aún no se ha realizo ninguna acción como para que tengas una novedad.</p>
-                    </div>  
-                </section>
-        {%endif%}
-    
-    </section>
+        </section>
+    {% endif %}
 
-{%endblock%}
+</section>
+
+{% endblock %}

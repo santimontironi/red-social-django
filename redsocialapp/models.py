@@ -32,14 +32,25 @@ class Comentario(models.Model):
     fechaComentario = models.DateTimeField(auto_now_add=True)
     
 class Novedades(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuarioPertenecienteNovedad')
-    novedad = models.CharField(max_length=150,blank=False)
+    TIPO_NOVEDAD = [
+        ('like', 'Me gusta'),
+        ('comentario', 'Comentario'),
+        ('amigo', 'Solicitud de amistad'),
+        ('sistema', 'Sistema'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usuarioPertenecienteNovedad')
+    novedad = models.CharField(max_length=150)
+    tipo = models.CharField(max_length=20, choices=TIPO_NOVEDAD, default='sistema')
     fecha = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL)
-    post = models.ForeignKey(Publicacion, null=True, blank=True, on_delete=models.SET_NULL,related_name='nuevoAmigo')
+
+    usuario = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    post = models.ForeignKey('Publicacion', null=True, blank=True, on_delete=models.SET_NULL, related_name='nuevoAmigo')
+
     comentario = models.TextField(max_length=150, null=True, blank=True)
-    leida = models.BooleanField(default=False,null=True,blank=True)
-    #SET_NULL indica que si se elimina la publicación o el usuario, no se borra la novedad, simplemente el campo queda en NULL.
+
+    leida = models.BooleanField(default=False, null=True, blank=True)
+    aceptada = models.BooleanField(default=False, null=True, blank=True)
 
 class Amigo(models.Model):
     solicitante = models.ForeignKey(User, on_delete=models.CASCADE, related_name='amigos_enviados')

@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilFormCompleto,PerfilFormReducido,PublicacionForm,ComentarioForm
-from .models import Publicacion,Perfil,Novedades
+from .models import Publicacion,Perfil,Novedades, Amigo
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -202,15 +202,31 @@ def crearPerfil(request):
 @login_required            
 def inicio(request):
     if request.method == "GET":
-        amigos = request.user.perfil.amigos.all() 
-        publicaciones = Publicacion.objects.filter(autor__in=amigos) | Publicacion.objects.filter(autor=request.user)
-        publicaciones = publicaciones.order_by('-fechaPublicacion')
+        
+        publicaciones = (
+            Publicacion.objects.filter(
+                autor=request.user
+            ) |
+            Publicacion.objects.filter(
+                autor__in=Amigo.objects.filter(
+                    solicitante=request.user,
+                    aceptado=True
+                ).values('receptor')
+            ) |
+            Publicacion.objects.filter(
+                autor__in=Amigo.objects.filter(
+                    receptor=request.user,
+                    aceptado=True
+                ).values('solicitante')
+            )
+        ).order_by('-fechaPublicacion')
+
         if publicaciones.exists():
-            return render(request,'inicio.html', {
-                'publicaciones':publicaciones
+            return render(request, 'inicio.html', {
+                'publicaciones': publicaciones
             })
         else:
-            return render(request,'inicio.html',{
+            return render(request, 'inicio.html', {
                 'noHayPublicaciones': True
             })
     
@@ -363,93 +379,142 @@ def verUsuario(request,id_usuario):
 
 @login_required
 def misAmigos(request):
-    amigos = request.user.perfil.amigos.all()
-    cantidadAmigos = request.user.perfil.amigos.all().count()
-    if amigos:
-        hayAmigos = True
-        return render(request,'misAmigos.html',{
-            'amigos':amigos,
-            'hayAmigos':hayAmigos,
-            'cantidadAmigos':cantidadAmigos
+    amigos = User.objects.filter(
+        Q(id__in=Amigo.objects.filter(solicitante=request.user, aceptado=True).values('receptor')) |
+        Q(id__in=Amigo.objects.filter(receptor=request.user, aceptado=True).values('solicitante'))
+    )
+
+    cantidadAmigos = amigos.count()
+
+    if cantidadAmigos > 0:
+        return render(request, 'misAmigos.html', {
+            'amigos': amigos,
+            'hayAmigos': True,
+            'cantidadAmigos': cantidadAmigos
         })
     else:
-        return render(request,'misAmigos.html',{
-            'noHayAmigos':'Todavia no has agregado a ningun amigo.',
+        return render(request, 'misAmigos.html', {
+            'noHayAmigos': 'Todavía no has agregado a ningún amigo.',
         })
         
 
 @login_required
 def buscarAmigos(request):
     if request.method == "POST":
-        busquedaAmigos = request.POST["buscadorAmigos"]
-        amigos = request.user.perfil.amigos.filter(
-            Q(username__icontains=busquedaAmigos) | Q(perfil__nombre__icontains=busquedaAmigos) | Q(perfil__apellido__icontains=busquedaAmigos)
+        busqueda = request.POST.get("buscadorAmigos", "").strip()
+
+        # Queryset de todos mis amigos aceptados (Users)
+        amigos = User.objects.filter(
+            Q(id__in=Amigo.objects.filter(solicitante=request.user, aceptado=True).values('receptor')) |
+            Q(id__in=Amigo.objects.filter(receptor=request.user, aceptado=True).values('solicitante'))
         )
-        cantidadAmigos = request.user.perfil.amigos.all().count()
-        if amigos.exists():
-            hayAmigos = True
-            return render(request,'misAmigos.html',{
-                'hayAmigos':hayAmigos,
-                'amigos':amigos,
-                'cantidadAmigos':cantidadAmigos
+
+        # Filtrar entre esos amigos por username / perfil.nombre / perfil.apellido
+        amigos_filtrados = amigos.filter(
+            Q(username__icontains=busqueda) |
+            Q(perfil__nombre__icontains=busqueda) |
+            Q(perfil__apellido__icontains=busqueda)
+        )
+
+        cantidadAmigos = amigos.count()
+
+        if amigos_filtrados.exists():
+            return render(request, 'misAmigos.html', {
+                'hayAmigos': True,
+                'amigos': amigos_filtrados,
+                'cantidadAmigos': cantidadAmigos
             })
         else:
-            return render(request,'misAmigos.html',{
-                'hayAmigos':False,
-                'cantidadAmigos':cantidadAmigos
+            return render(request, 'misAmigos.html', {
+                'hayAmigos': False,
+                'cantidadAmigos': cantidadAmigos
             })
-        
+
     return redirect('mis-amigos')
     
 @login_required
 def agregarAmigos(request):
     if request.method == "POST":
-        id_amigo = request.POST.get("id_usuario") #se obtiene el id desde el formulario
-        amigo = get_object_or_404(User,id=id_amigo) #Busca al usuario que se quiere agregar como amigo
-        perfil = get_object_or_404(Perfil,user = request.user) #busca al usuario que esta dentro de la aplicacion
-        
-        if amigo in perfil.amigos.all():
-            perfil.amigos.remove(amigo)
-            perfil.save()
-            amigo.perfil.amigos.remove(request.user)
-            amigo.perfil.save()
-            respuesta = f"""
-                <button class="btn btn-success" id="boton-{amigo.id}">Agregar a amigos</button>
-            """    
-        else:
-            perfil.amigos.add(amigo) #agrega de amigo al usuario buscado desde el formulario
-            perfil.save()
-            amigo.perfil.amigos.add(request.user) #te agregas como amigo del usuario
-            amigo.perfil.save()
-            novedades = Novedades(user = amigo,novedad = f"El usuario {request.user} te agregó de amigos.",usuario=request.user)
-            novedades.save()
-            respuesta = f"""
-                <button class="btn btn-success" id="boton-{amigo.id}">Amigo</button>
-            """
-        
-        return HttpResponse(respuesta)
+        id_receptor = request.POST.get("id_usuario")
+        receptor = get_object_or_404(User, id=id_receptor)
+
+        # Verificar si ya existe una solicitud pendiente
+        existe_solicitud = Novedades.objects.filter(
+            user=receptor,
+            usuario=request.user,
+            tipo="amigo",
+            aceptada=False
+        ).exists()
+
+        if existe_solicitud:
+            return HttpResponse("Ya enviaste una solicitud a este usuario.")
+
+        # Crear novedad de tipo "amigo"
+        Novedades.objects.create(
+            user=receptor,
+            usuario=request.user,
+            novedad=f"{request.user.username} te ha enviado una solicitud de amistad.",
+            tipo="amigo"
+        )
+
+        return HttpResponse("Solicitud de amistad enviada.")
      
+def responderSolicitudAmistad(request, id_novedad):
+    solicitud = get_object_or_404(Novedades, id=id_novedad, user=request.user, tipo="amigo")
+
+    if request.method == "POST":
+        accion = request.POST.get("accion")  # 'aceptar' o 'rechazar'
+
+        if accion == "aceptar":
+            # Marcar como aceptada
+            solicitud.aceptada = True
+            solicitud.novedad = f"Aceptaste la solicitud de {solicitud.usuario.username}."
+            solicitud.save()
+
+            # Agregar al solicitante como amigo (solo en un sentido)
+            perfil_receptor = request.user.perfil
+            perfil_receptor.amigos.add(solicitud.usuario)
+            perfil_receptor.save()
+
+            return HttpResponse("Solicitud aceptada.")
+
+        elif accion == "rechazar":
+            solicitud.delete()
+            return HttpResponse("Solicitud rechazada.")
      
-     
-@login_required     
+@login_required
 def eliminarAmigo(request):
     if request.method == "POST":
-        id_amigo = request.POST.get("idAmigo") #se obtiene el id desde el formulario    
-        perfil = get_object_or_404(Perfil,user=request.user) #se obtiene el perfil del usuario que esta logueado
-        amigo = get_object_or_404(User,id=id_amigo) #se obtiene al usuario desde el modelo User
-        perfil.amigos.remove(amigo) #se elimina ese amigo del modelo 
-        
+        id_amigo = request.POST.get("idAmigo")
+        amigo = get_object_or_404(User, id=id_amigo)
+
+        # se busca la relación de amistad (en cualquier sentido)
+        relacion = Amigo.objects.filter(
+            Q(solicitante=request.user, receptor=amigo) |
+            Q(solicitante=amigo, receptor=request.user),
+            aceptado=True
+        ).first()
+
+        # Si existe la amistad, eliminarla
+        if relacion:
+            relacion.delete()
+
     return redirect('mis-amigos')
 
 
 @login_required
 def verNovedades(request):
     if request.method == "GET":
-        novedades = Novedades.objects.filter(user = request.user)
-        novedades.update(leida = True)
-        novedades= novedades.order_by('-fecha')
-        return render(request,'novedades.html',{
-            'novedades':novedades
+        novedades = Novedades.objects.filter(user=request.user).order_by('-fecha')
+        solicitudes_pendientes = novedades.filter(tipo="amigo", aceptada=False)
+        otras_novedades = novedades.exclude(tipo="amigo")
+
+        # marcar como leídas
+        novedades.update(leida=True)
+
+        return render(request, 'novedades.html', {
+            'novedades': otras_novedades,
+            'solicitudes_pendientes': solicitudes_pendientes
         })
     
     
