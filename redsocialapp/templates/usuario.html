@@ -55,7 +55,7 @@
                                         <button class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit">❤️</button>
                                     </div>
                                 </form>
-                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/"> 
+                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/" hx-post="{% url 'agregar-comentario' %}" hx-target=".comentarios-{{ publicacion.id }}" hx-swap="outerHTML"> 
                                     {% csrf_token %}
                                     <input type="hidden" name="publicacion_id" value="{{publicacion.id}}">
                                     <input type="text" name="comentario" class="form-control inputComentario" placeholder="Escribe un comentario" required>
@@ -64,7 +64,11 @@
                                     </div>
                                 </form>
                             </div>
-                            <span class="text-light">{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+                            
+                            <p>{{publicacion.descripcion}}</p>
+                            <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
+
+                            {%include 'comentarios.html' with publicacion=publicacion %}
                         </div>
             {% endfor %}
         </div>

@@ -28,7 +28,6 @@
                             {% if publicacion.imagen %}
                                 <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                             {% endif %}
-
                             <div class="publicacion-operaciones d-flex align-items-center justify-content-center">
 
                                 <form
@@ -55,6 +54,7 @@
                                 </form>
 
                             </div>
+                            
                             <p>{{publicacion.descripcion}}</p>
                             <span>{{publicacion.fechaPublicacion|date:"d-m-Y"}}</span>
 
