@@ -1,23 +1,23 @@
-.contenedorLogin{
+.contenedorLogin {
     max-width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.17)), url(../img/fondoIngreso.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.17)), url(../img/fondoIngreso.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.ingresoMensajeBienvenida h1{
+.ingresoMensajeBienvenida h1 {
     letter-spacing: 4px;
     font-family: "Tektur", sans-serif;
 }
 
-.ingresoMensajeBienvenida img{
+.ingresoMensajeBienvenida img {
     width: 118px;
     border-radius: 30px;
     box-shadow: 5px 5px 20px #000;
 }
 
-.btnOlvidarClave{
+.btnOlvidarClave {
     background-color: transparent;
     color: #fff;
     font-size: 14px;
@@ -28,35 +28,35 @@
     margin-top: 10px;
 }
 
-.btnOlvidarClave:hover{
+.btnOlvidarClave:hover {
     text-decoration: underline;
 }
 
-.formLogin input{
+.formLogin input {
     width: 300px;
 }
 
-.formLogin input[type="checkbox"]{
+.formLogin input[type="checkbox"] {
     width: initial;
 }
 
-#contenedorCambiarClave{
+#contenedorCambiarClave {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 350px;
     height: 350px;
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.70);
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.70);
     position: absolute;
     top: 20%;
-    background: linear-gradient(150deg,#121a80,#101010);
+    background: linear-gradient(150deg, #121a80, #101010);
     color: #fff;
     border-radius: 30px;
     border: solid 3px #fff;
     display: none;
 }
 
-.btnCerrarContenedorCambiarClave{
+.btnCerrarContenedorCambiarClave {
     border: none;
     background-color: transparent;
     color: #fff;
@@ -71,13 +71,13 @@
     text-decoration: underline;
 }
 
-#contenedorCambiarClave h1{
+#contenedorCambiarClave h1 {
     font-family: "Tektur", sans-serif;
     font-size: 35px;
     text-align: center;
 }
 
-#contenedorCambiarClave form{
+#contenedorCambiarClave form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,47 +85,47 @@
     gap: 15px;
 }
 
-#contenedorCambiarClave form input{
+#contenedorCambiarClave form input {
     width: 300px;
     font-size: 13px;
 }
 
-.contenedorRegistro{
+.contenedorRegistro {
     max-width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.50)), url(../img/fondoRegistro.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.50)), url(../img/fondoRegistro.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.contenedorRegistro form input{
+.contenedorRegistro form input {
     width: 350px;
 }
 
-.contenedorVerificarUsuario{
+.contenedorVerificarUsuario {
     max-width: 100%;
     min-height: 100vh;
-    background: linear-gradient(150deg,#2a588a,#101010,#000);
+    background: linear-gradient(150deg, #2a588a, #101010, #000);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.contenedorVerificarUsuario h1{
+.contenedorVerificarUsuario h1 {
     color: #fff;
     font-family: "Tektur", sans-serif;
     font-size: 50px;
     text-align: center;
 }
 
-.contenedorVerificarUsuario img{
+.contenedorVerificarUsuario img {
     width: 150px;
     border-radius: 30px;
     box-shadow: 5px 5px 20px #000;
 }
 
-.contenedorVerificarUsuario form{
+.contenedorVerificarUsuario form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,21 +135,21 @@
     height: 220px;
 }
 
-.contenedorVerificarUsuario form input[type="text"]{
+.contenedorVerificarUsuario form input[type="text"] {
     width: 600px;
     margin-bottom: 20px;
 }
 
-.contenedorCrearPerfil{
+.contenedorCrearPerfil {
     max-width: 100%;
     min-height: 100vh;
-    background: linear-gradient(150deg,#2a588a,#101010,#000);
+    background: linear-gradient(150deg, #2a588a, #101010, #000);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contenidoCrearPerfil{
+.contenidoCrearPerfil {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +159,7 @@
     background-color: #fff;
 }
 
-.textoCrearPerfil{
+.textoCrearPerfil {
     height: 500px;
     padding: 50px 15px 20px 15px;
     background: url(../img/textoCrearPerfil.jpg);
@@ -173,51 +173,51 @@
     width: 400px;
 }
 
-.tituloCrearPerfil{
+.tituloCrearPerfil {
     color: #fff;
 }
 
-.parrafoCrearPerfil{
+.parrafoCrearPerfil {
     color: #fff;
 }
 
-.contenedorFormCrearPerfil{
+.contenedorFormCrearPerfil {
     background-color: #fff;
     height: 500px;
     overflow-y: hidden;
 }
 
-.formCrearPerfil{
+.formCrearPerfil {
     width: 400px;
 }
 
-.contenedorFormCrearPerfil form ::placeholder{
+.contenedorFormCrearPerfil form ::placeholder {
     color: #fff;
 }
 
-.contenedorFormCrearPerfil form{
+.contenedorFormCrearPerfil form {
     padding: 0px 0px 0px 60px;
 }
 
-.contenedorFormCrearPerfil form input{
+.contenedorFormCrearPerfil form input {
     width: 300px;
     background-color: #000;
     color: #fff;
 }
 
-.contenedorFormCrearPerfil form textarea{
+.contenedorFormCrearPerfil form textarea {
     width: 300px;
     background-color: #000;
     color: #fff;
 }
 
-.contenedorFormCrearPerfil form .inputImagen{
+.contenedorFormCrearPerfil form .inputImagen {
     cursor: pointer;
 }
 
 .contenedorClaveNueva {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #121a80,#032a53);
+    background: linear-gradient(135deg, #121a80, #032a53);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -227,11 +227,11 @@
     width: 100%;
 }
 
-.contenedorClaveNueva h1{
+.contenedorClaveNueva h1 {
     color: #fff;
 }
 
-.contenidoClaveNueva{
+.contenidoClaveNueva {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -246,23 +246,24 @@
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .contenidoClaveNueva form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.contenedorClaveNueva .mensaje{
+.contenedorClaveNueva .mensaje {
     color: black;
     font-weight: 800;
     background: #fff;
@@ -274,100 +275,105 @@
 }
 
 .contenidoClaveNueva input[type="password"] {
-  width: 500px;
-  padding: 14px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 500px;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .contenidoClaveNueva input[type="password"]:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .contenidoClaveNueva input[type="password"]::placeholder {
-  color: #999;
+    color: #999;
 }
 
 .contenidoClaveNueva button {
-  padding: 14px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .contenidoClaveNueva button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
 .contenidoClaveNueva button:active {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
 .contenidoClaveNueva p {
-  padding: 16px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  animation: fadeIn 0.4s ease-out;
+    padding: 16px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .contenidoClaveNueva p:nth-of-type(1) {
-  background-color: #fee;
-  color: #c33;
-  border: 1px solid #fcc;
+    background-color: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
 }
 
 .contenidoClaveNueva p:nth-of-type(2) {
-  background-color: #ffeaa7;
-  color: #d63031;
-  border: 1px solid #ffdb8d;
+    background-color: #ffeaa7;
+    color: #d63031;
+    border: 1px solid #ffdb8d;
 }
 
 .contenidoClaveNueva p:nth-of-type(3) {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-  .contenidoClaveNueva {
-    width: 300px;
-    padding: 40px 25px;
-    border-radius: 16px;
-  }
+    .contenedorVerificarUsuario {
+        text-align: center;
+    }
 
-  .contenidoClaveNueva input[type="password"],
-  .contenidoClaveNueva button {
-    font-size: 16px;
-    padding: 12px 14px;
-  }
+    .contenidoClaveNueva {
+        width: 300px;
+        padding: 40px 25px;
+        border-radius: 16px;
+    }
 
-  .contenidoClaveNueva p {
-    font-size: 13px;
-    padding: 12px 12px;
-  }
+    .contenidoClaveNueva input[type="password"],
+    .contenidoClaveNueva button {
+        font-size: 16px;
+        padding: 12px 14px;
+    }
+
+    .contenidoClaveNueva p {
+        font-size: 13px;
+        padding: 12px 12px;
+    }
 }
