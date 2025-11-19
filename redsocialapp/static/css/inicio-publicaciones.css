@@ -134,11 +134,11 @@
 
 .contenidoAgregarPublicacion {
     display: flex;
-    width: 450px; /* un poco más ancho para modernidad */
+    width: 450px; 
     min-height: 200px;
     border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* sombra más sutil y moderna */
-    background: linear-gradient(145deg, #7b5fff, #0b0d92); /* degradado más moderno */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+    background: linear-gradient(145deg, #7b5fff, #0b0d92); 
     padding: 40px 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: solid 2px #fff;

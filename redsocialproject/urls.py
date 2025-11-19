@@ -30,6 +30,7 @@ urlpatterns = [
     path('inicio/',views.inicio,name='inicio'),
     path('crear-perfil/',views.crearPerfil, name='crear-perfil'),
     path('agregar-publicacion/',views.agregarPublicacion, name='agregar-publicacion'),
+    path('eliminar-publicacion/',views.eliminarPublicacion,name='eliminar_publicacion'),
     path('me-gusta/<int:id_post>',views.agregarMeGusta,name='me_gusta'),
     path('agregar-comentario/',views.agregarComentario, name='agregar-comentario'),
     path('mi-perfil/',views.miPerfil,name='mi-perfil'),

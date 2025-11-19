@@ -40,7 +40,15 @@
             <div class="misPublicaciones">
                 {% for publicacion in misPublicaciones %}
                         <div class="miPublicacion">
-                            <h2>{{publicacion.autor.username}}</h2>
+                            <div class="miPublicacion-header">
+                                <h2>{{publicacion.autor.username}}</h2>
+                                <form action="{% url 'eliminar_publicacion' %}" method="post" onsubmit="return confirm('¿Deseas realmente eliminar esta publicación de tu perfil?')">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id_publicacion" value="{{publicacion.id}}">
+                                    <button type="submit"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </div>
+                            
                             <img src="{{publicacion.imagen.url}}" alt="fotoPublicacion">
                             <div class="publicacion-operaciones d-flex align-items-center justify-content-center">
                                 <form 
@@ -56,7 +64,7 @@
                                         <button class="btn-like {% if request.user in publicacion.liked_by.all %}liked{% endif %}" type="submit">❤️</button>
                                     </div>
                                 </form>
-                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/">
+                                <form class="datosComentarios d-flex align-items-center justify-content-center gap-2" method="post" action="/agregar-comentario/" hx-post="{% url 'agregar-comentario' %}" hx-target=".comentarios-{{ publicacion.id }}" hx-swap="outerHTML"> 
                                     {% csrf_token %}
                                     <input type="hidden" name="publicacion_id" value="{{publicacion.id}}">
                                     <input type="text" name="comentario" class="form-control inputComentario" placeholder="Escribe un comentario" required>
@@ -67,6 +75,7 @@
                             </div>
                             <p class="text-light mt-4">{{publicacion.fechaPublicacion|date:"d-m-Y"}}</p>
                             <p class="mt-4">{{publicacion.descripcion}}</p>
+                            {%include 'comentarios.html' with publicacion=publicacion %}
                         </div>
                 {% endfor %}
         {%else%}

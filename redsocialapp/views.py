@@ -312,6 +312,18 @@ def agregarPublicacion(request):
         nuevaPublicacion.autor = request.user
         nuevaPublicacion.save()
         return redirect("inicio")
+    
+
+@login_required
+def eliminarPublicacion(request):
+    if request.method == 'POST':
+        id_publicacion = request.POST.get("id_publicacion")
+        publicacion = get_object_or_404(Publicacion,id=id_publicacion)
+        
+        if publicacion:
+            publicacion.delete()
+            
+    return redirect('mi-perfil')
 
 
 @login_required
@@ -351,8 +363,6 @@ def agregarMeGusta(request, id_post):
             </div>
         """
         return HttpResponse(respuesta)
-
-
 
 
 @login_required

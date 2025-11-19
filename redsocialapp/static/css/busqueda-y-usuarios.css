@@ -120,10 +120,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: linear-gradient(150deg,#ebf1c7,#84b3e5);
+    background: linear-gradient(150deg,#090d47,#020599);
     padding-top: 40px;
     box-shadow: 5px 10px 15px #000;
     height: 350px;
+    color: #fff;
 }
 
 .usuario-datos img{

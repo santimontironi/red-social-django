@@ -90,6 +90,7 @@
 }
 
 .miPublicacion{
+    font-family: "Tektur", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -109,7 +110,7 @@
 
 .miPublicacion p{
     color: #fff;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .miPublicacion img{
@@ -120,4 +121,24 @@
 
 .miPublicacion span{
     color: #fff;
+}
+
+.miPublicacion-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+}
+
+.miPublicacion-header form button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.miPublicacion-header form button i{
+    color: red;
+    font-size: 25px;
 }
