@@ -98,11 +98,30 @@ def registro(request):
             perfil.codigo_verificacion = random.randint(100000, 999999)
             perfil.save()
 
+            # Email simple con estilos inline
+            html_message = f"""
+            <div style="background-color: #f5f5f5; padding: 20px; font-family: Arial, sans-serif;">
+                <div style="background-color: white; max-width: 500px; margin: 0 auto; padding: 20px; border-radius: 8px; border-top: 4px solid #0d47a1;">
+                    <h2 style="color: #0d47a1; text-align: center;">Bienvenido a nuestro sitio</h2>
+                    
+                    <p style="color: #1a1a1a; font-size: 14px;">Hola <strong>{username}</strong>,</p>
+                    <p style="color: #1a1a1a; font-size: 14px;">Tu código de verificación es:</p>
+                    
+                    <div style="background-color: #f0f8ff; padding: 15px; text-align: center; border-left: 4px solid #0d47a1; margin: 20px 0;">
+                        <p style="font-size: 28px; font-weight: bold; color: #0d47a1; margin: 0; letter-spacing: 3px;">{perfil.codigo_verificacion}</p>
+                    </div>
+                    
+                    <p style="color: #666666; font-size: 12px;">No compartas este código con nadie.</p>
+                </div>
+            </div>
+            """
+
             send_mail(
                 subject="Código de verificación",
-                message=f"Hola {username}, tu codigo es: {perfil.codigo_verificacion}",
+                message=f"Hola {username}, tu código de verificación es: {perfil.codigo_verificacion}",
                 from_email="santiimontironi@gmail.com",
                 recipient_list=[email],
+                html_message=html_message,
                 fail_silently=False,
             )
 
@@ -221,7 +240,7 @@ def cambiarClave(request, id):
                 request,
                 "cambiarClave.html",
                 {
-                    "cambioCorrecto": "Contraseña cambiada correctamente, ya puedes iniciar sesión nuevamente en: ",
+                    "cambioCorrecto": "Contraseña cambiada correctamente, ya puedes iniciar sesión nuevamente.",
                     "usuario": usuario,
                 },
             )

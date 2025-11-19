@@ -214,3 +214,160 @@
 .contenedorFormCrearPerfil form .inputImagen{
     cursor: pointer;
 }
+
+.contenedorClaveNueva {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #121a80,#032a53);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.contenedorClaveNueva h1{
+    color: #fff;
+}
+
+.contenidoClaveNueva{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 600px;
+    animation: slideIn 0.5s ease-out;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contenidoClaveNueva form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contenedorClaveNueva .mensaje{
+    color: black;
+    font-weight: 800;
+    background: #fff;
+    width: 400px;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.contenidoClaveNueva input[type="password"] {
+  width: 500px;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contenidoClaveNueva input[type="password"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.contenidoClaveNueva input[type="password"]::placeholder {
+  color: #999;
+}
+
+.contenidoClaveNueva button {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contenidoClaveNueva button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.contenidoClaveNueva button:active {
+  transform: translateY(0);
+}
+
+.contenidoClaveNueva p {
+  padding: 16px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.contenidoClaveNueva p:nth-of-type(1) {
+  background-color: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+}
+
+.contenidoClaveNueva p:nth-of-type(2) {
+  background-color: #ffeaa7;
+  color: #d63031;
+  border: 1px solid #ffdb8d;
+}
+
+.contenidoClaveNueva p:nth-of-type(3) {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contenidoClaveNueva {
+    width: 300px;
+    padding: 40px 25px;
+    border-radius: 16px;
+  }
+
+  .contenidoClaveNueva input[type="password"],
+  .contenidoClaveNueva button {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  .contenidoClaveNueva p {
+    font-size: 13px;
+    padding: 12px 12px;
+  }
+}
