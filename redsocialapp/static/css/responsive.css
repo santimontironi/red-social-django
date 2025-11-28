@@ -219,6 +219,9 @@
         margin-top: 45px;
         padding-bottom: 60px;
     }
+    .contenedorSinPublicacionesMiPerfil{
+        width: 300px;
+    }
     .encabezadoPerfil{
         height: 250px;
     }

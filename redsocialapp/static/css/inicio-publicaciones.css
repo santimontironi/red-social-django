@@ -138,14 +138,15 @@
     min-height: 200px;
     border-radius: 25px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
-    background: linear-gradient(145deg, #7b5fff, #0b0d92); 
+    background: linear-gradient(145deg, #09012b, #0b0d92); 
     padding: 40px 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: solid 2px #fff;
 }
 
 .contenidoAgregarPublicacion:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    transition: .8s;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 

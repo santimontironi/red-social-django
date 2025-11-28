@@ -3,12 +3,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import (
-    PerfilFormCompleto,
-    PerfilFormReducido,
-    PublicacionForm,
-    ComentarioForm,
-)
+from .forms import ( PerfilFormCompleto, PerfilFormReducido, PublicacionForm, ComentarioForm)
 from .models import Publicacion, Perfil, Novedades, Amigo
 from django.db.models import Q
 from django.core.mail import send_mail
