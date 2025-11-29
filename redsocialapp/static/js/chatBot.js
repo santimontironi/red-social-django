@@ -14,8 +14,7 @@ createChat({
   showWelcomeScreen: false,
   defaultLanguage: 'es',
   initialMessages: [
-    'Hola! 👋',
-    'Mi nombre es Raulito, ¿en qué te puedo ayudar hoy?'
+    'Bienvenido, mi nombre es Raulito, ¿en qué te puedo ayudar hoy?'
   ],
   i18n: {
     es: {

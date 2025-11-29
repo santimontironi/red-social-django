@@ -16,9 +16,7 @@ from django.urls import reverse
 
 # Create your views here.
 def ingreso(request):
-    if (
-        request.user.is_authenticated
-    ):  # si la cookie del usuario está, se abre la app en inicio.
+    if (request.user.is_authenticated):  # si la cookie del usuario está, se abre la app en inicio.
         return redirect("inicio")
 
     if request.method == "GET":
